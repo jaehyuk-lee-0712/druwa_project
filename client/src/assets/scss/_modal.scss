@@ -1,0 +1,98 @@
+// Modal.module.scss
+.modalContent {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff; // 배경색
+  width: 372px; // 너비
+  max-width: 372px; // 최대 너비
+  position: absolute;
+  border-radius: 10px;
+
+  padding-inline-start: 1.5rem;
+  padding-inline-end: 1.5rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-box-pack: start;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+  padding: 28px 20px 20px;
+
+  svg {
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    line-height: 1em;
+    flex-shrink: 0;
+    color: currentColor;
+    margin-bottom: 20px;
+  }
+  .modal__text {
+    font-size: 20px;
+    font-family: "Pretendard";
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    word-break: keep-all;
+    white-space: pre-wrap;
+  }
+  .modal__sub__text {
+    font-family: "Pretendard";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #292a2e;
+    margin-bottom: 28px;
+    word-break: keep-all;
+    white-space: pre-wrap;
+  }
+
+  .modal__btn {
+    display: inline-flex;
+    appearance: none;
+    -wekbkit-box-align: center;
+    align-items: center;
+    -wekbkit-pack-align: "center";
+    justify-content: center;
+    position: relative;
+    user-select: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    line-height: 1.2;
+    border-radius: 0;
+    height: 50px;
+    border-width: 1px;
+    padding-inline: 12px;
+    background-color: #2c74ff;
+    border-color: #2c74ff;
+    color: #fff;
+    width: 100%;
+    font-family: "Pretendard";
+
+    &:hover {
+      background-color: #84a1f8;
+      transition: all 0.2s ease-in 0s;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px); // 블러 효과 추가
+  pointer-events: auto; // 오버레이에서만 포인터 이벤트 활성화
+  z-index: 1040; // 오버레이 z-index 설정
+}

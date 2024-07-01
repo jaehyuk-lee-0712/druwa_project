@@ -1,0 +1,605 @@
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
+
+#loginMain {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  min-width: 100vh;
+  padding: 0;
+  margin: 0;
+
+  .login__left {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    height: 100%;
+    background-color: #2c74ff;
+    overflow: hidden;
+
+    .left__container {
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      flex-direction: row;
+      gap: 80px;
+      width: 100%;
+
+      .ratangle {
+        width: 118px;
+        height: 236px;
+        background-color: #fff;
+        border: 2px 2px 2px solid #000;
+        border-image: initial;
+        border-radius: 0px 118px 118px 0px;
+      }
+
+      .login__text {
+        display: block;
+        unicode-bidi: isolate;
+
+        .login__text__main {
+          font-size: 48px;
+          font-family: "Krona One", sans-serif;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: -1.92px;
+          color: #fff;
+        }
+
+        .login__text__sub {
+          font-family: "Pretendard";
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.7;
+          margin-top: 28px;
+          color: #fff;
+        }
+      }
+
+      .login__line {
+        width: auto;
+        height: 4px;
+        background-color: #000;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+      }
+
+      .hidden__ele {
+        width: 118px;
+        height: 236px;
+        background-color: #fff;
+        border: 2px 2px 2px solid #000;
+        border-image: inherit;
+        border-radius: 118px 0px 0px 118px;
+      }
+    }
+  }
+
+  .login__right {
+    right: 0;
+    width: 664px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 32px 0px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+
+    .right__container {
+      padding-inline: 0px;
+      display: flex;
+      width: 372px;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .right__logo {
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        width: 100%;
+
+        .logoImg {
+          width: 60px;
+          height: 60px;
+          background-image: url(../img/mainLogo.gif);
+          background-position: center;
+          background-size: contain;
+          object-fit: contain;
+          background-repeat: no-repeat;
+        }
+
+        .logoText {
+          font-size: 36px;
+          font-family: "Pretendard";
+          font-weight: 700;
+          color: #000;
+          text-align: center;
+          margin-top: 20px;
+        }
+      }
+
+      .right__contolors {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        margin-top: 48px;
+
+        .login__control {
+          position: relative;
+          width: 100%;
+          margin-bottom: 0;
+          border-color: #f2f3f4;
+
+          .login__input__control {
+            width: 100%;
+            height: 48px;
+            font-size: 16px;
+            padding-inline-start: 0;
+            padding-inline-end: 0;
+            border-radius: 0;
+            min-width: 0;
+            position: relative;
+            appearance: none;
+            font-weight: 400;
+            line-height: 1.7;
+            padding: 12px 16px;
+            border: 1px solid #e5e7ec;
+            border-image: initial;
+            background-color: #fff;
+            transition: all 0.2s ease-in 0s;
+            outline: none !important;
+            box-shadow: none !important;
+            font-family: "Pretendard";
+          }
+        }
+
+        .login__button {
+          display: inline-flex;
+          appearance: none;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          user-select: none;
+          position: relative;
+          white-space: nowrap;
+          vertical-align: middle;
+          outline: transparent solid 2px;
+          outline-offset: 2px;
+          line-height: 1.2;
+          border-radius: 0px;
+          font-weight: 600;
+          transition-property: background-color, border-color, color, fill,
+            stroke, opacity, box-shadow, transform;
+          transition-duration: 200ms;
+          height: 56px;
+          border-width: 1px;
+          padding-inline: 12px;
+          background-color: #000;
+          border-color: #000;
+          color: #fff;
+          width: 100%;
+          font-family: "Pretendard";
+        }
+
+        .sub__controls {
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          gap: 20px;
+
+          a {
+            background-color: transparent;
+            color: inherit;
+            text-decoration: inherit;
+
+            button {
+              display: flex;
+              -webkit-box-align: center;
+              align-items: center;
+              background: transparent;
+              padding: 0;
+
+              span {
+                display: block;
+                color: #b8bcc8;
+                transition: all 0.1s linear 0s;
+                font-family: "Pretendard";
+              }
+            }
+          }
+        }
+      }
+
+      .right__footer {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 28px;
+        width: 100%;
+        margin-top: 28px;
+
+        p {
+          white-space: pre-wrap;
+          font-family: "Pretendard";
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.7;
+          color: #8c919f;
+          text-align: center;
+          word-break: keep-all;
+
+          span {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .member__box {
+    display: none;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(0px, -50px);
+    top: 30%;
+    left: calc(50% - 226px);
+    width: 452px;
+    height: auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 32px 0px;
+    position: absolute;
+    background-color: #fff;
+
+    button {
+      width: 24px;
+      height: 24px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        line-height: 1rem;
+        flex-shrink: 0;
+        color: currentColor;
+        vertical-align: middle;
+        background-color: #fff;
+      }
+    }
+
+    .member__container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 28px;
+      width: 100%;
+      margin-top: 16px;
+
+      .member__header {
+        width: 100%;
+        margin-bottom: 0;
+
+        h1 {
+          font-size: 36px;
+          font-family: "Pretendard";
+          font-weight: 700;
+          line-height: 1.7;
+          color: #000;
+        }
+
+        p {
+          font-family: "Pretendard";
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.7;
+          color: #000;
+        }
+      }
+
+      .member__controls {
+        position: relative;
+        width: 100%;
+        margin-bottom: 0;
+
+        .alert__box {
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          --form-error-color: #fc4e4e;
+          color: var(--form-error-color);
+          font-size: 0.875rem;
+          line-height: normal;
+          margin-top: 4px;
+
+          .alert__text {
+            font-family: "Pretendard";
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 1.7;
+            color: #ff2f2f;
+          }
+        }
+
+        .verificationCodes {
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          flex-direction: row;
+          gap: 7px;
+          width: 100%;
+          margin-top: 4px;
+
+          .verification__code {
+            width: 56px;
+            height: 56px;
+            font-size: 1rem;
+            padding-inline-start: 0;
+            padding-inline-end: 0;
+            border-radius: 0.375rem;
+            min-width: 0;
+            outline: transparent solid 2px;
+            outline-offset: 2px;
+            position: relative;
+            appearance: none;
+            transition-property: border-color, color, fill, stroke, opacity,
+              box-shadow, transform;
+            transition-duration: 200ms;
+            text-align: center;
+            border-width: 1px;
+            border-style: solid;
+            border-image: initial;
+            background: inherit;
+            border-color: #e5e7ec;
+            font-family: "Pretendard";
+            font-weight: 600;
+            line-height: 1.5;
+            color: #000;
+          }
+        }
+
+        .email_desc {
+          font-family: "Pretendard";
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.7;
+          color: #000;
+        }
+
+        label {
+          display: block;
+          text-align: start;
+          font-size: 1rem;
+          margin-inline-end: 0.75rem;
+          margin-bottom: 0.5rem;
+          font-weight: 400;
+          transition-property: border-color, color, fill, stroke, opacity,
+            box-shadow, transform;
+          transition-duration: 200ms;
+          opacity: 1;
+          margin-right: 0;
+
+          .controls__title {
+            font-family: "Pretendard";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.7;
+          }
+
+          .controls__sub__title {
+            font-family: "Pretendard";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.7;
+            margin-inline-start: 0.25rem;
+            --form-control-color: #fc4e4e;
+            color: var(--form-control-color);
+          }
+        }
+
+        .member__email {
+          width: 100%;
+          height: 48px;
+          font-size: 16px;
+          padding-inline-start: 0;
+          padding-inline-end: 0;
+          border-radius: 0;
+          min-width: 0;
+          position: relative;
+          appearance: none;
+          font-weight: 400;
+          font-family: "Pretendard";
+          line-height: 1.7;
+          padding: 12px 16px;
+          border-width: 1px;
+          border-style: solid;
+          border-image: initial;
+          border-color: #e5e7ec;
+          background-color: #fff;
+          transition: all 0.2s ease-in 0s;
+          outline: none !important;
+          box-shadow: none !important;
+        }
+
+        .member__email[readOnly] {
+          background-color: #e5e7ec;
+        }
+
+        .resend__btn {
+          display: inline-flex;
+          appearance: none;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          user-select: none;
+          position: relative;
+          white-space: nowrap;
+          vertical-align: middle;
+          outline: transparent solid 2px;
+          outline-offset: 2px;
+          line-height: 1.5;
+          border-radius: 0;
+          font-weight: 600;
+          font-family: "Pretendard";
+          transition-property: border-color, color, fill, stroke, opacity,
+            box-shadow, transform;
+          transition-duration: 200ms;
+          height: 40px;
+          min-width: 2.5rem;
+          font-size: 14px;
+          background-color: white;
+          color: #4a4d55;
+          margin-top: 4px;
+          width: 116px;
+          padding-inline: 12px;
+          border: 1px solid #e5e7ec;
+        }
+      }
+
+      .agree__box {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+
+        .agree__conts {
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: justify;
+          justify-content: space-between;
+          flex-direction: row;
+          gap: 0.5rem;
+          width: 100%;
+
+          .agree__text {
+            color: #4a4d55;
+            font-family: "Pretendard";
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.7;
+            word-wrap: break-word;
+          }
+          .agree__label {
+            .agree__hidden__check {
+              border: 0px;
+              clip: rect(0px, 0px, 0px, 0px);
+              height: 1px;
+              width: 1px;
+              margin: -1px;
+              padding: 0px;
+              overflow: hidden;
+              white-space: nowrap;
+              position: absolute;
+            }
+            .aggree__checkbox {
+            }
+          }
+        }
+      }
+
+      .step__control {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 0.5rem;
+        width: 100%;
+
+        .step__ctl__btn {
+          display: inline-flex;
+          appearance: none;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          user-select: none;
+          position: relative;
+          white-space: nowrap;
+          vertical-align: middle;
+          outline: transparent solid 2px;
+          outline-offset: 2px;
+          line-height: 1.2;
+          border-radius: 0;
+          font-weight: 600;
+          transition-property: border-color, color, fill, stroke, opacity,
+            box-shadow, transform;
+          transition-duration: 200ms;
+          height: 56px;
+          border-width: 1px;
+          padding-inline: 12px;
+          background-color: #fff;
+
+          border: 1px solid #e5e7ec;
+          color: #4a4d55;
+          width: 100%;
+          font-family: "Pretendard";
+
+          &.disable {
+            background-color: #f2f3f4;
+            color: #b8bcc8;
+          }
+
+          &.disable:hover {
+            background-color: #f2f3f4;
+            color: #b8bcc8;
+          }
+
+          &:hover {
+            transition: all 0.2s ease-in 0s;
+            background-color: #fafafa;
+            border-color: #f2f3f4;
+          }
+        }
+      }
+
+      .member__btn {
+        display: inline-flex;
+        appearance: none;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        user-select: none;
+        position: relative;
+        white-space: nowrap;
+        vertical-align: middle;
+        outline: transparent solid 2px;
+        outline-offset: 2px;
+        line-height: 1.2;
+        border-radius: 0;
+        font-weight: 600;
+        font-family: "Pretendard";
+        transition-property: border-color, color, fill, stroke, opacity,
+          box-shadow, transform;
+        transition-duration: 200ms;
+        height: 56px;
+        border-width: 1px;
+        padding-inline: 12px;
+        background-color: #000;
+        border-color: #000;
+        color: #fff;
+        width: 100%;
+      }
+    }
+  }
+}
