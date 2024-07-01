@@ -1,0 +1,36 @@
+.transition-all {
+  transition-duration: 0.15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 239 239 / 1);
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / 1);
+}
+
+.container {
+  max-width: var(--layoutWidth);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--columnPaddingNormal);
+}
+
+body {
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+#main {
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+}

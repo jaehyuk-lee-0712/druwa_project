@@ -1,0 +1,86 @@
+:root {
+  --fontO: "Orbitron";
+  --fontG: "gmarket";
+  --fontN: "nanumSquareNeo";
+  --fontP: "Pretendard";
+
+  --mainEng-font: "Pretendard";
+  --mainKor-font: "gmarket";
+  --mainNum-font: "gmarket";
+  --main-font: "";
+
+  --mainBg-color: #ffffff;
+
+  --mainBg: #f6f8f9;
+  --pointColor: #7d57ff;
+  --pointBg: #ededff;
+
+  --black: #000;
+  --black100: #111;
+  --black200: #222;
+  --black300: #333;
+  --black400: #444;
+  --black500: #555;
+  --black600: #666;
+  --black700: #797979;
+
+  --white: #fff;
+  --white100: #f9f9f9;
+  --white200: #eeeeee;
+  --white300: #dfdfdf;
+  --white400: #cfcfcf;
+  --white500: #c0c0c0;
+  --white600: #b5b5b5;
+
+  --gray300: #e5e7ec;
+
+  // 폰트 셋팅
+  font-family: var(--fontP);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --colorPrimary: #3951ff;
+
+  font-family: var(--mainEng-font), var(--mainKor-font), "Apple SD Gothic Neo",
+    "Malgun Gothic", "맑은 고딕", helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--black);
+
+  // 폰트 최적화
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  @media (max-width: 800px) {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  //svg 이미지
+  --plusImg: url(../svg/plus-circle.svg);
+
+  // 반응형
+  --columnPaddingNormal: 32px;
+  --layoutWidth: 1280px;
+
+  @media (max-width: 800px) {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 1200px) {
+    :root {
+      --columnPaddingNormal: 32px;
+    }
+  }
+
+  // jaehyuk 전용
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 10px 15px -3px #efefef, 0 4px 6px -4px #efefef;
+}
