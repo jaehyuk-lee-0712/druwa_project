@@ -88,7 +88,7 @@ const Admin = () => {
       </div>
       <section id="mainSection">
         <main className="main__inner transition-all">
-          <div className="main__sticy__top transition-all bg-gray-200">
+          <div className="main__sticy__top transition-all">
             <div className="top__box">
               <div className="top__inner">
                 <a className="top__text__box transition-all" href="/">
@@ -692,7 +692,7 @@ const Admin = () => {
                       <div className="body__conts__wrap">
                         <div className="text__banner__wrap">
                           <div className="banner__box">
-                            <h3 className="main__banner">
+                            <h3 className="main__banner__text">
                               테스트로 만들고 싶은 것이 있나요?
                             </h3>
                             <p className="sub__banner">

@@ -1,6 +1,6 @@
 #adminMain {
   box-sizing: border-box;
-  background-color: #f0f2f5 !important;
+  background-color: var(--mainBg-color) !important;
   display: flex;
   min-height: 0;
   flex: auto;
@@ -131,7 +131,8 @@
           box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
             var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
           --tw-bg-opacity: 1l;
-          background-color: rgb(250 250 250/1);
+          // background-color: rgb(250 250 250/1);
+          background-color: var(--mainBg-color) !important;
           border-radius: 0.5rem;
           border: rgb(239 239 239/1);
           overflow-y: auto;
@@ -151,7 +152,8 @@
             .top__name__box {
               padding-top: 0.75rem;
               --tw-bg-opacity: 1;
-              background-color: rgb(250 250 250/1);
+              // background-color: rgb(250 250 250/1);
+              background-color: var(--mainBg-color) !important;
               z-index: 10;
               top: 0;
               position: sticky;
@@ -212,7 +214,8 @@
                         padding-left: 0.125rem;
                         padding-right: 0.125rem;
                         --tw-bg-opacity: 1;
-                        background-color: rgb(255 255 255/1);
+                        // background-color: rgb(255 255 255/1);
+                        background-color: var(--mainBg-color) !important;
                         --tw-border-opacity: 1;
                         border-color: rgb(239 239 239 / 1);
                         position: relative;
@@ -319,7 +322,8 @@
 
 #mainSection {
   width: calc(100vw - 288px);
-  background-color: #f0f2f5 !important;
+  // background-color: #f0f2f5 !important;
+  background-color: var(--mainBg-color) !important;
   display: flex;
   flex: auto;
   flex-direction: column;
@@ -334,8 +338,10 @@
     overflow-y: auto;
     height: 100%;
     --tw-bg-opacity: 1;
-    background-color: #f0f2f5 !important;
+    // background-color: #f0f2f5 !important;
+    background-color: var(--mainBg-color) !important;
     .main__sticy__top {
+      background-color: var(--mainBg-color);
       padding-left: 2.5rem;
       padding-right: 2.5rem;
       position: sticky;
@@ -983,7 +989,7 @@
             .text__banner__wrap {
               .banner__box {
                 text-align: center;
-                .main__banner {
+                .main__banner__text {
                   line-height: 130%;
                   font-weight: 700;
                   font-size: 1.525rem;
@@ -1157,7 +1163,7 @@
       top: 6rem;
       z-index: 10;
       --tw-bg-opacity: 1;
-      background-color: rgb(245 245 245 / 1);
+      background-color: var(--mainBg-color);
       position: sticky;
       .conts__tabs {
         font-family: var(--fontP);
