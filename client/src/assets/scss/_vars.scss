@@ -1,44 +1,65 @@
 :root {
-  --fontO: "Orbitron";
-  --fontG: "gmarket";
-  --fontN: "nanumSquareNeo";
-  --fontP: "Pretendard";
-
   --mainEng-font: "Pretendard";
   --mainKor-font: "gmarket";
   --mainNum-font: "gmarket";
   --main-font: "";
 
   --mainBg-color: #f7f9fc;
-
   --mainBg: #f6f8f9;
   --pointColor: #7d57ff;
   --pointBg: #ededff;
 
-  --black: #000;
-  --black100: #111;
-  --black200: #222;
-  --black300: #333;
-  --black400: #444;
-  --black500: #555;
-  --black600: #666;
-  --black700: #797979;
+  --suvBg100: #ecc9e9;
+  --suvBg200: #d4b5d2;
+  --suvBg300: #b198af;
+  --suvBg400: #8b7889;
+  --suvBg500: #675a66;
 
   --white: #fff;
-  --white100: #f9f9f9;
-  --white200: #eeeeee;
-  --white300: #dfdfdf;
-  --white400: #cfcfcf;
-  --white500: #c0c0c0;
-  --white600: #b5b5b5;
+  --white100: #eee;
+  --white200: #ddd;
+  --white300: #ccc;
+  --white400: #bbb;
+  --white500: #aaa;
 
-  --gray300: #e5e7ec;
+  --black: #372936;
+  --black100: #2b2b2b;
+  --black200: #434343;
+  --black300: #686868;
+  --black400: #e0e0e0;
 
-  // 폰트 셋팅
-  font-family: var(--fontP);
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
+  --grey50: #f9fafb;
+  --grey100: #f2f4f6;
+  --grey200: #e5e8eb;
+  --grey300: #d1d6db;
+  --grey400: #b0b8c1;
+  --grey500: #8b95a1;
+  --grey600: #6b7684;
+  --grey700: #4e5968;
+  --grey800: #333d4b;
+  --grey900: #191f28;
+
+  --greyOpacity50: rgba(0, 23, 51, 0.02);
+  --greyOpacity100: rgba(2, 32, 71, 0.05);
+  --greyOpacity200: rgba(0, 27, 55, 0.1);
+  --greyOpacity300: rgba(0, 29, 58, 0.18);
+  --greyOpacity400: rgba(0, 25, 54, 0.31);
+  --greyOpacity500: rgba(3, 24, 50, 0.46);
+  --greyOpacity600: rgba(0, 19, 43, 0.58);
+  --greyOpacity700: rgba(3, 18, 40, 0.7);
+  --greyOpacity800: rgba(0, 12, 30, 0.8);
+  --greyOpacity900: rgba(2, 9, 19, 0.91);
+
+  --blue50: #e8f3ff;
+  --blue100: #c9e2ff;
+  --blue200: #90c2ff;
+  --blue300: #64a8ff;
+  --blue400: #4593fc;
+  --blue500: #3182f6;
+  --blue600: #2272eb;
+  --blue700: #1b64da;
+  --blue800: #1957c2;
+  --blue900: #194aa6;
 
   --colorPrimary: #3951ff;
 
@@ -49,17 +70,12 @@
   font-weight: 400;
   color: var(--black);
 
-  // 폰트 최적화
+  /* 폰트 최적화 */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
-  @media (max-width: 800px) {
-    font-size: 14px;
-    line-height: 1.4;
-  }
 
   //svg 이미지
   --plusImg: url(../svg/plus-circle.svg);

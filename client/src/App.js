@@ -6,6 +6,7 @@ import Admin from "./pages/Admin";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ModalProvider } from "./context/ModalContext";
 import Login from "./pages/Login";
+import List from "./pages/List";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/list" element={<List />} />
             </Routes>
           </Main>
         </Layout>

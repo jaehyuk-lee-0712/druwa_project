@@ -12,3 +12,44 @@ export const info = {
 //   info2: "카페",
 //   info3: "4.2",
 // };
+export const checkLists = [
+  {
+    title: "전체",
+  },
+  {
+    title: "Starbucks",
+  },
+  {
+    title: "McDonald",
+  },
+  {
+    title: "Burger King",
+  },
+  {
+    title: "Lotteria",
+  },
+];
+
+export const moglogInfo = [
+  {
+    title: "Starbucks",
+    open: "운영중",
+    info1: "5.3km",
+    info2: "카페",
+    info3: "4.8",
+  },
+  {
+    title: "McDonald",
+    open: "",
+    info1: "5.3km",
+    info2: "카페",
+    info3: "4.8",
+  },
+  {
+    title: "Lotteria",
+    open: "운영중",
+    info1: "5.3km",
+    info2: "카페",
+    info3: "4.8",
+  },
+];
