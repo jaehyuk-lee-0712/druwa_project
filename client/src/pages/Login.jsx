@@ -266,16 +266,16 @@ const Login = () => {
             <div className="login__text">
               {/* <button onClick={openModal}>1241</button> */}
               <p className="login__text__main">
-                Let's Coding
+                Let's Drive
                 <br />
                 In Your
                 <br />
-                Dately!
+                Happy!
               </p>
               <p className="login__text__sub">
-                혼자서도 충분히 관리할 수 있는 프로젝트!
+                가장 가까운 일상 속의 행복!
                 <br />
-                모든 일정과 소스 코드를 관리하세요.
+                지금 바로 아 쑤바 모르겠다 나중에 바꾸자.
               </p>
             </div>
             <div className="login__line"></div>
@@ -288,9 +288,9 @@ const Login = () => {
               <div className="right__logo">
                 <div className="logoImg"></div>
                 <p className="logoText">
-                  혼자서도 충분한
+                  당신의 여유 속으로
                   <br />
-                  프로젝트 일정 관리
+                  드루와
                 </p>
               </div>
               <div className="right__contolors">
@@ -354,7 +354,7 @@ const Login = () => {
               </div>
               <div className="right__footer">
                 <p className="login__agree">
-                  위 버튼을 클릭하면 pluuug의 <span>서비스 이용 약관</span>과
+                  위 버튼을 클릭하면 druwa의<span>서비스 이용 약관</span>과
                   <span>개인정보 취급방침</span>에 동의하게 됩니다.
                 </p>
               </div>
