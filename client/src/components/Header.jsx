@@ -26,7 +26,7 @@ const Header = () => {
               <Link to="/">자주</Link>
             </li>
             <li>
-              <Link to="/">회사</Link>
+              <Link to="/board">공지사항</Link>
             </li>
           </ul>
         </div>

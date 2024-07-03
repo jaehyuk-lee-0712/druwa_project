@@ -1,0 +1,140 @@
+.board__top {
+  .board__text {
+    padding: 125px 0;
+    h2 {
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 70px;
+      letter-spacing: -0.5px;
+      color: #202124;
+    }
+  }
+  .board__cate {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    .board__menu {
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-right: 34px;
+        a {
+          color: #95999c;
+          font-size: 20px;
+          font-weight: 400;
+        }
+      }
+    }
+    .board__search {
+      position: relative;
+      padding: 0 0 14px 0;
+      border-bottom: 2px solid #000000;
+      .search__icon {
+        background-image: var(--search);
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        right: 0;
+      }
+
+      input {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: -0.5px;
+        color: #202124;
+        width: 300px;
+        height: 28px;
+        outline: none;
+      }
+    }
+  }
+  .board__list {
+    width: 100%;
+    margin: 0 auto 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-top: 1px solid #e6e8eb;
+    ul {
+      width: 100%;
+      .board__list__box {
+        width: 100%;
+        padding: 35px 0;
+        border-bottom: 1px solid #e6e8eb;
+        .board__list__cont {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 2px 20px;
+          .list__cont__type {
+            width: 110px;
+            overflow: hidden;
+            color: #202124;
+            font-size: 16px;
+            line-height: 28px;
+            letter-spacing: -0.5px;
+          }
+          .list__cont__title {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 28px;
+            letter-spacing: -0.5px;
+          }
+          .list__cont__date {
+            color: #71767a;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 28px;
+            letter-spacing: -0.5px;
+          }
+        }
+      }
+    }
+  }
+  .board__more__box {
+    display: flex;
+    .board__more {
+      font-size: 16px;
+      line-height: 1;
+      min-height: 50px;
+      display: inline-block;
+      text-align: center;
+      margin: 0 auto 150px;
+      padding: 16px 24px;
+      border-radius: 8px;
+      border: 1px solid #202124;
+      color: #202124;
+      background: 0 0;
+      cursor: pointer;
+      .more__current {
+        &::before {
+          content: "(";
+        }
+      }
+      .more__total {
+        &::before {
+          content: "/";
+        }
+        &::after {
+          content: ")";
+        }
+      }
+      &::after {
+        content: "";
+        background-image: url(../svg/more_under.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 5px;
+        width: 20px;
+        height: 10px;
+        background-size: cover;
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+}

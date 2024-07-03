@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ModalProvider } from "./context/ModalContext";
 import Login from "./pages/Login";
 import List from "./pages/List";
+import Board from "./pages/Board";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/admin" element={<Admin />} />
               <Route path="/login" element={<Login />} />
               <Route path="/list" element={<List />} />
+              <Route path="/board" element={<Board />} />
             </Routes>
           </Main>
         </Layout>

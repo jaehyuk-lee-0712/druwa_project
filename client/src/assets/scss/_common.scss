@@ -23,7 +23,8 @@
 
 body {
   overflow-x: hidden;
-
+  text-decoration: none;
+  list-style: none;
   @media (max-width: 768px) {
     display: block;
   }
