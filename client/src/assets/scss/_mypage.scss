@@ -1,0 +1,181 @@
+#mypage {
+  padding: 0 50px;
+  background-color: #f7f9fc;
+
+  .my__info {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    @media (max-width: 960px) {
+      display: block;
+    }
+    .my__left {
+      padding-top: 10rem;
+      width: 22rem;
+      margin-right: 32px;
+
+      .my__left__text {
+        position: fixed;
+        @media (max-width: 960px) {
+          position: relative;
+        }
+      }
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 58px;
+        @media (max-width: 960px) {
+          margin-bottom: 0;
+        }
+      }
+      .my__left__side {
+        width: 100%;
+        li {
+          padding: 0.208333333333333rem 0 0.208333333333333rem;
+          min-height: 0;
+          font-size: 1.2rem;
+          font-weight: 800;
+          margin-bottom: 10px;
+          &::before {
+            content: "";
+            background-image: url(../svg/more_under.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 10px;
+            width: 24px;
+            height: 16px;
+            background-size: cover;
+            display: inline-block;
+            position: relative;
+          }
+        }
+      }
+    }
+    // my__right
+    .my__right {
+      width: 71rem;
+      margin-top: 100px;
+      @media (max-width: 960px) {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .my__right__content {
+        width: 100%;
+        border-radius: 5px;
+        display: flex;
+        margin-bottom: 30px;
+        @media (max-width: 960px) {
+          display: block;
+        }
+
+        .my__right__text {
+          padding: 53px 60px;
+          width: 45%;
+          background-color: #ffffff;
+          border: 1px solid #ebebeb;
+          @media (max-width: 960px) {
+            width: 100%;
+            padding: 33px 30px;
+          }
+
+          h1 {
+            font-size: 32px;
+            font-weight: 800;
+            padding: 10px 0;
+          }
+        }
+        .my__right__action {
+          padding: 53px 64px;
+          width: 55%;
+          background-color: #e0e4eb;
+          border: 1px solid #ebebeb;
+          margin-left: -1px;
+          @media (max-width: 960px) {
+            width: 100%;
+          }
+
+          input {
+            width: 100%;
+            min-height: 1.5rem;
+            padding-right: 0.333333333333333rem;
+            padding-bottom: 0.333333333333333rem;
+            padding-left: 0.333333333333333rem;
+            outline: none;
+            font-size: 1.2rem;
+          }
+          label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5f5f5f;
+          }
+          .my__right__id {
+            border: 2px solid #bebebe;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 1.1rem;
+          }
+          .my__right__pass,
+          .my__right__newpass,
+          .my__right__checkpass {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 1.1rem;
+            label {
+              font-size: 14px;
+              color: #535353;
+            }
+          }
+          p {
+            margin: 0.5rem 0;
+            font-size: 26px;
+            font-weight: 700;
+          }
+        }
+      }
+      .my__right__button {
+        margin-top: 4rem;
+        display: flex;
+        justify-content: space-between;
+
+        .my__right__cancel {
+          width: 48%;
+          height: 3rem;
+          padding: 0 1.5rem;
+          background-color: #fff;
+          border-radius: 5px;
+          font-size: 1rem;
+          font-weight: 800;
+        }
+        .my__right__save {
+          width: 48%;
+          height: 3rem;
+          padding: 0 1.5rem;
+          background-color: #fff;
+          border-radius: 5px;
+          font-size: 1rem;
+          font-weight: 800;
+        }
+      }
+      .my__right__out {
+        width: 100%;
+        height: 4rem;
+        padding: 0 1.5rem;
+        background-color: #fff;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 800;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .internal-my__left {
+    position: fixed;
+    top: 7rem;
+    width: 11rem;
+  }
+}
