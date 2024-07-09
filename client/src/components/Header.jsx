@@ -35,7 +35,7 @@ const Header = () => {
             <div className="btn">
               <button></button>
             </div>
-            <Link to="/">로그인</Link>
+            <Link to="/login">로그인</Link>
           </div>
         </div>
         <div className="menu">

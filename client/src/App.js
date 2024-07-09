@@ -21,7 +21,7 @@ function App() {
         <Layout>
           <Main>
             <Routes>
-              <Route path="/" element={<Test />} />
+              <Route path="/*" element={<Test />} />
               <Route path="/home" element={<Home />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/login" element={<Login />} />
@@ -41,7 +41,8 @@ function Layout({ children }) {
   const location = useLocation();
 
   // /login 경로에서 Header와 Footer 컴포넌트 제외
-  const isLoginRoute = location.pathname === "/login" || location.pathname === "/";
+  const isLoginRoute =
+    location.pathname === "/login" || location.pathname === "/";
 
   return (
     <>
@@ -51,6 +52,5 @@ function Layout({ children }) {
     </>
   );
 }
-
 
 export default App;
