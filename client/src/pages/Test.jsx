@@ -42,67 +42,77 @@ const Test = () => {
             <h3>Main</h3>
             <li onClick={() => setCurrentComponent("Home")}>
               <span>메인페이지</span>
-              <p>페이지 코딩~6.31</p>
-              <p>반응형 ~ing</p>
+              <p>6.31 수정</p>
             </li>
           </ul>
           <ul>
             <h3>Data List</h3>
             <li onClick={() => setCurrentComponent("List")}>
               <span>전체 리스트</span>
+              <p>7.5 수정</p>
             </li>
             <li onClick={() => setCurrentComponent("List")}>
               <span>리스트 상세</span>
+              <p>예정</p>
             </li>
           </ul>
           <ul>
             <h3>Board</h3>
             <li onClick={() => setCurrentComponent("Board")}>
               <span>공지사항</span>
+              <p> 7.2 수정</p>
             </li>
             <li onClick={() => setCurrentComponent("/")}>
               <span>공지사항 상세</span>
+              <p>예정</p>
             </li>
           </ul>
           <ul>
             <h3>My Page</h3>
             <li onClick={() => setCurrentComponent("MyPage")}>
               <span>마이페이지</span>
+              <p> 7.5 수정</p>
             </li>
           </ul>
           <ul>
             <h3>Login</h3>
             <li onClick={() => setCurrentComponent("Login")}>
               <span>로그인</span>
+              <p>6.31 수정</p>
             </li>
             <li onClick={() => setCurrentComponent("Login")}>
               <span>회원가입</span>
+              <p>6.31 수정</p>
             </li>
           </ul>
           <ul>
             <h3>Admin Page</h3>
             <li onClick={() => setCurrentComponent("Admin")}>
               <span>관리자 페이지</span>
+              <p>7.5 수정</p>
             </li>
           </ul>
           <ul>
-            <h3>상세정보</h3>
+            <h3>Details</h3>
             <li onClick={() => setCurrentComponent("/")}>
-              <span>~Ing</span>
+              <span>상세페이지</span>
+              <p>예정</p>
             </li>
           </ul>
           <ul>
-            <h3>지도</h3>
+            <h3>Map</h3>
             <li onClick={() => setCurrentComponent("/")}>
-              <span>~Ing</span>
+              <span>지도</span>
+              <p>예정</p>
             </li>
           </ul>
           <ul>
-            <h3>데이터 수집</h3>
+            <h3>Data crawling</h3>
             <li>
               <Link to="https://github.com/jaehyuk-lee-0712/druwa_datas">
                 데이터
               </Link>
+              <p>1차 수집</p>
             </li>
           </ul>
         </div>

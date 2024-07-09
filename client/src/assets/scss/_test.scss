@@ -29,6 +29,9 @@
       display: block;
       color: #757575;
       padding: 5px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       span {
         &:hover {
           text-decoration: underline;
