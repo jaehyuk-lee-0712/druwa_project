@@ -26,7 +26,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
   console.log("Test Running");
 });
 
