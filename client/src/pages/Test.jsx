@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const test = async () => {
-  const res = await fetch("https://druwa-project.onrender.com/test");
-
-  console.log(res);
-
+const test = () => {
   return (
     <section className="test">
       <div className="test__box">
