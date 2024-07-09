@@ -26,6 +26,10 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/test", (req, res) => {
+  console.log("Test Running");
+});
+
 const callDruwaDataFile = async () => {
   try {
     const response = await axios.get(
