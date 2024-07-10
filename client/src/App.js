@@ -12,6 +12,7 @@ import List from "./pages/List";
 import Board from "./pages/Board";
 import Test from "./pages/Test";
 import MyPage from "./pages/MyPage";
+import Map from "./pages/Map";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/list" element={<List />} />
               <Route path="/board" element={<Board />} />
               <Route path="/mypage" element={<MyPage />} />
+              <Route path="/map" element={<Map />} />
             </Routes>
           </Main>
         </Layout>
