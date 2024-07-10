@@ -8,7 +8,8 @@ import List from "./List";
 import { Link } from "react-router-dom";
 
 const Test = () => {
-  const [currentComponent, setCurrentComponent] = useState("");
+  const [currentComponent, setCurrentComponent] = useState("Home");
+  const [activeItem, setActiveItem] = useState("Home");
 
   const renderComponent = () => {
     switch (currentComponent) {
@@ -24,9 +25,15 @@ const Test = () => {
         return <Board />;
       case "MyPage":
         return <MyPage />;
+
       default:
         return <Home />;
     }
+  };
+
+  const handleClick = (component) => {
+    setCurrentComponent(component);
+    setActiveItem(component);
   };
 
   return (
@@ -35,84 +42,153 @@ const Test = () => {
         <div className="side__text">
           <ul>
             <h1>
-              <Link to="/home">INDEX</Link>
+              <Link to="/home">Druwa</Link>
             </h1>
           </ul>
           <ul>
-            <h3>Main</h3>
-            <li onClick={() => setCurrentComponent("Home")}>
-              <span>메인페이지</span>
-              <p>6.31 수정</p>
+            <li
+              className={activeItem === "Home" ? "active" : ""}
+              onClick={() => {
+                handleClick("Home");
+                setCurrentComponent("Home");
+              }}
+            >
+              <div className="index__text">
+                <h3>메인페이지</h3>
+                <p>60%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "60%" }}></div>
+              </div>
             </li>
-          </ul>
-          <ul>
-            <h3>Data List</h3>
-            <li onClick={() => setCurrentComponent("List")}>
-              <span>전체 리스트</span>
-              <p>7.5 수정</p>
+            <li
+              className={activeItem === "List" ? "active" : ""}
+              onClick={() => {
+                handleClick("List");
+                setCurrentComponent("List");
+              }}
+            >
+              <div className="index__text">
+                <h3>전체 리스트</h3>
+                <p>40%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "40%" }}></div>
+              </div>
             </li>
-            <li onClick={() => setCurrentComponent("List")}>
-              <span>리스트 상세</span>
-              <p>예정</p>
+            <li
+              className={activeItem === "Board" ? "active" : ""}
+              onClick={() => {
+                handleClick("Board");
+                setCurrentComponent("Board");
+              }}
+            >
+              <div className="index__text">
+                <h3>공지사항</h3>
+                <p>30%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "30%" }}></div>
+              </div>
             </li>
-          </ul>
-          <ul>
-            <h3>Board</h3>
-            <li onClick={() => setCurrentComponent("Board")}>
-              <span>공지사항</span>
-              <p> 7.2 수정</p>
+            <li
+              className={activeItem === "MyPage" ? "active" : ""}
+              onClick={() => {
+                handleClick("MyPage");
+                setCurrentComponent("MyPage");
+              }}
+            >
+              <div className="index__text">
+                <h3>마이페이지</h3>
+                <p>30%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "30%" }}></div>
+              </div>
             </li>
-            <li onClick={() => setCurrentComponent("/")}>
-              <span>공지사항 상세</span>
-              <p>예정</p>
+            <li
+              className={activeItem === "Login" ? "active" : ""}
+              onClick={() => {
+                handleClick("Login");
+                setCurrentComponent("Login");
+              }}
+            >
+              <div className="index__text">
+                <h3>로그인</h3>
+                <p>70%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "70%" }}></div>
+              </div>
             </li>
-          </ul>
-          <ul>
-            <h3>My Page</h3>
-            <li onClick={() => setCurrentComponent("MyPage")}>
-              <span>마이페이지</span>
-              <p> 7.5 수정</p>
+            <li
+              className={activeItem === "Admin" ? "active" : ""}
+              onClick={() => {
+                handleClick("Admin");
+                setCurrentComponent("Admin");
+              }}
+            >
+              <div className="index__text">
+                <h3>관리자 페이지</h3>
+                <p>30%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "30%" }}></div>
+              </div>
             </li>
-          </ul>
-          <ul>
-            <h3>Login</h3>
-            <li onClick={() => setCurrentComponent("Login")}>
-              <span>로그인</span>
-              <p>6.31 수정</p>
+            <li onClick={() => handleClick("Home")}>
+              <div className="index__text">
+                <h3>메인 지도</h3> <p>30%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "30%" }}></div>
+              </div>
             </li>
-            <li onClick={() => setCurrentComponent("Login")}>
-              <span>회원가입</span>
-              <p>6.31 수정</p>
-            </li>
-          </ul>
-          <ul>
-            <h3>Admin Page</h3>
-            <li onClick={() => setCurrentComponent("Admin")}>
-              <span>관리자 페이지</span>
-              <p>7.5 수정</p>
-            </li>
-          </ul>
-          <ul>
-            <h3>Details</h3>
-            <li onClick={() => setCurrentComponent("/")}>
-              <span>상세페이지</span>
-              <p>예정</p>
-            </li>
-          </ul>
-          <ul>
-            <h3>Map</h3>
-            <li onClick={() => setCurrentComponent("/")}>
-              <span>지도</span>
-              <p>예정</p>
-            </li>
-          </ul>
-          <ul>
-            <h3>Data crawling</h3>
             <li>
-              <Link to="https://github.com/jaehyuk-lee-0712/druwa_datas">
-                데이터
-              </Link>
-              <p>1차 수집</p>
+              <div className="index__text">
+                <Link to="https://github.com/jaehyuk-lee-0712/druwa_datas">
+                  <h3>데이터 수집</h3>
+                </Link>
+                <p>70%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "70%" }}></div>
+              </div>
+            </li>
+          </ul>
+          <ul>
+            <li onClick={() => handleClick("/")}>
+              <div className="index__text">
+                <h3>리스트 상세</h3>
+                <p>0%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "0%" }}></div>
+              </div>
+            </li>
+            <li onClick={() => handleClick("Home")}>
+              <div className="index__text">
+                <h3>공지사항 상세</h3> <p>0%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "0%" }}></div>
+              </div>
+            </li>
+            <li onClick={() => handleClick("Home")}>
+              <div className="index__text">
+                <h3>리뷰 페이지</h3> <p>0%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "0%" }}></div>
+              </div>
+            </li>
+            <li onClick={() => handleClick("Home")}>
+              <div className="index__text">
+                <h3>매장 등록</h3> <p>0%</p>
+              </div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: "0%" }}></div>
+              </div>
             </li>
           </ul>
         </div>
