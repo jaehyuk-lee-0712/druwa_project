@@ -1,4 +1,5 @@
 .board__top {
+  padding: 20px;
   .board__text {
     padding: 125px 0;
     h2 {
@@ -16,7 +17,6 @@
     .board__menu {
       display: flex;
       align-items: center;
-
       li {
         margin-right: 34px;
         a {
@@ -144,5 +144,19 @@
         position: relative;
       }
     }
+  }
+}
+@media (max-width: 768px) {
+  .board__top .board__text h2 {
+    font-size: 36px;
+  }
+  .board__top .board__cate .board__menu {
+    display: block;
+  }
+  .board__top .board__cate .board__menu li a {
+    font-size: 16px;
+  }
+  .board__top .board__cate .board__search input {
+    font-size: 16px;
   }
 }
