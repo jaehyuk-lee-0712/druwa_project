@@ -2,8 +2,8 @@
   .board__text {
     padding: 125px 0;
     h2 {
-      font-size: 54px;
-      font-weight: 700;
+      font-size: 50px;
+      font-weight: 600;
       line-height: 70px;
       letter-spacing: -0.5px;
       color: #202124;
@@ -20,9 +20,14 @@
       li {
         margin-right: 34px;
         a {
-          color: #95999c;
+          color: var(--grey400);
           font-size: 20px;
           font-weight: 400;
+          &:hover {
+            color: #000;
+            text-decoration: underline;
+            text-underline-position: under;
+          }
         }
       }
     }

@@ -4,7 +4,8 @@
   display: flex;
 }
 #side {
-  min-width: 200px;
+  position: fixed;
+  min-width: 250px;
   height: 100%;
   .side__text {
     border-right: 1px solid #999999;
@@ -46,6 +47,7 @@
   }
 }
 #content {
-  width: calc(100% - 200px);
+  width: calc(100% - 250px);
   height: 100%;
+  margin-left: 250px;
 }

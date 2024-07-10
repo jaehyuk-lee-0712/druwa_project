@@ -14,13 +14,13 @@ const Board = () => {
             <Link>전체</Link>
           </li>
           <li>
+            <Link>이벤트</Link>
+          </li>
+          <li>
             <Link>업데이트</Link>
           </li>
-          <li>
+          {/* <li>
             <Link>서비스</Link>
-          </li>
-          <li>
-            <Link>이벤트</Link>
           </li>
           <li>
             <Link>작업</Link>
@@ -30,7 +30,7 @@ const Board = () => {
           </li>
           <li>
             <Link>공고</Link>
-          </li>
+          </li> */}
         </div>
         <div className="board__search">
           <div className="search__icon"></div>
