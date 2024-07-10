@@ -29,6 +29,9 @@
             text-underline-position: under;
           }
         }
+        &.active a {
+          color: #000; /* Active link color */
+        }
       }
     }
     .board__search {
