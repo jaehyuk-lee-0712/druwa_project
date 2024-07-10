@@ -11,7 +11,7 @@ const Home = () => {
             <span>기업 고객을 위한</span>
           </div>
           <div className="subject">
-            미국 부동산 맞춤 솔루션, <em>코리니</em>
+            미국 부동산 맞춤 솔루션, <em>드루와</em>
           </div>
           <div className="video">
             <video className="video__inner">

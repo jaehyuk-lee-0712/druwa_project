@@ -1,8 +1,9 @@
 .main__banner {
   padding: 90px 0px;
   background-color: #f7f9fc;
+
   .banner__container {
-    max-width: 1344px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0px 32px;
 
@@ -11,16 +12,19 @@
         display: grid;
         gap: 14px;
       }
+
       h2 {
         font-size: 18px;
         font-weight: 600;
         color: #3951ff;
       }
+
       h1 {
         font-size: 38px;
         font-weight: 700;
         line-height: 48px;
       }
+
       p {
         color: #425466;
         font-size: 16px;
@@ -32,6 +36,7 @@
         word-break: keep-all;
       }
     }
+
     .banner__btn {
       display: flex;
       gap: 16px;
@@ -48,6 +53,7 @@
         border-radius: 39px;
         background-color: #3951ff;
         color: #fff;
+
         &:hover {
           transition: all 0.2s;
           background-color: #e20101;
@@ -55,20 +61,24 @@
       }
     }
   }
+
   //   slider
   .banner__slide {
     width: 100%;
     margin-bottom: 100px;
   }
+
   .slide__container {
-    max-width: 1344px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0px 32px;
     display: flex;
+
     .slide__box {
       padding-right: 35px;
       display: flex;
     }
+
     .slide__content {
       width: 400px;
       height: 360px;
@@ -81,13 +91,16 @@
         border-radius: 6px;
         overflow: hidden;
         margin-bottom: 16px;
+
         img {
           border-radius: 20px;
         }
       }
+
       .slide__text {
         display: grid;
         grid-template-columns: 1fr auto;
+
         .slide__title {
           font-size: 20px;
           line-height: 120%;
@@ -95,6 +108,7 @@
           font-weight: 700;
           margin-bottom: 10px;
         }
+
         .slide__price {
           font-size: 20px;
           font-weight: 700;
@@ -102,6 +116,7 @@
           margin-bottom: 2px;
           color: #3951ff;
         }
+
         .slide__label {
           font-weight: 600;
           font-size: 12px;
@@ -109,8 +124,10 @@
           text-align: right;
         }
       }
+
       .slide__info {
         margin-top: 12px;
+
         .slide__tag {
           display: inline-flex;
           align-items: center;
@@ -133,6 +150,7 @@
     padding: 70px 0;
   }
 }
+
 @media (max-width: 800px) {
   .banner__text {
     p {
@@ -140,11 +158,13 @@
       grid-template-columns: 0fr 0fr;
     }
   }
+
   .slide__content {
     flex: 0 0 calc(100vw - 78px);
     padding-right: 25px;
     padding-bottom: 15px;
   }
+
   .slide__box {
     margin-right: 250px;
   }

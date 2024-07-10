@@ -147,6 +147,7 @@
           color: var(--black);
           font-size: 22px;
           font-weight: 500;
+
           &::before,
           &::after {
             content: "";
@@ -158,24 +159,30 @@
             background-size: 100% auto;
             background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Cpath d='M2 0H0v38h38v-2C18.1 36 2 19.9 2 0z' fill='%23fff'/%3E%3C/svg%3E");
           }
+
           &::before {
             left: 0;
             top: -36px;
           }
+
           &::after {
             right: -36px;
             bottom: 0;
           }
+
           .btn {
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 10px;
+
             svg {
               width: 30px;
             }
+
             &:hover {
               color: var(--colorPrimary);
+
               svg {
                 circle {
                   fill: var(--colorPrimary);
@@ -396,7 +403,7 @@
       }
 
       .faq {
-        background-color: #4d4d4d;
+        background-color: var(--pointColor);
         color: var(--white);
         display: flex;
         align-items: center;
