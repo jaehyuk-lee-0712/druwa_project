@@ -8,10 +8,10 @@ const Home = () => {
       <div className="home__inner container">
         <div className="home__txt">
           <div className="title">
-            <span>기업 고객을 위한</span>
+            <span>당신의 여유를 위한</span>
           </div>
           <div className="subject">
-            미국 부동산 맞춤 솔루션, <em>드루와</em>
+            일상 속 행복 찾기 솔루션, <em>드루와</em>
           </div>
           <div className="video">
             <video className="video__inner">
@@ -22,7 +22,7 @@ const Home = () => {
             </video>
             <div className="video__menu">
               <div className="btn">
-                구매 매물
+                매장 보기
                 <svg
                   class="section_hero_svg__gqVad"
                   width="64"
@@ -38,7 +38,7 @@ const Home = () => {
                 </svg>
               </div>
               <div className="btn">
-                렌트 매물
+                지도 보기
                 <svg
                   class="section_hero_svg__gqVad"
                   width="64"
@@ -59,9 +59,9 @@ const Home = () => {
 
         <div className="home__side">
           <div className="inquiry">
-            <div className="label">전문가 상담 신청하기</div>
+            <div className="label">나만의 매장</div>
             <Link to="/">
-              렌트 문의
+              리뷰 작성
               <svg
                 class="arrow-next"
                 width="10"
@@ -74,7 +74,7 @@ const Home = () => {
               </svg>
             </Link>
             <Link to="/">
-              구매 문의
+              리뷰 보기
               <svg
                 class="arrow-next"
                 width="10"
@@ -87,7 +87,7 @@ const Home = () => {
               </svg>
             </Link>
             <Link to="/">
-              상가/오피스 문의
+              나만의 매장 등록
               <svg
                 class="arrow-next"
                 width="10"
@@ -101,10 +101,10 @@ const Home = () => {
             </Link>
           </div>
           <div className="sales">
-            <Link to="/">부동산 매각</Link>
+            <Link to="/">가장 많이 찾은 메뉴</Link>
           </div>
           <div className="sales">
-            <Link to="/">상업용 부동산</Link>
+            <Link to="/">근처 유명지</Link>
           </div>
           <div className="faq">
             <Link to="/">자주하는 질문</Link>

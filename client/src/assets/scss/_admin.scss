@@ -7,6 +7,7 @@
 }
 
 #sideSection {
+  display: none;
   width: 288px;
   position: relative;
   background-color: initial !important;
@@ -361,7 +362,7 @@
   min-height: 0;
   overflow-x: auto;
   height: 100vh;
-  margin-left: 288px;
+  // margin-left: 288px;
 
   .main__inner {
     flex: auto;
@@ -437,7 +438,7 @@
               }
 
               .text__container {
-                font-weight: 400;
+                font-weight: 600;
                 font-size: 1.5rem;
                 line-height: 2rem;
                 --tw-space-x-reverse: 0;
@@ -446,6 +447,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                font-family: var(--fontP);
               }
             }
 
@@ -606,7 +608,8 @@
                   cursor: pointer;
 
                   .btn__icon__wrap {
-                    transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+                    transition: margin-left 0.3s
+                      cubic-bezier(0.645, 0.045, 0.355, 1);
                     line-height: 1;
                     display: inline-flex !important;
                     -webkit-font-smoothing: antialiased;
@@ -853,7 +856,8 @@
                           background-color: #0038ff;
                           border-radius: 100px;
                           position: relative;
-                          transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+                          transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1)
+                            0s;
                         }
                       }
                     }
@@ -986,11 +990,13 @@
                           position: relative;
                           text-align: center;
                           touch-action: manipulation;
-                          transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+                          transition: all 0.3s
+                            cubic-bezier(0.645, 0.045, 0.355, 1);
                           border-radius: 6px;
 
                           .btn__wrap {
-                            transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+                            transition: margin-left 0.3s
+                              cubic-bezier(0.645, 0.045, 0.355, 1);
                             line-height: 1;
                             display: inline-flex !important;
                             align-items: center;
@@ -1625,7 +1631,8 @@
                               border: 1px solid #d9d9d9;
                               border-radius: 4px;
                               position: relative;
-                              transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+                              transition: all 0.3s
+                                cubic-bezier(0.645, 0.045, 0.355, 1);
                               height: 32px;
                               padding: 0 11px;
                               width: 100%;

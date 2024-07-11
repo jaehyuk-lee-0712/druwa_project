@@ -118,9 +118,9 @@ const Admin = () => {
                 <a className="top__text__box transition-all" href="/">
                   <div className="top__text">
                     <div className="logo__container transition-all">
-                      <div className="inner__text">T</div>
+                      <div className="inner__text">A</div>
                     </div>
-                    <div className="text__container">Test</div>
+                    <div className="text__container">관리자 페이지</div>
                   </div>
                   <div className="top__icon">
                     <div className="icon__inner">

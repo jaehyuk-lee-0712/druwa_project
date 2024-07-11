@@ -17,13 +17,13 @@ const Header = () => {
         <div className="nav">
           <ul>
             <li>
-              <Link to="/">부동산</Link>
+              <Link to="/map">지도</Link>
             </li>
             <li>
-              <Link to="/">코리니</Link>
+              <Link to="/">전체 매장</Link>
             </li>
             <li>
-              <Link to="/">자주</Link>
+              <Link to="/">이벤트</Link>
             </li>
             <li>
               <Link to="/board">공지사항</Link>
@@ -53,16 +53,16 @@ const Header = () => {
         <div className={`fullmenu ${isMenuOpen ? "active" : ""}`}>
           <ul>
             <li>
-              <Link to="/">구매</Link>
+              <Link to="/map">지도</Link>
             </li>
             <li>
-              <Link to="/">렌트</Link>
+              <Link to="/">전체 매장</Link>
             </li>
             <li>
-              <Link to="/">부동산</Link>
+              <Link to="/">이벤트</Link>
             </li>
             <li>
-              <Link to="/">상업용</Link>
+              <Link to="/board">공지사항</Link>
             </li>
             <li>
               <Link to="/">로그인</Link>

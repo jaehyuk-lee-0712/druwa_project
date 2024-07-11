@@ -275,7 +275,7 @@ const Login = () => {
               <p className="login__text__sub">
                 가장 가까운 일상 속의 행복!
                 <br />
-                지금 바로 아 쑤바 모르겠다 나중에 바꾸자.
+                빠르고 쉽게 행복을 찾아보세요!
               </p>
             </div>
             <div className="login__line"></div>

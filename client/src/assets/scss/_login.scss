@@ -111,11 +111,15 @@
         .logoImg {
           width: 60px;
           height: 60px;
-          background-image: url(../img/mainLogo.gif);
-          background-position: center;
-          background-size: contain;
-          object-fit: contain;
-          background-repeat: no-repeat;
+          // background-image: url(../img/mainLogo.gif);
+          // background-position: center;
+          // background-size: contain;
+          // object-fit: contain;
+          // background-repeat: no-repeat;
+          font-size: 16px;
+          color: #000;
+          font-weight: bold;
+          font-family: var(--fontP);
         }
 
         .logoText {
@@ -163,6 +167,7 @@
             outline: none !important;
             box-shadow: none !important;
             font-family: "Pretendard";
+            border-radius: 5px;
           }
         }
 
@@ -180,7 +185,7 @@
           outline: transparent solid 2px;
           outline-offset: 2px;
           line-height: 1.2;
-          border-radius: 0px;
+          border-radius: 5px;
           font-weight: 600;
           transition-property: background-color, border-color, color, fill,
             stroke, opacity, box-shadow, transform;
@@ -513,7 +518,8 @@
               position: absolute;
             }
 
-            .aggree__checkbox {}
+            .aggree__checkbox {
+            }
           }
         }
       }

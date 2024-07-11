@@ -5,6 +5,7 @@ import Board from "./Board";
 import MyPage from "./MyPage";
 import Admin from "./Admin";
 import List from "./List";
+import Map from "./Map";
 import { Link } from "react-router-dom";
 
 const Test = () => {
@@ -25,6 +26,8 @@ const Test = () => {
         return <Board />;
       case "MyPage":
         return <MyPage />;
+      case "Map":
+        return <Map />;
 
       default:
         return <Home />;
@@ -136,7 +139,7 @@ const Test = () => {
                 <div className="progress" style={{ width: "30%" }}></div>
               </div>
             </li>
-            <li onClick={() => handleClick("Home")}>
+            <li onClick={() => handleClick("Map")}>
               <div className="index__text">
                 <h3>메인 지도</h3> <p>30%</p>
               </div>
