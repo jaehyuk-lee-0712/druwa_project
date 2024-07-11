@@ -57,9 +57,7 @@ const MyPage = () => {
           <div className="my__right__content section2">
             <div className="my__right__text">
               <h1>등록한 매장</h1>
-              <p>
-                내가 직접 등록한 매장을 확인할 수 있습니다.
-              </p>
+              <p>내가 직접 등록한 매장을 확인할 수 있습니다.</p>
             </div>
             <div className="my__right__action">
               <p>매장 정보</p>
@@ -68,6 +66,8 @@ const MyPage = () => {
                 <input
                   type="text"
                   placeholder="안산시 중앙동 라인컴퓨터점 608커피"
+                  value={"1"}
+                  name=""
                 />
               </div>
               <div className="my__right__newpass">
@@ -93,9 +93,7 @@ const MyPage = () => {
           <div className="my__right__content section3">
             <div className="my__right__text">
               <h1>작성한 리뷰</h1>
-              <p>
-                작성한 리뷰를 확인할 수 있습니다.
-              </p>
+              <p>작성한 리뷰를 확인할 수 있습니다.</p>
             </div>
             <div className="my__right__action">
               <p>작성 리뷰</p>
@@ -117,7 +115,6 @@ const MyPage = () => {
           <div className="my__right__content section4">
             <div className="my__right__text">
               <h1>회원 탈퇴</h1>
-             
             </div>
             <div className="my__right__action">
               <button className="my__right__out">회원탈퇴</button>
