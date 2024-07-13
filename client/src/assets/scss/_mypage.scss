@@ -1,6 +1,6 @@
 #mypage {
   padding: 0 50px;
-  background-color: #f7f9fc;
+  background-color: var(--grey100);
 
   .my__info {
     max-width: 1280px;
@@ -27,7 +27,7 @@
 
       h1 {
         font-size: 24px;
-        font-weight: 700;
+        font-weight: 800;
         margin-bottom: 58px;
 
         @media (max-width: 960px) {
@@ -42,7 +42,7 @@
           padding: 0.208333333333333rem 0 0.208333333333333rem;
           min-height: 0;
           font-size: 16px;
-          font-weight: 800;
+          font-weight: 600;
           margin-bottom: 10px;
 
           &::before {
@@ -85,7 +85,7 @@
           padding: 53px 60px;
           width: 45%;
           background-color: var(--white);
-          border: 1px solid #ebebeb;
+          border: 1px solid var(--white100);
 
           @media (max-width: 960px) {
             width: 100%;
@@ -94,7 +94,7 @@
 
           h1 {
             font-size: 24px;
-            font-weight: 800;
+            font-weight: 700;
             padding: 10px 0;
           }
 
@@ -107,7 +107,7 @@
           padding: 53px 64px;
           width: 55%;
           background-color: var(--pointColor);
-          border: 1px solid #ebebeb;
+          border: 1px solid var(--white100);
           margin-left: -1px;
 
           @media (max-width: 960px) {
@@ -132,10 +132,11 @@
           }
 
           .my__right__id {
-            border: 2px solid #bebebe;
+            border: 2px solid var(--white200);
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 1.1rem;
+
             input {
               color: var(--white);
             }
@@ -151,7 +152,7 @@
 
             label {
               font-size: 14px;
-              color: #535353;
+              color: var(--black500);
             }
           }
 
@@ -176,7 +177,7 @@
           background-color: var(--white);
           border-radius: 5px;
           font-size: 1rem;
-          font-weight: 800;
+          font-weight: 700;
         }
 
         .my__right__save {
@@ -186,7 +187,7 @@
           background-color: var(--white);
           border-radius: 5px;
           font-size: 1rem;
-          font-weight: 800;
+          font-weight: 700;
         }
       }
 
@@ -197,7 +198,7 @@
         background-color: var(--white);
         border-radius: 5px;
         font-size: 1rem;
-        font-weight: 800;
+        font-weight: 700;
       }
     }
   }

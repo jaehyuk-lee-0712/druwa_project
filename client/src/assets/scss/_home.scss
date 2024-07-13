@@ -25,7 +25,7 @@
 
       @media (max-width: 768px) {
         margin: 0 auto;
-        color: #171e44;
+        color: var(--blue950);
         height: 0;
         padding: 30px 90px;
         display: flex;
@@ -86,7 +86,7 @@
           @media (min-width: 768px) {
             display: inline-block;
             width: 100%;
-            color: #39c4ff;
+            color: var(--blue350);
           }
 
           @media (max-width: 768px) {
@@ -124,8 +124,8 @@
             -o-object-fit: cover;
             object-fit: cover;
             backface-visibility: hidden;
-            -webkit-mask-image: radial-gradient(#fff, #000);
-            mask-image: radial-gradient(#fff, #000);
+            -webkit-mask-image: radial-gradient(var(--white), var(--black));
+            mask-image: radial-gradient(var(--white), var(--black));
             opacity: 0.5;
           }
 
@@ -219,7 +219,7 @@
           color: var(--black100);
           font-weight: 600;
           font-size: 18px;
-          background-color: #dceaff;
+          background-color: var(--blue150);
           transition: all 0.5s ease;
 
           a {
@@ -272,24 +272,24 @@
           display: flex;
           align-items: center;
           position: relative;
-          border-bottom: 1px solid #ddd;
+          border-bottom: 1px solid var(--white200);
           padding: 10px 0;
           justify-content: space-between;
-          color: #1e2546;
+          color: var(--blue8000);
 
           &:nth-child(2) {
-            color: #356ad5;
+            color: var(--blue4000);
 
             button {
-              background-color: #356ad5;
+              background-color: var(--blue4000);
             }
           }
 
           &:nth-child(3) {
-            color: #5ea7e5;
+            color: var(--blue1000);
 
             button {
-              background-color: #5ea7e5;
+              background-color: var(--blue1000);
             }
           }
 
@@ -303,7 +303,7 @@
           }
 
           button {
-            background-color: #1e2546;
+            background-color: var(--blue8000);
             width: 140px;
             bottom: 0;
             border-radius: 10px;
@@ -384,8 +384,8 @@
       }
 
       .sales {
-        background-color: #fff;
-        color: #111;
+        background-color: var(--white);
+        color: var(--black100);
         display: flex;
         border: 1px solid var(--black);
         align-items: center;

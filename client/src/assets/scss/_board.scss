@@ -2,14 +2,14 @@
   padding: 70px 20px;
 
   .board__text {
-    padding: 0 0 .5rem;
+    padding: 0 32px .5rem;
 
     h2 {
       font-size: 24px;
-      font-weight: 600;
+      font-weight: 800;
       line-height: 70px;
       letter-spacing: -0.5px;
-      color: #202124;
+      color: var(--black200);
     }
   }
 
@@ -17,6 +17,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+    padding: 0 32px;
 
     .board__menu {
       display: flex;
@@ -31,14 +32,14 @@
           font-weight: 400;
 
           &:hover {
-            color: #000;
+            color: var(--black);
             text-decoration: underline;
             text-underline-position: under;
           }
         }
 
         &.active a {
-          color: #000;
+          color: var(--black);
           /* Active link color */
         }
       }
@@ -47,7 +48,7 @@
     .board__search {
       position: relative;
       padding: 0 0 14px 0;
-      border-bottom: 2px solid #000000;
+      border-bottom: 2px solid var(--black);
 
       .search__icon {
         background-image: var(--search);
@@ -62,7 +63,7 @@
         font-weight: 400;
         line-height: 28px;
         letter-spacing: -0.5px;
-        color: #202124;
+        color: var(--black200);
         width: 300px;
         height: 28px;
         outline: none;
@@ -77,15 +78,21 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    border-top: 1px solid #e6e8eb;
+    border-top: 1px solid var(--grey200);
 
     ul {
       width: 100%;
 
       .board__list__box {
         width: 100%;
-        padding: 35px 0;
-        // border-bottom: 1px solid #e6e8eb;
+        padding: 24px 32px;
+        // border-bottom: 1px solid var(--grey200);
+
+
+        &:hover {
+          background-color: var(--greyOpacity100);
+          border-radius: 10px;
+        }
 
         .board__list__cont {
           display: flex;
@@ -96,7 +103,7 @@
           .list__cont__type {
             width: 110px;
             overflow: hidden;
-            color: #202124;
+            color: var(--black200);
             font-size: 15px;
             line-height: 28px;
             letter-spacing: -0.5px;
@@ -111,7 +118,7 @@
           }
 
           .list__cont__date {
-            color: #71767a;
+            color: var(--grey600);
             font-size: 16px;
             font-weight: 400;
             line-height: 28px;
@@ -134,8 +141,8 @@
       margin: 0 auto 150px;
       padding: 16px 24px;
       border-radius: 8px;
-      border: 1px solid #202124;
-      color: #202124;
+      border: 1px solid var(--black200);
+      color: var(--black200);
       background: 0 0;
       cursor: pointer;
 

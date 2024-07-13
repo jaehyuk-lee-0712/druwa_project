@@ -57,7 +57,7 @@
             width: 8px;
             height: 8px;
             border: solid 2px var(--white);
-            background-color: #0092ff;
+            background-color: var(--blue350);
             box-sizing: content-box;
             position: absolute;
             top: 6px;
@@ -153,7 +153,7 @@
             font-size: 12px;
             line-height: normal;
             margin-top: 6px;
-            color: #5f6469;
+            color: var(--grey600);
             overflow: hidden;
             text-overflow: ellipsis;
           }
@@ -176,10 +176,10 @@
             line-height: 24px;
             margin: 17px 13px 14.5px 6px;
             border-radius: 12px;
-            border: solid 1px #0a2540;
-            background-color: #0a2540;
+            border: solid 1px var(--blue8000);
+            background-color: var(--blue8000);
 
-            > span {
+            >span {
               display: block;
               position: relative;
               top: 4px;
@@ -188,7 +188,7 @@
               height: 16px;
               font-size: 12px;
               line-height: 1.33;
-              color: #fff;
+              color: var(--white);
 
               .img {
                 position: absolute;
@@ -273,11 +273,11 @@
             border: 0;
             font-size: 0.938rem;
             background-color: var(--white);
-            color: #1c1c1c;
+            color: var(--black111);
           }
 
           .search__input::placeholder {
-            color: #c7c7cc;
+            color: var(--white300);
           }
 
           .search__btn {
@@ -314,21 +314,21 @@
           padding: 0px 16px;
           font-size: 14px;
           line-height: 42px;
-          color: #5f6469;
+          color: var(--grey600);
 
           .clear__search {
             float: right;
             height: 28px;
             font-size: 14px;
             margin: 6px 0px;
-            color: #0868f4;
+            color: var(--blue4000);
             text-decoration: underline;
             background-color: transparent;
             text-decoration-skip-ink: none;
             text-decoration-skip: none;
 
             &:hover {
-              color: #0096ff;
+              color: var(--blue1000);
             }
           }
         }
@@ -342,12 +342,12 @@
           overflow: hidden;
           width: 100%;
           height: 68px;
-          border-bottom: 1px solid #e5e5ea;
+          border-bottom: 1px solid var(--white100);
           padding: 15.5px 20px;
           line-height: 40px;
           text-align: left;
           text-overflow: ellipsis;
-          color: #2c2c2e;
+          color: var(-black200);
           cursor: pointer;
 
           &:hover {
@@ -396,12 +396,12 @@
             overflow: hidden;
             width: 100%;
             height: 68px;
-            border-bottom: 1px solid #e5e5ea;
+            border-bottom: 1px solid var(--white100);
             padding: 15.5px 20px;
             line-height: 40px;
             text-align: left;
             text-overflow: ellipsis;
-            color: #2c2c2e;
+            color: var(-black200);
             cursor: pointer;
 
             .img {
@@ -416,7 +416,7 @@
 
             .st__blue {
               font-weight: bold;
-              color: #00589a;
+              color: var(--blue1000);
               margin-left: 5px;
             }
           }
@@ -475,11 +475,10 @@
         height: 52px;
         align-items: center;
         justify-content: space-between;
-        background-color: #fff;
+        background-color: var(--white);
         // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04);
 
-        @media (min-width: 768px) {
-        }
+        @media (min-width: 768px) {}
 
         .menu__btn {
           width: 48px;
@@ -598,11 +597,10 @@
         height: 66px;
         align-items: center;
         justify-content: space-between;
-        background-color: #fff;
+        background-color: var(--white);
         // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04);
 
-        @media (min-width: 768px) {
-        }
+        @media (min-width: 768px) {}
 
         .menu__btn {
           width: 26px;
@@ -707,7 +705,7 @@
               font-size: 22px;
               color: #1c1c1e;
               vertical-align: middle;
-              font-weight: 800;
+              font-weight: 700;
             }
 
             .cont__header__right {
@@ -726,7 +724,7 @@
           position: sticky;
           top: 0;
           background-color: var(--white);
-          border-bottom: solid 1px #e5e5ea;
+          border-bottom: solid 1px var(--white100);
           display: flex;
           align-items: center;
 
@@ -815,7 +813,7 @@
           .lobby__inner {
             padding: 14px 28px;
 
-            > ul {
+            >ul {
               display: grid;
               grid-template-columns: repeat(4, 1fr);
               padding: 0;
@@ -823,7 +821,7 @@
               row-gap: 14px;
               column-gap: 14px;
 
-              > li {
+              >li {
                 button {
                   display: flex;
                   flex-direction: column;
@@ -841,7 +839,7 @@
                     background-repeat: no-repeat;
                   }
 
-                  > span {
+                  >span {
                     margin-top: 6px;
                     font-size: 14px;
                     line-height: 1.43;
@@ -1016,7 +1014,7 @@
                 height: 156px;
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
-                border: solid 1px #e5e5ea;
+                border: solid 1px var(--white100);
                 overflow: hidden;
                 background-image: url(../img/stabuck1.png);
                 background-size: cover;
@@ -1032,7 +1030,7 @@
                 overflow: hidden;
                 padding-right: 20px;
 
-                > .title {
+                >.title {
                   font-size: 14px;
                   font-weight: 500;
                   line-height: 1.43;
@@ -1042,7 +1040,7 @@
                   white-space: nowrap;
                 }
 
-                > .desc {
+                >.desc {
                   margin-top: 4px;
                   font-size: 14px;
                   line-height: 1.43;
@@ -1087,11 +1085,10 @@
       height: 52px;
       align-items: center;
       justify-content: space-between;
-      background-color: #fff;
+      background-color: var(--white);
       // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04);
 
-      @media (min-width: 768px) {
-      }
+      @media (min-width: 768px) {}
 
       .menu__btn {
         width: 48px;
@@ -1213,7 +1210,7 @@
       border-top-right-radius: 12px;
 
       .handle__mark {
-        background-color: #e5e5ea;
+        background-color: var(--white100);
         width: 54px;
         height: 100%;
         border-radius: 3px;

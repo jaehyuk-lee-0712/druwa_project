@@ -161,7 +161,7 @@
             padding-bottom: 0.75rem !important;
             padding-left: 0.75rem !important;
             padding-right: 0.75rem !important;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--white100);
             padding: 12px 0 0;
 
             .top__name__box {
@@ -438,7 +438,7 @@
               }
 
               .text__container {
-                font-weight: 600;
+                font-weight: 800;
                 font-size: 1.5rem;
                 line-height: 2rem;
                 --tw-space-x-reverse: 0;
@@ -534,7 +534,7 @@
 
           .conts__head {
             background: transparent;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid var(--grey100);
             border-radius: 8px 8px 0 0;
             color: rgba(0, 0, 0, 0.85);
             font-size: 14px;
@@ -608,8 +608,7 @@
                   cursor: pointer;
 
                   .btn__icon__wrap {
-                    transition: margin-left 0.3s
-                      cubic-bezier(0.645, 0.045, 0.355, 1);
+                    transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
                     line-height: 1;
                     display: inline-flex !important;
                     -webkit-font-smoothing: antialiased;
@@ -842,7 +841,7 @@
                       width: 100%;
 
                       .progress__inner {
-                        background-color: #f5f5f5;
+                        background-color: var(grey100);
                         border-radius: 100px;
                         display: inline-block;
                         overflow: hidden;
@@ -853,11 +852,10 @@
                         .progress__bg {
                           width: 0.02%;
                           height: 8px;
-                          background-color: #0038ff;
+                          background-color: var(--colorPrimary);
                           border-radius: 100px;
                           position: relative;
-                          transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1)
-                            0s;
+                          transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
                         }
                       }
                     }
@@ -921,7 +919,7 @@
                         transform: none;
                         top: 0;
                         left: 0.5px;
-                        color: #0038ff;
+                        color: var(--colorPrimary);
                         position: relative;
 
                         .icon__box {
@@ -976,8 +974,8 @@
                         .desc__btn {
                           margin-bottom: calc(0.25rem * 0);
                           margin-top: calc(0.25rem * (1 - 0));
-                          background: #0038ff;
-                          border-color: #0038ff;
+                          background: var(--colorPrimary);
+                          border-color: var(--colorPrimary);
                           box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
                           color: var(--white);
                           text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
@@ -990,13 +988,11 @@
                           position: relative;
                           text-align: center;
                           touch-action: manipulation;
-                          transition: all 0.3s
-                            cubic-bezier(0.645, 0.045, 0.355, 1);
+                          transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
                           border-radius: 6px;
 
                           .btn__wrap {
-                            transition: margin-left 0.3s
-                              cubic-bezier(0.645, 0.045, 0.355, 1);
+                            transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
                             line-height: 1;
                             display: inline-flex !important;
                             align-items: center;
@@ -1029,7 +1025,7 @@
       }
 
       .right__conts__box {
-        border: 1px solid #f0f0f0;
+        border: 1px solid var(--grey100);
         font-feature-settings: "tnum", "tnum";
         background: var(--white);
         border-radius: 8px;
@@ -1045,7 +1041,7 @@
 
         .conts__header {
           background: transparent;
-          border-bottom: 1px solid #f0f0f0;
+          border-bottom: 1px solid var(--grey100);
           border-radius: 8px 8px 0 0;
           color: rgba(0, 0, 0, 0.85);
           font-size: 15px;
@@ -1131,8 +1127,8 @@
               justify-content: center;
 
               .banner__btn {
-                background: #0038ff;
-                border-color: #0038ff;
+                background: var(--colorPrimary);
+                border-color: var(--colorPrimary);
                 box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
                 text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
                 outline: 0;
@@ -1350,7 +1346,7 @@
                   transition: all 0.3s;
 
                   &.active {
-                    color: #0038ff;
+                    color: var(--colorPrimary);
                     text-shadow: 0 0 0.25px currentcolor;
                     outline: none;
                     transition: all 0.3s;
@@ -1359,7 +1355,7 @@
                 }
 
                 &.active {
-                  border-bottom: 2px solid #0038ff;
+                  border-bottom: 2px solid var(--colorPrimary);
                 }
               }
 
@@ -1380,7 +1376,7 @@
                   transition: all 0.3s;
 
                   &.active {
-                    color: #0038ff;
+                    color: var(--colorPrimary);
                     text-shadow: 0 0 0.25px currentcolor;
                     outline: none;
                     transition: all 0.3s;
@@ -1389,7 +1385,7 @@
                 }
 
                 &.active {
-                  border-bottom: 2px solid #0038ff;
+                  border-bottom: 2px solid var(--colorPrimary);
                 }
               }
             }
@@ -1477,7 +1473,7 @@
           display: flex;
 
           .cnt {
-            color: #40a9ff;
+            color: var(--blue350);
             font-size: 13px;
           }
 
@@ -1557,7 +1553,7 @@
                     .member__table__body {
                       tr {
                         .member__cell__body {
-                          border-block-start: 1px solid #f0f0f0;
+                          border-block-start: 1px solid var(--grey100);
                           transition: background 0.3s;
                           overflow-wrap: break-word;
                           padding: 16px;
@@ -1631,8 +1627,7 @@
                               border: 1px solid #d9d9d9;
                               border-radius: 4px;
                               position: relative;
-                              transition: all 0.3s
-                                cubic-bezier(0.645, 0.045, 0.355, 1);
+                              transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
                               height: 32px;
                               padding: 0 11px;
                               width: 100%;
@@ -1747,7 +1742,7 @@
                           outline: none;
                           transition: all 0.3s;
                           background: #fafafa;
-                          border-bottom: 1px solid #f0f0f0;
+                          border-bottom: 1px solid var(--grey100);
                           color: rgba(0, 0, 0, 0.85);
                           font-weight: 500;
                           position: relative;
@@ -1872,7 +1867,7 @@
                           outline: none;
                           transition: all 0.3s;
                           background-color: var(--mainBg-color);
-                          border-bottom: 1px solid #f0f0f0;
+                          border-bottom: 1px solid var(--grey100);
                           color: rgba(0, 0, 00.85);
                           position: relative;
                           text-align: left;

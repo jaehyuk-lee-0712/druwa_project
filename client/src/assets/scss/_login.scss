@@ -49,7 +49,7 @@
         }
 
         .login__text__sub {
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           font-size: 16px;
           font-weight: 400;
           line-height: 1.7;
@@ -117,14 +117,14 @@
           // object-fit: contain;
           // background-repeat: no-repeat;
           font-size: 16px;
-          color: #000;
+          color: var(--black);
           font-weight: bold;
           font-family: var(--fontP);
         }
 
         .logoText {
           font-size: 36px;
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           font-weight: 700;
           color: var(--black);
           text-align: center;
@@ -145,7 +145,7 @@
           position: relative;
           width: 100%;
           margin-bottom: 0;
-          border-color: #f2f3f4;
+          border-color: var(--grey100);
 
           .login__input__control {
             width: 100%;
@@ -160,13 +160,13 @@
             font-weight: 400;
             line-height: 1.7;
             padding: 12px 16px;
-            border: 1px solid #e5e7ec;
+            border: 1px solid var(--grey200);
             border-image: initial;
             background-color: var(--white);
             transition: all 0.2s ease-in 0s;
             outline: none !important;
             box-shadow: none !important;
-            font-family: "Pretendard";
+            font-family: var(--fontP);
             border-radius: 5px;
           }
         }
@@ -197,7 +197,7 @@
           border-color: var(--black);
           color: var(--white);
           width: 100%;
-          font-family: "Pretendard";
+          font-family: var(--fontP);
         }
 
         .sub__controls {
@@ -220,9 +220,9 @@
 
               span {
                 display: block;
-                color: #b8bcc8;
+                color: var(--grey400);
                 transition: all 0.1s linear 0s;
-                font-family: "Pretendard";
+                font-family: var(--fontP);
               }
             }
           }
@@ -240,11 +240,11 @@
 
         p {
           white-space: pre-wrap;
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           font-size: 16px;
           font-weight: 400;
           line-height: 1.7;
-          color: #8c919f;
+          color: var(--grey500);
           text-align: center;
           word-break: keep-all;
 
@@ -303,14 +303,14 @@
 
         h1 {
           font-size: 36px;
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           font-weight: 700;
           line-height: 1.7;
           color: var(--black);
         }
 
         p {
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           font-size: 14px;
           font-weight: 400;
           line-height: 1.7;
@@ -327,18 +327,18 @@
           display: flex;
           -webkit-box-align: center;
           align-items: center;
-          --form-error-color: #fc4e4e;
+          --form-error-color: var(--subPointColor);
           color: var(--form-error-color);
           font-size: 0.875rem;
           line-height: normal;
           margin-top: 4px;
 
           .alert__text {
-            font-family: "Pretendard";
+            font-family: var(--fontP);
             font-size: 10px;
             font-weight: 600;
             line-height: 1.7;
-            color: #ff2f2f;
+            color: var(--subPointColor);
           }
         }
 
@@ -371,8 +371,8 @@
             border-style: solid;
             border-image: initial;
             background: inherit;
-            border-color: #e5e7ec;
-            font-family: "Pretendard";
+            border-color: var(--grey200);
+            font-family: var(--fontP);
             font-weight: 600;
             line-height: 1.5;
             color: var(--black);
@@ -380,7 +380,7 @@
         }
 
         .email_desc {
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           font-size: 14px;
           font-weight: 400;
           line-height: 1.7;
@@ -401,19 +401,19 @@
           margin-right: 0;
 
           .controls__title {
-            font-family: "Pretendard";
+            font-family: var(--fontP);
             font-size: 14px;
             font-weight: 600;
             line-height: 1.7;
           }
 
           .controls__sub__title {
-            font-family: "Pretendard";
+            font-family: var(--fontP);
             font-size: 14px;
             font-weight: 600;
             line-height: 1.7;
             margin-inline-start: 0.25rem;
-            --form-control-color: #fc4e4e;
+            --form-control-color: var(--subPointColor);
             color: var(--form-control-color);
           }
         }
@@ -429,13 +429,13 @@
           position: relative;
           appearance: none;
           font-weight: 400;
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           line-height: 1.7;
           padding: 12px 16px;
           border-width: 1px;
           border-style: solid;
           border-image: initial;
-          border-color: #e5e7ec;
+          border-color: var(--grey200);
           background-color: var(--white);
           transition: all 0.2s ease-in 0s;
           outline: none !important;
@@ -443,7 +443,7 @@
         }
 
         .member__email[readOnly] {
-          background-color: #e5e7ec;
+          background-color: var(--grey200);
         }
 
         .resend__btn {
@@ -462,19 +462,19 @@
           line-height: 1.5;
           border-radius: 0;
           font-weight: 600;
-          font-family: "Pretendard";
+          font-family: var(--fontP);
           transition-property: border-color, color, fill, stroke, opacity,
             box-shadow, transform;
           transition-duration: 200ms;
           height: 40px;
           min-width: 2.5rem;
           font-size: 14px;
-          background-color: white;
-          color: #4a4d55;
+          background-color: var(--white);
+          color: var(--grey700);
           margin-top: 4px;
           width: 116px;
           padding-inline: 12px;
-          border: 1px solid #e5e7ec;
+          border: 1px solid var(--grey200);
         }
       }
 
@@ -497,8 +497,8 @@
           width: 100%;
 
           .agree__text {
-            color: #4a4d55;
-            font-family: "Pretendard";
+            color: var(--grey700);
+            font-family: var(--fontP);
             font-size: 12px;
             font-weight: 600;
             line-height: 1.7;
@@ -518,8 +518,7 @@
               position: absolute;
             }
 
-            .aggree__checkbox {
-            }
+            .aggree__checkbox {}
           }
         }
       }
@@ -556,25 +555,25 @@
           padding-inline: 12px;
           background-color: var(--white);
 
-          border: 1px solid #e5e7ec;
-          color: #4a4d55;
+          border: 1px solid var(--grey200);
+          color: var(--grey700);
           width: 100%;
-          font-family: "Pretendard";
+          font-family: var(--fontP);
 
           &.disable {
-            background-color: #f2f3f4;
-            color: #b8bcc8;
+            background-color: var(--grey100);
+            color: var(-grey400);
           }
 
           &.disable:hover {
-            background-color: #f2f3f4;
-            color: #b8bcc8;
+            background-color: var(--grey100);
+            color: var(-grey400);
           }
 
           &:hover {
             transition: all 0.2s ease-in 0s;
-            background-color: #fafafa;
-            border-color: #f2f3f4;
+            background-color: var(--grey50);
+            border-color: var(--grey100);
           }
         }
       }
@@ -595,7 +594,7 @@
         line-height: 1.2;
         border-radius: 0;
         font-weight: 600;
-        font-family: "Pretendard";
+        font-family: var(--fontP);
         transition-property: border-color, color, fill, stroke, opacity,
           box-shadow, transform;
         transition-duration: 200ms;
