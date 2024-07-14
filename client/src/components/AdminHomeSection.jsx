@@ -1,6 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ReactComponent as NonCheckIcon } from '../assets/svg/non_check.svg';
+import { ReactComponent as CurrentCheckIcon } from '../assets/svg/current_check.svg';
+import axios from 'axios';
 
 const AdminHomeSection = () => {
+  const [storeData, setStoreData] = useState([]);
+
+  const [checkedStates, setCheckedStates] = useState({
+    starbucks: true,
+    kfc: false,
+    mcdonalds: false,
+    lotte: false,
+    ceoban: true,
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('http://localhost:9000/admin/list', checkedStates);
+        console.log(checkedStates)
+        const updatedData = response.data.map(store => ({
+          ...store,
+          checked: false // 각 항목의 초기 체크 상태를 false로 설정
+        }));
+        setStoreData(updatedData);
+        console.log(updatedData)
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+    fetchData();
+  }, [checkedStates]);
+
+  
+  const toggleCheck = (store) => {
+    setCheckedStates(prev => ({
+      ...prev,
+      [store]: !prev[store]
+    }));
+  };
+
+  
+  const toggleItemCheck = (index) => {
+    setStoreData(prevData => {
+      const newData = prevData.map((item, i) => {
+        if (i === index) {
+          return { ...item, checked: !item.checked };
+        }
+        return item;
+      });
+      return newData;
+    });
+  };
+
+ 
+const toggleAllChecks = () => {
+  setCheckedStates(prev => {
+    const newState = {};
+    for (let key in prev) {
+      newState[key] = !prev[key];
+    }
+    return newState;
+  });
+};
+
+
+// insert api call 
+const setCheckedStoreDataForInsert = async () => {
+  const selectedStores = storeData.filter(store => store.checked);
+  try {
+    const response = await axios.post('http://localhost:9000/admin/register', selectedStores);
+    console.log('Registered stores:', response.data);
+  } catch (error) {
+    console.error('Error registering stores', error);
+  }
+};
+
+
+  // 상태에 따라 적절한 아이콘을 선택하는 함수
+  const getIcon = (store) => checkedStates[store] ? <CurrentCheckIcon /> : <NonCheckIcon />;
+
   return (
     <>
       <div className="contents__layout">
@@ -8,7 +87,7 @@ const AdminHomeSection = () => {
           <div className="main__left__conts">
             <div className="conts__head">
               <div className="header__wrap">
-                <div className="header__text">프로젝트 체크리스트</div>
+                <div className="header__text">매장 체크리스트</div>
                 <div className="header__btn__icon">
                   <button className="header__btn">
                     <span className="btn__icon__wrap">
@@ -31,167 +110,111 @@ const AdminHomeSection = () => {
             </div>
             <div className="conts__body">
               <div className="sub__left__conts">
-                <div className="conts__layout">
+                <div className="conts__layout" onClick={() => toggleCheck('starbucks')}>
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
                           <span className="icon__box">
-                            <svg
-                              viewBox="64 64 896 896"
-                              focusable="false"
-                              data-icon="check-square"
-                              width="1em"
-                              height="1em"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path>
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
-                            </svg>
+                            {getIcon('starbucks')}
                           </span>
                         </span>
                       </div>
                       <div className="conts__text">
-                        <div className="text__wrap">프로젝트 생성하기</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="conts__layout">
-                  <div className="conts__inner">
-                    <div className="conts__wrap">
-                      <div className="conts__tail"></div>
-                      <div className="conts__box__icon">
-                        <span className="conts__icon__wrap">
-                          <span className="icon__box">
-                            <svg
-                              viewBox="64 64 896 896"
-                              focusable="false"
-                              data-icon="check-square"
-                              width="1em"
-                              height="1em"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path>
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
-                            </svg>
-                          </span>
-                        </span>
-                      </div>
-                      <div className="conts__text">
-                        <div className="text__wrap">모델 추가하기</div>
+                        <div className="text__wrap">스타벅스</div>
                         <div className="conts__desc">
                           <div className="desc__wrap">
-                            <p>
-                              데이터 콘텐츠를 구성하는 데이터 모델을
-                              만들어보세요.
-                            </p>
+                            <p>현재 등록된 매장 : 481</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="conts__layout">
+                <div className="conts__layout" onClick={() => toggleCheck('kfc')}>
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
                           <span className="icon__box">
-                            <svg
-                              viewBox="64 64 896 896"
-                              focusable="false"
-                              data-icon="check-square"
-                              width="1em"
-                              height="1em"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path>
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
-                            </svg>
+                            {getIcon('kfc')}
                           </span>
                         </span>
                       </div>
                       <div className="conts__text">
-                        <div className="text__wrap">콘텐츠 추가하기</div>
+                        <div className="text__wrap">KFC</div>
                         <div className="conts__desc">
                           <div className="desc__wrap">
-                            <p>원하는 모델에 데이터를 입력하세요</p>
+                            <p>현재 등록된 매장 : 21</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="conts__layout">
+                <div className="conts__layout" onClick={() => toggleCheck('mcdonalds')}>
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
                           <span className="icon__box">
-                            <svg
-                              viewBox="64 64 896 896"
-                              focusable="false"
-                              data-icon="check-square"
-                              width="1em"
-                              height="1em"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path>
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
-                            </svg>
+                            {getIcon('mcdonalds')}
                           </span>
                         </span>
                       </div>
                       <div className="conts__text">
-                        <div className="text__wrap">API 연동하기</div>
+                        <div className="text__wrap">맥도날드</div>
                         <div className="conts__desc">
                           <div className="desc__wrap">
-                            <p>
-                              API 액세스 토큰을 생성하여 외부 서비스와
-                              연동하세요.
-                            </p>
+                            <p>현재 등록된 매장 : 32</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="conts__layout">
+                <div className="conts__layout" onClick={() => toggleCheck('lotte')}>
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
                           <span className="icon__box">
-                            <svg
-                              viewBox="64 64 896 896"
-                              focusable="false"
-                              data-icon="check-square"
-                              width="1em"
-                              height="1em"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path>
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
-                            </svg>
+                            {getIcon('lotte')}
                           </span>
                         </span>
                       </div>
                       <div className="conts__text">
-                        <div className="text__wrap">배포하기</div>
+                        <div className="text__wrap">롯데리아</div>
                         <div className="conts__desc">
                           <div className="desc__wrap">
-                            <p>배포하기를 하여 외부 서비스와 연동하세요.</p>
-                            <button className="desc__btn">
+                            <p>현재 등록된 매장 : 45</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="conts__layout" onClick={() => toggleCheck('ceoban')}>
+                  <div className="conts__inner">
+                    <div className="conts__wrap">
+                      <div className="conts__tail"></div>
+                      <div className="conts__box__icon">
+                        <span className="conts__icon__wrap">
+                          <span className="icon__box">
+                            {getIcon('ceoban')}
+                          </span>
+                        </span>
+                      </div>
+                      <div className="conts__text">
+                        <div className="text__wrap">커피에 반하다</div>
+                        <div className="conts__desc">
+                          <div className="desc__wrap">
+                            <p>현재 등록된 매장 : 7</p>
+                            <button className="desc__btn" onClick={(event) => { event.stopPropagation(); toggleAllChecks(); }}>
                               <span className="btn__wrap">
                                 <svg
                                   viewBox="64 64 896 896"
@@ -206,7 +229,7 @@ const AdminHomeSection = () => {
                                   <path d="M376.9 656.4c1.8-33.5 15.7-64.7 39.5-88.6 25.4-25.5 60-39.8 96-39.8 36.2 0 70.3 14.1 96 39.8 1.4 1.4 2.7 2.8 4.1 4.3l-25 19.6a8 8 0 003 14.1l98.2 24c5 1.2 9.9-2.6 9.9-7.7l.5-101.3c0-6.7-7.6-10.5-12.9-6.3L663 532.7c-36.6-42-90.4-68.6-150.5-68.6-107.4 0-195 85.1-199.4 191.7-.2 4.5 3.4 8.3 8 8.3H369c4.2-.1 7.7-3.4 7.9-7.7zM703 664h-47.9c-4.2 0-7.7 3.3-8 7.6-1.8 33.5-15.7 64.7-39.5 88.6-25.4 25.5-60 39.8-96 39.8-36.2 0-70.3-14.1-96-39.8-1.4-1.4-2.7-2.8-4.1-4.3l25-19.6a8 8 0 00-3-14.1l-98.2-24c-5-1.2-9.9 2.6-9.9 7.7l-.4 101.4c0 6.7 7.6 10.5 12.9 6.3l23.2-18.2c36.6 42 90.4 68.6 150.5 68.6 107.4 0 195-85.1 199.4-191.7.2-4.5-3.4-8.3-8-8.3z"></path>
                                 </svg>
                               </span>
-                              <span className="btn__text">배포하기</span>
+                              <span className="btn__text">전체 보기</span>
                             </button>
                           </div>
                         </div>
@@ -300,35 +323,57 @@ const AdminHomeSection = () => {
         <div className="right__conts__box">
           <div className="conts__header">
             <div className="header__wrap">
-              <div className="haeder__text">즐겨찾기</div>
+              <div className="haeder__text">매장 목록</div>
+              <div className="header__btn__icon" onClick={setCheckedStoreDataForInsert}>
+                  <button className="header__btn">
+                    <span className="btn__icon__wrap">
+                      <svg
+                        viewBox="64 64 896 896"
+                        focusable="false"
+                        data-icon="plus-square"
+                        width="1em"
+                        height="1em"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z"></path>
+                        <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
+                      </svg>
+                    </span>
+                    <span className="icon__text">매장 등록</span>
+                  </button>
+                </div>
             </div>
           </div>
           <div className="conts__body">
             <div className="body__wrap">
-              <ul className="body__list__box">
-                <li className="list__conts">
-                  <div className="conts__box">
-                    <div className="conts__text">
-                      <div className="sub__title">메뉴(음식점)</div>
-                      <div className="main__title">메뉴명 테스트입니다.</div>
+            <ul className="body__list__box">
+                {storeData.map((store, index) => (
+                  <li className="list__conts" key={index}>
+                    <div className="conts__box">
+                      <div className="conts__text">
+                        <div className="sub__title">{store.storeName}</div>
+                        <div className="main__title">{store.storeName}</div>
+                      </div>
+                      <div className="conts__icon" onClick={() => toggleItemCheck(index)}>
+                        <span className="icon__wrap">
+                          {store.checked ? <CurrentCheckIcon /> : <NonCheckIcon />}
+                          <svg
+                            viewBox="64 64 896 896"
+                            focusable="false"
+                            data-icon="star"
+                            width="1em"
+                            height="1em"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"></path>
+                          </svg>
+                        </span>
+                      </div>
                     </div>
-                    <div className="conts__icon">
-                      <span className="icon__wrap">
-                        <svg
-                          viewBox="64 64 896 896"
-                          focusable="false"
-                          data-icon="star"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"></path>
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

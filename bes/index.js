@@ -113,6 +113,43 @@ async function getAddressCoordinates(address) {
   }
 }
 
+// 매장을 등록하는 API
+app.post("/admin/register", async (req, res) => {
+  const newStores = req.body;
+
+  try {
+    // 데이터를 반복하며 MongoDB에 저장
+    for (const store of newStores) {
+      const rotateInfo = await getAddressCoordinates(store.dtAddress);
+
+      const newStore = new DTstoreBasic({
+        dtName: store.dtName,
+        dtAddress: store.dtAddress,
+        dtLat: rotateInfo.latitude,
+        dtLon: rotateInfo.longitude,
+        dtlCategory: store.dtlCategory,
+        deleteYn: false,
+      });
+
+      await newStore.save();
+    }
+
+    res.status(200).json({ message: 'Stores registered successfully' });
+  } catch (error) {
+    console.error("Error saving stores to database", error);
+    res.status(500).send("Error saving stores to database");
+  }
+});
+
+// git 데이터 DB 등록 API 
+app.post("/admin/register" , (req , res) => {
+  const newStores = req. body;
+
+  console.log(newStores);
+
+  res.status(200).json({ message: 'Stores registered successfully'});
+})
+
 // port setting.
 app.listen(9000, () => {
   console.log("서버 다음 포트에서 실행 중 :  9000");

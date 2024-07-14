@@ -1063,6 +1063,49 @@
               white-space: nowrap;
               font-family: var(--fontP);
             }
+            .header__btn {
+              background: transparent;
+              border-color: transparent;
+              box-shadow: none;
+              color: rgba(0, 0, 0, 0.85);
+              border-radius: 4px;
+              font-size: 13px;
+              height: 24px;
+              padding: 0.8px 7px;
+              text-align: center;
+              border: 0px solid #d9d9d9;
+
+              .icon__text {
+                font-family: var(--fontP);
+                margin-left: 8px;
+                display: inline-block !important;
+              }
+
+              cursor: pointer;
+
+              .btn__icon__wrap {
+                transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+                line-height: 1;
+                display: inline-flex !important;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                align-items: center;
+                color: inherit;
+                display: inline-flex;
+                font-style: normal;
+                line-height: 0;
+                text-align: center;
+                text-rendering: optimizelegibility;
+                text-transform: none;
+                vertical-align: -0.125em;
+
+                svg {
+                  display: inline-block;
+                  line-height: 1;
+                  vertical-align: middle;
+                }
+              }
+            }
 
             .sub__header__text {
               color: rgba(0, 0, 0, 0.85);
@@ -1220,12 +1263,16 @@
           }
 
           .body__wrap {
+            overflow: hidden;
             .body__list__box {
               margin-bottom: 0;
               margin-top: 0;
               list-style: none;
               margin: 0;
               padding: 0;
+              max-height: 650px;
+              overflow-y: scroll;
+              
 
               .list__conts {
                 cursor: pointer;
@@ -1261,7 +1308,7 @@
                     flex: none;
 
                     .icon__wrap {
-                      color: rgb(250, 204, 21);
+                      // color: rgb(250, 204, 21);
                       cursor: pointer;
                       -webkit-font-smoothing: antialiased;
                       -moz-osx-font-smoothing: grayscale;
@@ -1278,6 +1325,7 @@
                         display: inline-block;
                         line-height: 1;
                         vertical-align: middle;
+                        margin-right: 10px;
                       }
                     }
                   }
