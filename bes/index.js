@@ -15,7 +15,7 @@ const DtCategory = require("./models/DtCategorys");
 // mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster
 
 mongose.connect(
-  "mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster"
+  "mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
 );
 
 // app setting
@@ -29,6 +29,7 @@ app.use(cookieParser());
 
 //최초 DtCategory 생성용
 const insertDtCategoryData = async () => {
+  console.log("first");
   const storeTypes = [
     "starbucks",
     "ceoban",
@@ -51,7 +52,7 @@ const insertDtCategoryData = async () => {
   }
 };
 
-// insertDtCategoryData
+// insertDtCategoryData();
 
 // 데이터베이스 입력 함수
 const callDruwaDataFile = async () => {
@@ -115,7 +116,7 @@ const callDruwaDataFile = async () => {
   }
 };
 
-// callDruwaDataFile();
+callDruwaDataFile();
 
 // 위도 , 경도 API
 // API 키 설정
