@@ -18,7 +18,8 @@ const DTstoreBasicSchema = new mongoose.Schema(
       required: true,
     },
     dtlCategory: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "DtCategorys",
       required: true,
     },
     deleteYn: {

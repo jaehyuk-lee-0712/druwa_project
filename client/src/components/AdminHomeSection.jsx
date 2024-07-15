@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ReactComponent as NonCheckIcon } from '../assets/svg/non_check.svg';
-import { ReactComponent as CurrentCheckIcon } from '../assets/svg/current_check.svg';
-import axios from 'axios';
+import { ReactComponent as NonCheckIcon } from "../assets/svg/non_check.svg";
+import { ReactComponent as CurrentCheckIcon } from "../assets/svg/current_check.svg";
+import axios from "axios";
 
 const AdminHomeSection = () => {
   const [storeData, setStoreData] = useState([]);
@@ -17,32 +17,33 @@ const AdminHomeSection = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:9000/admin/list', checkedStates);
-        console.log(checkedStates)
-        const updatedData = response.data.map(store => ({
+        const response = await axios.post(
+          "http://localhost:9000/admin/list",
+          checkedStates
+        );
+        console.log(checkedStates);
+        const updatedData = response.data.map((store) => ({
           ...store,
-          checked: false // 각 항목의 초기 체크 상태를 false로 설정
+          checked: false, // 각 항목의 초기 체크 상태를 false로 설정
         }));
         setStoreData(updatedData);
-        console.log(updatedData)
+        console.log(updatedData);
       } catch (error) {
-        console.error('Error fetching data', error);
+        console.error("Error fetching data", error);
       }
     };
     fetchData();
   }, [checkedStates]);
 
-  
   const toggleCheck = (store) => {
-    setCheckedStates(prev => ({
+    setCheckedStates((prev) => ({
       ...prev,
-      [store]: !prev[store]
+      [store]: !prev[store],
     }));
   };
 
-  
   const toggleItemCheck = (index) => {
-    setStoreData(prevData => {
+    setStoreData((prevData) => {
       const newData = prevData.map((item, i) => {
         if (i === index) {
           return { ...item, checked: !item.checked };
@@ -53,32 +54,33 @@ const AdminHomeSection = () => {
     });
   };
 
- 
-const toggleAllChecks = () => {
-  setCheckedStates(prev => {
-    const newState = {};
-    for (let key in prev) {
-      newState[key] = !prev[key];
+  const toggleAllChecks = () => {
+    setCheckedStates((prev) => {
+      const newState = {};
+      for (let key in prev) {
+        newState[key] = !prev[key];
+      }
+      return newState;
+    });
+  };
+
+  // insert api call
+  const setCheckedStoreDataForInsert = async () => {
+    const selectedStores = storeData.filter((store) => store.checked);
+    try {
+      const response = await axios.post(
+        "http://localhost:9000/admin/register",
+        selectedStores
+      );
+      console.log("Registered stores:", response.data);
+    } catch (error) {
+      console.error("Error registering stores", error);
     }
-    return newState;
-  });
-};
-
-
-// insert api call 
-const setCheckedStoreDataForInsert = async () => {
-  const selectedStores = storeData.filter(store => store.checked);
-  try {
-    const response = await axios.post('http://localhost:9000/admin/register', selectedStores);
-    console.log('Registered stores:', response.data);
-  } catch (error) {
-    console.error('Error registering stores', error);
-  }
-};
-
+  };
 
   // 상태에 따라 적절한 아이콘을 선택하는 함수
-  const getIcon = (store) => checkedStates[store] ? <CurrentCheckIcon /> : <NonCheckIcon />;
+  const getIcon = (store) =>
+    checkedStates[store] ? <CurrentCheckIcon /> : <NonCheckIcon />;
 
   return (
     <>
@@ -110,14 +112,17 @@ const setCheckedStoreDataForInsert = async () => {
             </div>
             <div className="conts__body">
               <div className="sub__left__conts">
-                <div className="conts__layout" onClick={() => toggleCheck('starbucks')}>
+                <div
+                  className="conts__layout"
+                  onClick={() => toggleCheck("starbucks")}
+                >
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
                           <span className="icon__box">
-                            {getIcon('starbucks')}
+                            {getIcon("starbucks")}
                           </span>
                         </span>
                       </div>
@@ -132,15 +137,16 @@ const setCheckedStoreDataForInsert = async () => {
                     </div>
                   </div>
                 </div>
-                <div className="conts__layout" onClick={() => toggleCheck('kfc')}>
+                <div
+                  className="conts__layout"
+                  onClick={() => toggleCheck("kfc")}
+                >
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
-                          <span className="icon__box">
-                            {getIcon('kfc')}
-                          </span>
+                          <span className="icon__box">{getIcon("kfc")}</span>
                         </span>
                       </div>
                       <div className="conts__text">
@@ -154,14 +160,17 @@ const setCheckedStoreDataForInsert = async () => {
                     </div>
                   </div>
                 </div>
-                <div className="conts__layout" onClick={() => toggleCheck('mcdonalds')}>
+                <div
+                  className="conts__layout"
+                  onClick={() => toggleCheck("mcdonalds")}
+                >
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
                           <span className="icon__box">
-                            {getIcon('mcdonalds')}
+                            {getIcon("mcdonalds")}
                           </span>
                         </span>
                       </div>
@@ -176,15 +185,16 @@ const setCheckedStoreDataForInsert = async () => {
                     </div>
                   </div>
                 </div>
-                <div className="conts__layout" onClick={() => toggleCheck('lotte')}>
+                <div
+                  className="conts__layout"
+                  onClick={() => toggleCheck("lotte")}
+                >
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
-                          <span className="icon__box">
-                            {getIcon('lotte')}
-                          </span>
+                          <span className="icon__box">{getIcon("lotte")}</span>
                         </span>
                       </div>
                       <div className="conts__text">
@@ -198,15 +208,16 @@ const setCheckedStoreDataForInsert = async () => {
                     </div>
                   </div>
                 </div>
-                <div className="conts__layout" onClick={() => toggleCheck('ceoban')}>
+                <div
+                  className="conts__layout"
+                  onClick={() => toggleCheck("ceoban")}
+                >
                   <div className="conts__inner">
                     <div className="conts__wrap">
                       <div className="conts__tail"></div>
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
-                          <span className="icon__box">
-                            {getIcon('ceoban')}
-                          </span>
+                          <span className="icon__box">{getIcon("ceoban")}</span>
                         </span>
                       </div>
                       <div className="conts__text">
@@ -214,7 +225,13 @@ const setCheckedStoreDataForInsert = async () => {
                         <div className="conts__desc">
                           <div className="desc__wrap">
                             <p>현재 등록된 매장 : 7</p>
-                            <button className="desc__btn" onClick={(event) => { event.stopPropagation(); toggleAllChecks(); }}>
+                            <button
+                              className="desc__btn"
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                toggleAllChecks();
+                              }}
+                            >
                               <span className="btn__wrap">
                                 <svg
                                   viewBox="64 64 896 896"
@@ -324,41 +341,52 @@ const setCheckedStoreDataForInsert = async () => {
           <div className="conts__header">
             <div className="header__wrap">
               <div className="haeder__text">매장 목록</div>
-              <div className="header__btn__icon" onClick={setCheckedStoreDataForInsert}>
-                  <button className="header__btn">
-                    <span className="btn__icon__wrap">
-                      <svg
-                        viewBox="64 64 896 896"
-                        focusable="false"
-                        data-icon="plus-square"
-                        width="1em"
-                        height="1em"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z"></path>
-                        <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
-                      </svg>
-                    </span>
-                    <span className="icon__text">매장 등록</span>
-                  </button>
-                </div>
+              <div
+                className="header__btn__icon"
+                onClick={setCheckedStoreDataForInsert}
+              >
+                <button className="header__btn">
+                  <span className="btn__icon__wrap">
+                    <svg
+                      viewBox="64 64 896 896"
+                      focusable="false"
+                      data-icon="plus-square"
+                      width="1em"
+                      height="1em"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z"></path>
+                      <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
+                    </svg>
+                  </span>
+                  <span className="icon__text">매장 등록</span>
+                </button>
+              </div>
             </div>
           </div>
           <div className="conts__body">
             <div className="body__wrap">
-            <ul className="body__list__box">
+              <ul className="body__list__box">
                 {storeData.map((store, index) => (
                   <li className="list__conts" key={index}>
                     <div className="conts__box">
                       <div className="conts__text">
-                        <div className="sub__title">{store.storeName}</div>
-                        <div className="main__title">{store.storeName}</div>
+                        {/* <div className="sub__title">{store.storeName}</div> */}
+                        <div className="sub__title">스타벅스</div>
+                        <div className="main__title">{store.title}</div>
                       </div>
-                      <div className="conts__icon" onClick={() => toggleItemCheck(index)}>
+                      <div
+                        className="conts__icon"
+                        onClick={() => toggleItemCheck(index)}
+                      >
                         <span className="icon__wrap">
-                          {store.checked ? <CurrentCheckIcon /> : <NonCheckIcon />}
-                          <svg
+                          {store.checked ? (
+                            <CurrentCheckIcon />
+                          ) : (
+                            <NonCheckIcon />
+                          )}
+                          {/* <svg
                             viewBox="64 64 896 896"
                             focusable="false"
                             data-icon="star"
@@ -368,7 +396,7 @@ const setCheckedStoreDataForInsert = async () => {
                             aria-hidden="true"
                           >
                             <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"></path>
-                          </svg>
+                          </svg> */}
                         </span>
                       </div>
                     </div>

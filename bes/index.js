@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 
 const mongose = require("mongoose");
 const DTstroeBasic = require("./models/DTstoreBasic");
+const DtCategory = require("./models/DtCategorys");
 
 // mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster
 
@@ -26,46 +27,86 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/test", (req, res) => {
-  console.log("Test Running");
-});
+//최초 DtCategory 생성용
+const insertDtCategoryData = async () => {
+  const storeTypes = [
+    "starbucks",
+    "ceoban",
+    "kfc",
+    "lotte",
+    "macdonald",
+    "twosome",
+  ];
 
+  for (let i = 0; i < storeTypes.length; i++) {
+    const categoryName = storeTypes[i];
+    const deleteYn = false;
+
+    const newStore = await DtCategory.create({
+      categoryName,
+      deleteYn,
+    });
+
+    console.log(newStore);
+  }
+};
+
+// insertDtCategoryData
+
+// 데이터베이스 입력 함수
 const callDruwaDataFile = async () => {
+  const storeTypes = [
+    "starbucks",
+    "ceoban",
+    "kfc",
+    "lotte",
+    "macdonald",
+    "twosome",
+  ];
+
   try {
-    const response = await axios.get(
-      "https://raw.githubusercontent.com/jaehyuk-lee-0712/druwa_datas/main/storeInfo-2024-07-07.json"
-    );
-    const dataList = response.data;
+    for (let i = 0; i < storeTypes.length; i++) {
+      const response = await axios.get(
+        `https://raw.githubusercontent.com/jaehyuk-lee-0712/druwa_datas/main/${storeTypes[i]}/${storeTypes[i]}_2024-07-15.json`
+      );
+      const dataList = response.data;
 
-    if (dataList.length > 0) {
-      console.log("DataList Length : " + dataList.length);
+      console.log(dataList);
 
-      // for (let i = 0; i < dataList.lenth; i++) {
-      console.log("insert is run");
-      for (let i = 0; i < dataList.length; i++) {
-        const rotateInfo = await getAddressCoordinates(
-          dataList[i].storeAddress
-        );
+      if (dataList.length > 0) {
+        for (let j = 0; j < dataList.length; j++) {
+          const rotateInfo = await getAddressCoordinates(dataList[j].address);
 
-        const dtName = dataList[i].storeName;
-        const dtAddress = dataList[i].storeAddress;
-        const dtLat = rotateInfo.latitude;
-        const dtLon = rotateInfo.longitude;
-        const deleteYn = false;
-        const dtlCategory = "starbucks";
+          const category = await DtCategory.findOne({
+            categoryName: storeTypes[i],
+          });
 
-        console.log(dtLat, dtLon);
+          if (!category) {
+            throw new Error(`Category not found: ${storeTypes[i]}`);
+          }
 
-        const newStroe = await DTstroeBasic.create({
-          dtName,
-          dtAddress,
-          dtLat,
-          dtLon,
-          dtlCategory,
-          deleteYn,
-        });
+          const dtName = dataList[j].title;
+          const dtAddress = dataList[j].address;
+          const dtLat = rotateInfo.latitude;
+          const dtLon = rotateInfo.longitude;
+          const deleteYn = false;
+          const dtlCategory = category._id;
 
-        console.log(newStroe);
+          console.log(dtLat, dtLon);
+
+          const newStroe = await DTstroeBasic.create({
+            dtName,
+            dtAddress,
+            dtLat,
+            dtLon,
+            dtlCategory,
+            deleteYn,
+          });
+
+          console.log(newStroe);
+        }
+      } else {
+        throw new Error("Stroe Data Fetching Error");
       }
     }
   } catch (error) {
@@ -113,18 +154,48 @@ async function getAddressCoordinates(address) {
   }
 }
 
+// 리스트 호출 API
+app.post("/admin/list", async (req, res) => {
+  try {
+    const checkedStates = req.body;
+    const storeNames = Object.keys(checkedStates);
+
+    let allData = [];
+
+    for (const key of storeNames) {
+      const value = checkedStates[key];
+
+      if (value === true) {
+        const response = await axios.get(
+          `https://raw.githubusercontent.com/jaehyuk-lee-0712/druwa_datas/main/${key}/${key}_2024-07-15.json`
+        );
+        const data = response.data;
+        allData = allData.concat(data); // 데이터 합치기
+        console.log(allData);
+      }
+    }
+
+    res.json(allData); // 모든 데이터를 클라이언트에 반환
+  } catch (error) {
+    console.error("Error fetching data", error);
+    res.status(500).send("Error fetching data");
+  }
+});
+
 // 매장을 등록하는 API
 app.post("/admin/register", async (req, res) => {
   const newStores = req.body;
+
+  console.log(newStores);
 
   try {
     // 데이터를 반복하며 MongoDB에 저장
     for (const store of newStores) {
       const rotateInfo = await getAddressCoordinates(store.dtAddress);
 
-      const newStore = new DTstoreBasic({
-        dtName: store.dtName,
-        dtAddress: store.dtAddress,
+      const newStore = new DTstroeBasic({
+        dtName: store.title,
+        dtAddress: store.address,
         dtLat: rotateInfo.latitude,
         dtLon: rotateInfo.longitude,
         dtlCategory: store.dtlCategory,
@@ -134,21 +205,21 @@ app.post("/admin/register", async (req, res) => {
       await newStore.save();
     }
 
-    res.status(200).json({ message: 'Stores registered successfully' });
+    res.status(200).json({ message: "Stores registered successfully" });
   } catch (error) {
     console.error("Error saving stores to database", error);
     res.status(500).send("Error saving stores to database");
   }
 });
 
-// git 데이터 DB 등록 API 
-app.post("/admin/register" , (req , res) => {
-  const newStores = req. body;
+// git 데이터 DB 등록 API
+app.post("/admin/register", (req, res) => {
+  const newStores = req.body;
 
   console.log(newStores);
 
-  res.status(200).json({ message: 'Stores registered successfully'});
-})
+  res.status(200).json({ message: "Stores registered successfully" });
+});
 
 // port setting.
 app.listen(9000, () => {
