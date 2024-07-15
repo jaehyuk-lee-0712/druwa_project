@@ -9,9 +9,9 @@ const AdminHomeSection = () => {
   const [checkedStates, setCheckedStates] = useState({
     starbucks: true,
     kfc: false,
-    mcdonalds: false,
+    macdonald: false,
     lotte: false,
-    ceoban: true,
+    ceoban: false,
   });
 
   useEffect(() => {
@@ -21,13 +21,11 @@ const AdminHomeSection = () => {
           "http://localhost:9000/admin/list",
           checkedStates
         );
-        console.log(checkedStates);
         const updatedData = response.data.map((store) => ({
           ...store,
           checked: false, // 각 항목의 초기 체크 상태를 false로 설정
         }));
         setStoreData(updatedData);
-        console.log(updatedData);
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -162,7 +160,7 @@ const AdminHomeSection = () => {
                 </div>
                 <div
                   className="conts__layout"
-                  onClick={() => toggleCheck("mcdonalds")}
+                  onClick={() => toggleCheck("macdonald")}
                 >
                   <div className="conts__inner">
                     <div className="conts__wrap">
@@ -170,7 +168,7 @@ const AdminHomeSection = () => {
                       <div className="conts__box__icon">
                         <span className="conts__icon__wrap">
                           <span className="icon__box">
-                            {getIcon("mcdonalds")}
+                            {getIcon("macdonald")}
                           </span>
                         </span>
                       </div>
@@ -373,7 +371,7 @@ const AdminHomeSection = () => {
                     <div className="conts__box">
                       <div className="conts__text">
                         {/* <div className="sub__title">{store.storeName}</div> */}
-                        <div className="sub__title">스타벅스</div>
+                        <div className="sub__title">{store.categoryName}</div>
                         <div className="main__title">{store.title}</div>
                       </div>
                       <div

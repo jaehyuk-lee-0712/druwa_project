@@ -169,9 +169,19 @@ app.post("/admin/list", async (req, res) => {
         const response = await axios.get(
           `https://raw.githubusercontent.com/jaehyuk-lee-0712/druwa_datas/main/${key}/${key}_2024-07-15.json`
         );
+
+        const category = await DtCategory.findOne({
+          categoryName: key,
+        });
+
         const data = response.data;
-        allData = allData.concat(data); // 데이터 합치기
-        console.log(allData);
+
+        const updatedData = data.map((store) => ({
+          ...store,
+          categoryName: category.categoryName,
+        }));
+
+        allData = allData.concat(updatedData); // 데이터 합치기
       }
     }
 
