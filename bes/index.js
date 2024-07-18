@@ -116,7 +116,7 @@ const callDruwaDataFile = async () => {
   }
 };
 
-callDruwaDataFile();
+// callDruwaDataFile();
 
 // 위도 , 경도 API
 // API 키 설정
@@ -192,7 +192,48 @@ app.post("/admin/list", async (req, res) => {
     res.status(500).send("Error fetching data");
   }
 });
+// 전체리스트 호출 API
+app.post("/list", async (req, res) => {
+  console.log("Request received:", req.body);
+  try {
+    const checkedStates = req.body;
+    const storeNames = Object.keys(checkedStates);
 
+    let allData = [];
+
+    for (const key of storeNames) {
+      const value = checkedStates[key];
+
+      if (value === true) {
+        const category = await DtCategory.findOne({
+          categoryName: key,
+        });
+
+        if (!category) {
+          continue;
+        }
+
+        const data = await DTstroeBasic.find({ dtlCategory: category._id });
+
+        const updatedData = data.map((store) => ({
+          dtName: store.dtName,
+          dtAddress: store.dtAddress,
+          dtLat: store.dtLat,
+          dtLon: store.dtLon,
+          categoryName: category.categoryName,
+          checked: false,
+        }));
+
+        allData = allData.concat(updatedData);
+      }
+    }
+
+    res.json(allData);
+  } catch (error) {
+    console.error("Error fetching data", error);
+    res.status(500).send("Error fetching data");
+  }
+});
 // 매장을 등록하는 API
 app.post("/admin/register", async (req, res) => {
   const newStores = req.body;
