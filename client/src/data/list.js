@@ -70,42 +70,34 @@ export const boardList = [
 
 export const checkLists = [
   {
-    title: "전체",
+    title: "starbucks",
   },
   {
-    title: "Starbucks",
+    title: "macdonald",
   },
   {
-    title: "McDonald",
+    title: "lotte",
   },
   {
-    title: "Burger King",
-  },
-  {
-    title: "Lotteria",
+    title: "ceoban",
   },
 ];
-
-export const moglogInfo = [
-  {
-    title: "Starbucks",
-    open: "운영중",
-    info1: "5.3km",
-    info2: "카페",
-    info3: "4.8",
-  },
-  {
-    title: "McDonald",
-    open: "",
-    info1: "5.3km",
-    info2: "카페",
-    info3: "4.8",
-  },
-  {
-    title: "Lotteria",
-    open: "운영중",
-    info1: "5.3km",
-    info2: "카페",
-    info3: "4.8",
-  },
+export const countryLists = [
+  { title: "서울" },
+  { title: "부산" },
+  { title: "대구" },
+  { title: "인천" },
+  { title: "광주" },
+  { title: "대전" },
+  { title: "울산" },
+  { title: "세종" },
+  { title: "경기" },
+  { title: "강원" },
+  { title: "충북" },
+  { title: "충남" },
+  { title: "전북" },
+  { title: "전남" },
+  { title: "경북" },
+  { title: "경남" },
+  { title: "제주" }
 ];

@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { checkLists } from "../data/list";
 import axios from "axios";
+import { checkLists, countryLists } from "../data/list"; // Assuming this is a list of objects with a 'title' property
 
 const List = () => {
+  const initialStoreStates = checkLists.reduce((acc, list) => {
+    acc[list.title.toLowerCase()] = true;
+    return acc;
+  }, {});
+
+  const initialCountryStates = countryLists.reduce((acc, list) => {
+    acc[list.title.toLowerCase()] = true;
+    return acc;
+  }, {});
+
   const [storeData, setStoreData] = useState([]);
-  const [checkedStates, setCheckedStates] = useState({
-    starbucks: false,
-    kfc: true,
-    macdonald: false,
-    lotte: false,
-    ceoban: false,
-  });
+  const [checkedStoreStates, setCheckedStoreStates] = useState(initialStoreStates);
+  const [checkedCountryStates, setCheckedCountryStates] = useState(initialCountryStates);
+  const [allStoreChecked, setAllStoreChecked] = useState(true);
+  const [allCountryChecked, setAllCountryChecked] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
           "http://localhost:9000/list",
-          checkedStates
+          { ...checkedStoreStates, ...checkedCountryStates }
         );
         setStoreData(response.data);
       } catch (error) {
@@ -26,28 +35,67 @@ const List = () => {
     };
 
     fetchData();
-  }, [checkedStates]);
+  }, [checkedStoreStates, checkedCountryStates]);
 
-  const toggleCheck = (store) => {
-    setCheckedStates((prev) => ({
-      ...prev,
-      [store]: !prev[store],
-    }));
+  const toggleStoreCheck = (store) => {
+    setCheckedStoreStates((prev) => {
+      const newCheckedStates = {
+        ...prev,
+        [store]: !prev[store],
+      };
+      setAllStoreChecked(Object.values(newCheckedStates).every(Boolean));
+      return newCheckedStates;
+    });
   };
 
-  // const toggleAllChecks = () => {
-  //   setCheckedStates((prev) => {
-  //     const newState = {};
-  //     for (let key in prev) {
-  //       newState[key] = !prev[key];
-  //     }
-  //     return newState;
-  //   });
-  // };
+  const toggleCountryCheck = (country) => {
+    setCheckedCountryStates((prev) => {
+      const newCheckedStates = {
+        ...prev,
+        [country]: !prev[country],
+      };
+      setAllCountryChecked(Object.values(newCheckedStates).every(Boolean));
+      return newCheckedStates;
+    });
+  };
+
+  const toggleAllStoreChecks = (value) => {
+    const newState = {};
+    checkLists.forEach((list) => {
+      newState[list.title.toLowerCase()] = value;
+    });
+    setCheckedStoreStates(newState);
+    setAllStoreChecked(value);
+  };
+
+  const toggleAllCountryChecks = (value) => {
+    const newState = {};
+    countryLists.forEach((list) => {
+      newState[list.title.toLowerCase()] = value;
+    });
+    setCheckedCountryStates(newState);
+    setAllCountryChecked(value);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
+
+  const filteredData = storeData.filter((store) => {
+    const matchedCountry = countryLists.find(
+      (country) =>
+        checkedCountryStates[country.title.toLowerCase()] &&
+        store.dtAddress.includes(country.title)
+    );
+
+    const matchesSearchTerm = store.dtName.toLowerCase().includes(searchTerm) || store.dtAddress.toLowerCase().includes(searchTerm);
+
+    return matchedCountry && matchesSearchTerm;
+  });
 
   return (
     <div className="alllist container">
-      <div className="alllist__inner ">
+      <div className="alllist__inner">
         <div className="all__search">
           <div className="text">
             <em>7</em>개의 포지션이 열려 있어요
@@ -70,31 +118,78 @@ const List = () => {
             <input
               type="text"
               placeholder="직무명, 기술 스택, 주요 업무 등을 검색해보세요"
+              value={searchTerm}
+              onChange={handleSearchChange}
             />
           </div>
         </div>
-        <div className="all__list ">
-          <div className="list__check">
-            <div className="title">매장</div>
-            <div className="checkbox">
-              {checkLists.map((list, key) => (
-                <div className="box__lists" key={key}>
-                  <label className="checkable" htmlFor="checkable">
+        <div className="all__list">
+          <div className="list__check__box">
+            <div className="list__check">
+              <div className="title">매장</div>
+              <div className="checkbox">
+                <div className="box__lists">
+                  <label className="checkable" htmlFor="checkable-all-store">
                     <input
                       className="checkable__input"
                       type="checkbox"
-                      id="list"
-                      aria-checked="false"
-                      value={list.title}
+                      id="checkable-all-store"
+                      checked={allStoreChecked}
+                      onChange={(e) => toggleAllStoreChecks(e.target.checked)}
                     />
-                    <span className="checkable__text">{list.title}</span>
+                    <span className="checkable__text">전체</span>
                   </label>
                 </div>
-              ))}
+                {checkLists.map((list, key) => (
+                  <div className="box__lists" key={key}>
+                    <label className="checkable" htmlFor={`checkable-store-${key}`}>
+                      <input
+                        className="checkable__input"
+                        type="checkbox"
+                        id={`checkable-store-${key}`}
+                        checked={checkedStoreStates[list.title.toLowerCase()]}
+                        onChange={() => toggleStoreCheck(list.title.toLowerCase())}
+                      />
+                      <span className="checkable__text">{list.title}</span>
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="list__check">
+              <div className="title">지역</div>
+              <div className="checkbox">
+                <div className="box__lists">
+                  <label className="checkable" htmlFor="checkable-all-country">
+                    <input
+                      className="checkable__input"
+                      type="checkbox"
+                      id="checkable-all-country"
+                      checked={allCountryChecked}
+                      onChange={(e) => toggleAllCountryChecks(e.target.checked)}
+                    />
+                    <span className="checkable__text">전체</span>
+                  </label>
+                </div>
+                {countryLists.map((list, key) => (
+                  <div className="box__lists" key={key}>
+                    <label className="checkable" htmlFor={`checkable-country-${key}`}>
+                      <input
+                        className="checkable__input"
+                        type="checkbox"
+                        id={`checkable-country-${key}`}
+                        checked={checkedCountryStates[list.title.toLowerCase()]}
+                        onChange={() => toggleCountryCheck(list.title.toLowerCase())}
+                      />
+                      <span className="checkable__text">{list.title}</span>
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="list__view">
-            {storeData.map((store, index) => (
+            {filteredData.map((store, index) => (
               <Link to="/" key={index}>
                 <div className="list__moglog">
                   <span className="mog__title">
