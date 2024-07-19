@@ -5,10 +5,20 @@ import axios from "axios";
 
 const List = () => {
   const [storeData, setStoreData] = useState([]);
+  const [checkedStates, setCheckedStates] = useState({
+    starbucks: false,
+    kfc: true,
+    macdonald: false,
+    lotte: false,
+    ceoban: false,
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://localhost:9000/list");
+        const response = await axios.post(
+          "http://localhost:9000/list",
+          checkedStates
+        );
         setStoreData(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -16,7 +26,7 @@ const List = () => {
     };
 
     fetchData();
-  }, []);
+  }, [checkedStates]);
   return (
     <div className="alllist container">
       <div className="alllist__inner ">
@@ -75,13 +85,11 @@ const List = () => {
                       <span
                         className={`open ${store.open === "" ? "hidden" : ""}`}
                       >
-                        {store.open}
+                        {store.categoryName}
                       </span>{" "}
                     </div>
                   </span>
-                  <span className="mog__desc">
-                    {/* {moglog.info1}・{moglog.info2}・{moglog.info3} */}
-                  </span>
+                  <span className="mog__desc">{store.dtAddress}</span>
                 </div>
               </Link>
             ))}
