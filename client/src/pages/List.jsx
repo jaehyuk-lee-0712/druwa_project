@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { checkLists, moglogInfo } from "../data/list";
+import { checkLists } from "../data/list";
 import axios from "axios";
 
 const List = () => {
@@ -27,6 +27,24 @@ const List = () => {
 
     fetchData();
   }, [checkedStates]);
+
+  const toggleCheck = (store) => {
+    setCheckedStates((prev) => ({
+      ...prev,
+      [store]: !prev[store],
+    }));
+  };
+
+  // const toggleAllChecks = () => {
+  //   setCheckedStates((prev) => {
+  //     const newState = {};
+  //     for (let key in prev) {
+  //       newState[key] = !prev[key];
+  //     }
+  //     return newState;
+  //   });
+  // };
+
   return (
     <div className="alllist container">
       <div className="alllist__inner ">
