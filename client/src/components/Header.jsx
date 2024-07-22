@@ -20,13 +20,13 @@ const Header = () => {
               <Link to="/map">지도</Link>
             </li>
             <li>
-              <Link to="/">전체 매장</Link>
+              <Link to="/list">전체 매장</Link>
             </li>
             <li>
-              <Link to="/">이벤트</Link>
+              <Link to="/board">게시판</Link>
             </li>
             <li>
-              <Link to="/board">공지사항</Link>
+              <Link to="/Notice">공지사항</Link>
             </li>
           </ul>
         </div>

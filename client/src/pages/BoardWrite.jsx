@@ -31,8 +31,7 @@ const formats = [
   "link",
   "image",
 ];
-
-const CrudWrite = () => {
+const BoardWrite = () => {
   const [boardTitle, setBoardTitle] = useState("");
   const [boardConts, setBoardConts] = useState("");
   const navigate = useNavigate();
@@ -46,7 +45,7 @@ const CrudWrite = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:9000/CrudWrite", {
+      const response = await fetch("http://localhost:9000/BoardWrite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -55,7 +54,7 @@ const CrudWrite = () => {
 
       if (response.ok) {
         alert("성공");
-        navigate("/crud");
+        navigate("/Board");
       } else {
         const errorData = await response.json();
         console.error("Error response from server:", errorData);
@@ -68,14 +67,14 @@ const CrudWrite = () => {
   };
 
   return (
-    <section className="board__inner board-container">
+    <section className="board__inner container">
       <h3 className="blind">게시판 글쓰기</h3>
       <div className="board__write">
         <form onSubmit={boardWrite}>
           <fieldset>
             <legend className="blind">게시글 작성하기</legend>
             <div>
-              <label htmlFor="boardTitle">제목</label>
+              <label htmlFor="boardTitle">글쓰기</label>
               <input
                 type="text"
                 id="boardTitle"
@@ -103,4 +102,4 @@ const CrudWrite = () => {
   );
 };
 
-export default CrudWrite;
+export default BoardWrite;

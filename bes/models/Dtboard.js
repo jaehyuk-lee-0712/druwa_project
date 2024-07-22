@@ -20,8 +20,12 @@ const boardSchema = new Schema({
     type: Number,
     default: 0,
   },
+  boardConts: {
+    type: String,
+    required: true,
+  },
 });
 
-const Board = mongoose.model("CrudWrite", boardSchema);
+const Board = mongoose.model("Board", boardSchema);
 
 module.exports = Board;

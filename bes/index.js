@@ -267,8 +267,8 @@ app.post("/admin/register", async (req, res) => {
 });
 
 // 게시판
-app.get("/crud", async (req, res) => {
-  console.log("Received GET request at /crud");
+app.get("/Board", async (req, res) => {
+  console.log("Received GET request at /Board");
   try {
     const boards = await Board.find(); // 모든 게시물을 조회
     res.json(boards);
@@ -277,9 +277,9 @@ app.get("/crud", async (req, res) => {
     res.status(500).send("Error fetching board");
   }
 });
-// Create: 새로운 게시물 등록
-app.post("/CrudWrite", async (req, res) => {
-  console.log("Received POST request at /CrudWrites");
+// 글쓰기
+app.post("/BoardWrite", async (req, res) => {
+  console.log("Received POST request at /Board");
   try {
     const newBoard = new Board(req.body);
     await newBoard.save();
@@ -289,6 +289,61 @@ app.post("/CrudWrite", async (req, res) => {
     res.status(400).send(error);
   }
 });
+// 글보기
+app.get("/BoardWrite/:id", async (req, res) => {
+  console.log(`Received GET request at /BoardWrite/${req.params.id}`);
+  try {
+    const board = await Board.findById(req.params.id);
+    if (!board) {
+      return res.status(404).send("Board not found");
+    }
+    res.json(board);
+  } catch (error) {
+    console.error(`Error fetching board with id ${req.params.id}:`, error);
+    res.status(500).send("Error fetching board");
+  }
+});
+
+// 게시물 수정 (ID가 있는 경우)
+app.put("/BoardWrite/:id", async (req, res) => {
+  console.log(`Received PUT request at /BoardWrite/${req.params.id}`);
+  try {
+    const updatedBoard = await Board.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true } // 새로운 문서 반환 및 유효성 검사
+    );
+    if (!updatedBoard) {
+      return res.status(404).send("Board not found");
+    }
+    res.json(updatedBoard);
+  } catch (error) {
+    console.error(`Error updating board with id ${req.params.id}:`, error);
+    res.status(400).send("Error updating board");
+  }
+});
+
+// 게시물 수정 (ID가 없는 경우, 특정 조건으로 찾기)
+app.put("/BoardWrite", async (req, res) => {
+  console.log("Received PUT request at /BoardWrite");
+  const { filter, update } = req.body;
+
+  try {
+    const updatedBoard = await Board.findOneAndUpdate(
+      filter,
+      update,
+      { new: true, runValidators: true } // 새로운 문서 반환 및 유효성 검사
+    );
+    if (!updatedBoard) {
+      return res.status(404).send("Board not found");
+    }
+    res.json(updatedBoard);
+  } catch (error) {
+    console.error("Error updating board:", error);
+    res.status(400).send("Error updating board");
+  }
+});
+
 // git 데이터 DB 등록 API
 app.post("/admin/register", (req, res) => {
   const newStores = req.body;

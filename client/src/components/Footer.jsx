@@ -14,15 +14,15 @@ const Footer = () => {
           <p>문의하기</p>
           <p>공지사항</p>
         </div>
-        <div className="footer__icon">
+        {/* <div className="footer__icon">
           <div className="icon__git"></div>
           <div className="icon__insta"></div>
           <div className="icon__youtube"></div>
-        </div>
-      </div>
-      <div className="footer__copy">
-        <div className="footer__copoylight">
-          <p>Copyright © 2024 Druwa drivethru, Inc. All rights reserved.</p>
+        </div> */}
+        <div className="footer__copy">
+          <div className="footer__copoylight">
+            <p>Copyright © 2024 Druwa drivethru, Inc. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </div>

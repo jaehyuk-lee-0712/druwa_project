@@ -1,50 +1,36 @@
-import React, { useState } from "react";
+// Board.js
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Board = () => {
-  const [activeItem, setActiveItem] = useState("전체");
+  const [boards, setBoards] = useState([]);
 
-  // 클릭 이벤트 처리 함수
-  const handleClick = (item) => {
-    setActiveItem(item);
-  };
-
-  // 데이터 불러오기 (실제 데이터 경로에 맞게 수정 필요)
-  const { boardList } = require("../data/list"); // 데이터 파일 경로를 정확히 지정해야 합니다.
-
-  // activeItem에 따라 필터링된 리스트 생성
-  const filteredList =
-    activeItem === "전체"
-      ? boardList
-      : boardList.filter((item) => item.type === activeItem);
+  useEffect(() => {
+    fetch("http://localhost:9000/Board", {
+      credentials: "include",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // 데이터를 확인하기 위해 콘솔 로그를 남깁니다.
+        setBoards(data);
+      })
+      .catch((err) => console.error("Error:", err));
+  }, []);
 
   return (
     <section className="board__top container">
       <div className="board__text">
-        <h2>공지사항</h2>
+        <h2>게시판</h2>
       </div>
       <div className="board__cate">
         <div className="board__menu">
-          <li
-            className={activeItem === "전체" ? "active" : ""}
-            onClick={() => handleClick("전체")}
-          >
-            <Link to="#">전체</Link>
-          </li>
-          <li
-            className={activeItem === "이벤트" ? "active" : ""}
-            onClick={() => handleClick("이벤트")}
-          >
-            <Link to="#">이벤트</Link>
-          </li>
-          <li
-            className={activeItem === "업데이트" ? "active" : ""}
-            onClick={() => handleClick("업데이트")}
-          >
-            <Link to="#">업데이트</Link>
-          </li>
+          <Link to="/boardwrite">글쓰기</Link>
         </div>
-        {/* 검색창 */}
         <div className="board__search">
           <div className="search__icon"></div>
           <input
@@ -57,12 +43,24 @@ const Board = () => {
       {/* 게시판 리스트 */}
       <div className="board__list">
         <ul>
-          {filteredList.map((item, index) => (
-            <li key={index} className="board__list__box">
+          {boards.map((val, key) => (
+            <li key={val._id} className="board__list__box">
               <div className="board__list__cont">
-                <div className="list__cont__type">{item.type}</div>
-                <div className="list__cont__title">{item.title}</div>
-                <div className="list__cont__date">{item.date}</div>
+                <div className="list__cont__type">{key + 1}</div>
+                <Link
+                  to="/boardview"
+                  state={{ board: val }}
+                  className="list__cont__title"
+                >
+                  {val.boardTitle}
+                </Link>
+                <div className="list__cont__author">
+                  {val.boardAuthor.youName}
+                </div>
+                <div className="list__cont__date">
+                  {new Date(val.createdAt).toLocaleDateString()}
+                </div>
+                <div className="list__cont__views">{val.boardViews}</div>
               </div>
             </li>
           ))}

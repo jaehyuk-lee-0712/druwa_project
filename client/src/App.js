@@ -13,8 +13,11 @@ import Board from "./pages/Board";
 import Test from "./pages/Test";
 import MyPage from "./pages/MyPage";
 import Map from "./pages/Map";
-import Crud from "./pages/crud";
-import CrudWrite from "./pages/CrudWrite";
+import Notice from "./pages/Notice";
+import BoardWrite from "./pages/BoardWrite";
+import BoardView from "./pages/BoardView";
+import BoardEdit from "./pages/BoardEdit";
+import BoardDelete from "./pages/BoardDelete";
 
 function App() {
   return (
@@ -30,10 +33,13 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/list" element={<List />} />
               <Route path="/board" element={<Board />} />
+              <Route path="/Notice" element={<Notice />} />
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/map" element={<Map />} />
-              <Route path="/Crud" element={<Crud />} />
-              <Route path="/crudwrite" element={<CrudWrite />} />
+              <Route path="/boardwrite" element={<BoardWrite />} />
+              <Route path="/boardView" element={<BoardView />} />
+              <Route path="/BoardEdit" element={<BoardEdit />} />
+              <Route path="/BoardDelete" element={<BoardDelete />} />
             </Routes>
           </Main>
         </Layout>

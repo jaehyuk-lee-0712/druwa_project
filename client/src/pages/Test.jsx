@@ -7,8 +7,8 @@ import Admin from "./Admin";
 import List from "./List";
 import Map from "./Map";
 import { Link } from "react-router-dom";
-import Crud from "./crud";
-import CrudWrite from "./CrudWrite";
+import Notice from "./Notice";
+import BoardWrite from "./BoardWrite";
 
 const Test = () => {
   const [currentComponent, setCurrentComponent] = useState("Home");
@@ -24,16 +24,16 @@ const Test = () => {
         return <Admin />;
       case "List":
         return <List />;
-      case "Board":
-        return <Board />;
+      case "Notice":
+        return <Notice />;
       case "MyPage":
         return <MyPage />;
       case "Map":
         return <Map />;
-      case "crud":
-        return <Crud />;
-      case "CrudWrite":
-        return <CrudWrite />;
+      case "Board":
+        return <Board />;
+      case "BoardWrite":
+        return <BoardWrite />;
       default:
         return <Home />;
     }
@@ -88,7 +88,7 @@ const Test = () => {
               className={activeItem === "Board" ? "active" : ""}
               onClick={() => {
                 handleClick("Board");
-                setCurrentComponent("Board");
+                setCurrentComponent("Notice");
               }}
             >
               <div className="index__text">
@@ -163,7 +163,7 @@ const Test = () => {
                 <div className="progress" style={{ width: "70%" }}></div>
               </div>
             </li>
-            <li onClick={() => handleClick("crud")}>
+            <li onClick={() => handleClick("Board")}>
               <div className="index__text">
                 <h3>게시판</h3> <p>80%</p>
               </div>
@@ -171,7 +171,7 @@ const Test = () => {
                 <div className="progress" style={{ width: "80%" }}></div>
               </div>
             </li>
-            <li onClick={() => handleClick("CrudWrite")}>
+            <li onClick={() => handleClick("BoardWrite")}>
               <div className="index__text">
                 <h3>게시판 글 작성</h3> <p>90%</p>
               </div>
