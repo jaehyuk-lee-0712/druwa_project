@@ -2,14 +2,19 @@
   padding: 70px 20px;
 
   .board__text {
-    padding: 0 32px .5rem;
-
+    padding: 0 32px 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     h2 {
       font-size: 24px;
       font-weight: 800;
       line-height: 70px;
       letter-spacing: -0.5px;
       color: var(--black200);
+    }
+    a {
+      border-bottom: 1px solid #000;
     }
   }
 
@@ -87,7 +92,6 @@
         width: 100%;
         padding: 24px 32px;
         // border-bottom: 1px solid var(--grey200);
-
 
         &:hover {
           background-color: var(--greyOpacity100);

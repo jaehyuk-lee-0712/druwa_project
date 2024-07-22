@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const Crud = () => {
+const Plus = () => {
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
@@ -19,50 +20,43 @@ const Crud = () => {
       })
       .catch((err) => console.error("Error:", err));
   }, []);
-
   return (
-    <div>
-      <div className="board-container">
-        <table>
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>등록자</th>
-              <th>등록일</th>
-              <th>조회수</th>
-            </tr>
-          </thead>
-          <tbody>
-            {boards.map((val, key) => (
-              <tr key={key}>
-                <td>{key + 1}</td>
-                <td>{val.boardTitle}</td>
-                <td>{val.boardAuthor.youName}</td>
-                <td>{new Date(val.createdAt).toLocaleDateString()}</td>
-                <td>{val.boardViews}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <section className="board__top container">
+      <div className="board__text">
+        <h2>게시판</h2>
+        <Link to="/crudwrite">글쓰기</Link>
       </div>
-      <div className="crud__page">
-        <a href="/" className="pageLeft">
-          <span className="blind">이전</span>
-        </a>
+      <div className="board__cate"></div>
+      {/* 게시판 리스트 */}
+      <div className="board__list">
         <ul>
-          <li>
-            <a href="/" className="active">
-              1
-            </a>
-          </li>
+          {boards.map((val, key) => (
+            <li key={key} className="board__list__box">
+              <div className="board__list__cont">
+                <div className="list__cont__type">{key + 1}</div>
+                <div className="list__cont__title">{val.boardTitle}</div>
+                <div className="list__cont__title">
+                  {val.boardAuthor.youName}
+                </div>
+                <div className="list__cont__title">
+                  {new Date(val.createdAt).toLocaleDateString()}
+                </div>
+                <div className="list__cont__date">{val.boardViews}</div>
+              </div>
+            </li>
+          ))}
         </ul>
-        <a href="/" className="pageRight">
-          <span className="blind">다음</span>
-        </a>
       </div>
-    </div>
+      {/* 더보기 버튼 */}
+      <div className="board__more__box">
+        <div className="board__more">
+          <span className="more__text">더보기</span>
+          <span className="more__current">10</span>
+          <span className="more__total">300</span>
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default Crud;
+export default Plus;
