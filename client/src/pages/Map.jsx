@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Map = () => {
   // 사이드 메뉴접기,펼치기
@@ -18,9 +19,8 @@ const Map = () => {
   return (
     <section className="map">
       <div
-        className={`top__ui__base ${
-          mainMenu ? "hide" : isSearch ? "" : "hide"
-        }`}
+        className={`top__ui__base ${mainMenu ? "hide" : isSearch ? "" : "hide"
+          }`}
       >
         <div className="top__ui">
           <div className="top__ui__table">
@@ -40,9 +40,8 @@ const Map = () => {
         </div>
       </div>
       <div
-        className={`top__ui__banner ${
-          mainMenu ? "hide" : isSearch ? "" : "hide"
-        }`}
+        className={`top__ui__banner ${mainMenu ? "hide" : isSearch ? "" : "hide"
+          }`}
       >
         <div className="tui__banner">
           <div className="tui__banner__info">
@@ -108,7 +107,7 @@ const Map = () => {
         <div className="menu__header">
           <div className="top__ui">
             <div className="menu__btn"></div>
-            <div className="top__logo">Druwa</div>
+            <div className="top__logo"><Link to="/">Druwa</Link></div>
             <div className="top__right">
               <div className="top__right__search" onClick={toggleSearch}>
                 <div className="right__search__img"></div>
@@ -255,9 +254,8 @@ const Map = () => {
         </div>
       </div>
       <div
-        className={`menu__header__mobile ${
-          mainMenu ? "hide" : isSearch ? "" : "hide"
-        }`}
+        className={`menu__header__mobile ${mainMenu ? "hide" : isSearch ? "" : "hide"
+          }`}
       >
         <div className="top__ui">
           <div className="menu__btn"></div>

@@ -44,7 +44,7 @@ function Layout({ children }) {
 
   // /login 경로에서 Header와 Footer 컴포넌트 제외
   const isLoginRoute =
-    location.pathname === "/login" || location.pathname === "/";
+    location.pathname === "/login" || location.pathname === "/map" || location.pathname === "/";
 
   return (
     <>
