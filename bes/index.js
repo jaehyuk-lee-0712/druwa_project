@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const mongose = require("mongoose");
 const DTstroeBasic = require("./models/DTstoreBasic");
 const DtCategory = require("./models/DtCategorys");
+const Board = require("./models/Dtboard");
 
 // mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster
 
@@ -234,6 +235,7 @@ app.post("/list", async (req, res) => {
     res.status(500).send("Error fetching data");
   }
 });
+
 // 매장을 등록하는 API
 app.post("/admin/register", async (req, res) => {
   const newStores = req.body;
@@ -264,6 +266,29 @@ app.post("/admin/register", async (req, res) => {
   }
 });
 
+// 게시판
+app.get("/crud", async (req, res) => {
+  console.log("Received GET request at /crud");
+  try {
+    const boards = await Board.find(); // 모든 게시물을 조회
+    res.json(boards);
+  } catch (error) {
+    console.error("Error fetching boards:", error);
+    res.status(500).send("Error fetching board");
+  }
+});
+// Create: 새로운 게시물 등록
+app.post("/CrudWrite", async (req, res) => {
+  console.log("Received POST request at /CrudWrites");
+  try {
+    const newBoard = new Board(req.body);
+    await newBoard.save();
+    res.status(201).send(newBoard);
+  } catch (error) {
+    console.error("Error while creating new board entry:", error);
+    res.status(400).send(error);
+  }
+});
 // git 데이터 DB 등록 API
 app.post("/admin/register", (req, res) => {
   const newStores = req.body;

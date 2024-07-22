@@ -13,6 +13,8 @@ import Board from "./pages/Board";
 import Test from "./pages/Test";
 import MyPage from "./pages/MyPage";
 import Map from "./pages/Map";
+import Crud from "./pages/crud";
+import CrudWrite from "./pages/CrudWrite";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
               <Route path="/board" element={<Board />} />
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/map" element={<Map />} />
+              <Route path="/Crud" element={<Crud />} />
+              <Route path="/crudwrite" element={<CrudWrite />} />
             </Routes>
           </Main>
         </Layout>
@@ -44,7 +48,7 @@ function Layout({ children }) {
 
   // /login 경로에서 Header와 Footer 컴포넌트 제외
   const isLoginRoute =
-    location.pathname === "/login" || location.pathname === "/map" || location.pathname === "/";
+    location.pathname === "/login" || location.pathname === "/";
 
   return (
     <>

@@ -1,0 +1,169 @@
+.board-container {
+  width: 80%;
+  margin: 100px auto;
+  // height: 50vh;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  font-weight: bold;
+}
+
+.crud__page {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  display: inline;
+}
+
+.pageLink {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+}
+
+.pageLink.active {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.pageLink:hover {
+  background-color: #e9ecef;
+}
+.crud__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.crud__page ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.crud__page li {
+  margin: 0;
+}
+
+.crud__page button {
+  text-decoration: none;
+  color: #000;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff; /* 버튼 배경색 */
+  font-size: 14px; /* 버튼 폰트 사이즈 */
+}
+
+.crud__page button.active {
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.crud__page .pageLeft,
+.crud__page .pageRight {
+  cursor: pointer;
+}
+
+.crud__page .pageLeft:disabled,
+.crud__page .pageRight:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+// crud__write
+.board__inner {
+  height: 60vh;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+}
+
+.board__input {
+  width: 100%;
+  margin-top: 10px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+.ql-editor {
+  padding: 10px;
+}
+
+.btn {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.btn button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn button:hover {
+  background-color: #0056b3;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  height: 35vh;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
