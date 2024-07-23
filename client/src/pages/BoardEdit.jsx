@@ -91,7 +91,9 @@ const BoardEdit = () => {
             required
           />
         </div>
-        <button type="submit">수정하기</button>
+        <div className="btn">
+          <button type="submit">수정하기</button>
+        </div>
       </form>
     </div>
   );
