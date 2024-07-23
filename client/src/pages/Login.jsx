@@ -1,12 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import emailjs from "emailjs-com";
 import { FaCheckSquare } from "react-icons/fa";
 import { useModal } from "../context/ModalContext";
 import Modal from "../components/Modal";
-import { useNavigate } from "react-router-dom";
+import { json, Navigate, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
-  const naviegate = useNavigate();
+
+  const { setUserInfo } = useContext(UserContext);
+
+  const navigate  = useNavigate();
 
   const [showMemberBox, setShowMemberBox] = useState(false);
   const [memberText, setMemberText] = useState("회원가입");
@@ -149,19 +153,16 @@ const Login = () => {
 
   // 회원가입 데이터 생성 및 register api 호출
   const registerMember = async () => {
-    const regDate = new Date().toISOString().slice(0, 10);
     const userData = {
       userEmail: emailValue,
-      userPass: userPassword,
+      userPassword: userPassword,
       userName: userName,
-      phoneNumber: userPhone,
-      userType: userType,
-      deleteYn: "N",
-      regDate: regDate,
+      userPhone: userPhone,
+    
     };
 
     try {
-      const response = await fetch("http://localhost:8080/api/register", {
+      const response = await fetch("http://localhost:9000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -170,8 +171,9 @@ const Login = () => {
       });
       const jsonResponse = await response.json();
       if (response.ok) {
-        if (jsonResponse.status === "error") {
-          alert(jsonResponse.message);
+        if (response.status === 200) {
+          alert("회원가입 성공!");
+          navigate ("/");
         } else {
           alert(jsonResponse.message);
         }
@@ -218,30 +220,36 @@ const Login = () => {
       if (userPassword !== null && userPassword !== "") {
         const loginData = {
           userEmail: emailValue,
-          userPass: userPassword,
+          userPassword: userPassword,
         };
 
-        const response = await fetch("http://localhost:8080/api/login", {
+        const response = await fetch("http://localhost:9000/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify(loginData),
         });
 
         const jsonResponse = await response.json();
-
         if (response.ok) {
-          if (jsonResponse.status === "error") {
+          if (response.status !== 200) {
             modalMainText = jsonResponse.message;
             modalSubText = jsonResponse.message + "\\n 한 번 더 확인해주세요!";
             openModal(modalMainText, modalSubText);
           } else {
-            const userEmail = jsonResponse.userEmail;
-            const userName = jsonResponse.userName;
-            const userID = jsonResponse.userID;
+            const tokenUserInfo = {
+              userName : jsonResponse.cookieInfo.userName , 
+              userEmail : jsonResponse.cookieInfo.userEmail , 
+              id : jsonResponse.cookieInfo.id , 
+              token : jsonResponse.token
+            }
 
-            naviegate("/callender", { state: { userEmail, userName, userID } });
+            setUserInfo(tokenUserInfo);
+            navigate ("/");
+
+            console.log("@@@@@");
           }
         } else {
           throw new Error("로그인 실패 : " + jsonResponse.message);

@@ -4,8 +4,6 @@ import { useModal } from "../context/ModalContext";
 import "../assets/scss/_modal.scss";
 
 const Modal = ({ mainText, subText }) => {
-  console.log(mainText, subText);
-
   const { isOpen, closeModal } = useModal();
 
   return (

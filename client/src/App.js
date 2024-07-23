@@ -18,9 +18,11 @@ import BoardWrite from "./pages/BoardWrite";
 import BoardView from "./pages/BoardView";
 import BoardEdit from "./pages/BoardEdit";
 import BoardDelete from "./pages/BoardDelete";
+import { UserContextProvider } from "./context/UserContext";
 
 function App() {
   return (
+    <UserContextProvider>
     <ModalProvider>
       <BrowserRouter>
         {/* <Header /> */}
@@ -46,6 +48,7 @@ function App() {
         {/* <Footer /> */}
       </BrowserRouter>
     </ModalProvider>
+    </UserContextProvider>
   );
 }
 

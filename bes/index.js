@@ -12,11 +12,12 @@ const mongose = require("mongoose");
 const DTstroeBasic = require("./models/DTstoreBasic");
 const DtCategory = require("./models/DtCategorys");
 const Board = require("./models/Dtboard");
+const Users = require("./models/Users");
 
 // mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster
 
 mongose.connect(
-  "mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
+  "mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster"
 );
 
 // app setting
@@ -344,6 +345,104 @@ app.post("/admin/register", (req, res) => {
 
   res.status(200).json({ message: "Stores registered successfully" });
 });
+
+
+// User 관련 추가 - 20240723
+app.post("/register" , async (req , res) => {
+  try {
+    const insertInfo = req.body;
+
+    console.log(insertInfo);
+
+    if(!insertInfo) {
+      return res.status(400).json({message : "올바르지 않은 정보입니다."});
+    }
+
+    // 중복 이메일 체크 (임시로 회원가입할 떄 검사 -> 프론트 단에서 검사하는 것으로 변경)
+    const dupEmailCheck = await Users.findOne({userEmail : insertInfo.userEmail});
+    
+    if(dupEmailCheck) {
+      return  res.status(401).json({message : "이미 존재하는 이메일입니다."});
+    }
+
+    const hashPass = await bcrypt.hash(insertInfo.userPassword , salt);
+
+    const newUserInfo = new Users({
+      userEmail : insertInfo.userEmail ,
+      userPassword : hashPass ,
+      userName : insertInfo.userName , 
+      userPhone : insertInfo.userPhone
+    })
+
+    const returnInfo = newUserInfo.save();
+
+    res.set(200).json(returnInfo);
+
+
+  }catch(error) {
+    return  res.status(500).json({message : "회원가입 중 에러 발생" + error.message});
+  }
+
+})
+
+// 로그인
+
+app.post("/login" , async (req , res) => {
+  try{
+
+    const loginInfo = req.body;
+
+    console.log(loginInfo);
+
+    if(!loginInfo) {
+      return res.status(400).json({message : "로그인에 실패하였습니다 입력하신 정보를 확인해주세요!"});
+    }
+
+    const userInfo = await Users.findOne({userEmail : loginInfo.userEmail});
+
+    if(!userInfo) {
+      return res.status(401).json({message : "로그인에 싪패하였습니다. 입력하신 정보를 확인해주세요."});
+    }
+
+    const comparePass = bcrypt.compareSync(loginInfo.userPassword , userInfo.userPassword);
+    if(!comparePass) {
+      return res.status(401).json({message : "로그인에 싪패하였습니다. 입력하신 정보를 확인해주세요."});
+    }
+
+    const cookieInfo = {
+      userName : userInfo.userName , 
+      userEmail : userInfo.userEmail , 
+      id: userInfo._id , 
+    } 
+  
+    jwt.sign(
+      {
+        cookieInfo
+      } , 
+      secret ,
+      (error , token) => {
+        if(error) {
+          return res.status(500).json({message : "서버 에러 발생 관리자 문의 바람." + error.message});
+        }
+
+        res.cookie("token" , token , {
+          httpOnly : true , 
+          secure : true ,
+          sameSite : "none"
+        })
+        .status(200)
+        .json({
+          cookieInfo , 
+          token
+        })
+      }
+    )
+
+  }catch(error) {
+    return res.status(500).json({message : "로그인 실패 :"  + error.message});
+  }
+})
+
 
 // port setting.
 app.listen(9000, () => {
