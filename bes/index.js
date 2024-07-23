@@ -323,24 +323,16 @@ app.put("/BoardWrite/:id", async (req, res) => {
   }
 });
 
-// 게시물 수정 (ID가 없는 경우, 특정 조건으로 찾기)
-app.put("/BoardWrite", async (req, res) => {
-  console.log("Received PUT request at /BoardWrite");
-  const { filter, update } = req.body;
-
+// 게시물 생성 (ID가 없는 경우)
+app.post("/BoardWrite", async (req, res) => {
+  console.log("Received POST request at /BoardWrite");
   try {
-    const updatedBoard = await Board.findOneAndUpdate(
-      filter,
-      update,
-      { new: true, runValidators: true } // 새로운 문서 반환 및 유효성 검사
-    );
-    if (!updatedBoard) {
-      return res.status(404).send("Board not found");
-    }
-    res.json(updatedBoard);
+    const newBoard = new Board(req.body);
+    await newBoard.save();
+    res.json(newBoard);
   } catch (error) {
-    console.error("Error updating board:", error);
-    res.status(400).send("Error updating board");
+    console.error("Error creating new board:", error);
+    res.status(400).send("Error creating new board");
   }
 });
 

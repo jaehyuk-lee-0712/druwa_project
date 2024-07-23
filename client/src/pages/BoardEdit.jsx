@@ -8,7 +8,6 @@ const BoardEdit = () => {
   const [board, setBoard] = useState({
     boardTitle: "",
     boardConts: "",
-    boardAuthor: { youName: "" },
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,8 +26,7 @@ const BoardEdit = () => {
           setLoading(false);
         }
       } else {
-        // ID가 없는 경우 기본 상태로 페이지 로드
-        setLoading(false);
+        setLoading(false); // ID가 없으면 기본 상태로 페이지 로드
       }
     };
     fetchBoard();
@@ -46,12 +44,18 @@ const BoardEdit = () => {
     e.preventDefault();
 
     const updatePayload = id
-      ? { id, ...board } // ID가 있을 경우 기존 방식
-      : { filter: { boardTitle: board.boardTitle }, update: board }; // ID가 없을 경우 필터 기반 업데이트
+      ? { ...board } // ID가 있을 경우 기존 방식
+      : { ...board }; // ID가 없을 경우에도 같은 형식으로 요청
 
     try {
-      await axios.put(`/BoardWrite${id ? "/" + id : ""}`, updatePayload);
-      navigate(`/BoardWrite/${id}`); // 수정 완료 후 게시물 페이지로 리다이렉트
+      if (id) {
+        // ID가 있는 경우 수정 요청
+        await axios.put(`/BoardWrite/${id}`, updatePayload);
+      } else {
+        // ID가 없는 경우 새로 생성
+        await axios.post(`/BoardWrite`, updatePayload);
+      }
+      navigate(`/BoardWrite/${id || ""}`); // 수정 완료 후 게시물 페이지로 리다이렉트
     } catch (error) {
       console.error("Error updating board:", error);
       setError("게시물을 업데이트하는 데 문제가 발생했습니다.");
