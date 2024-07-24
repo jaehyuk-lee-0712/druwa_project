@@ -23,31 +23,31 @@ import { UserContextProvider } from "./context/UserContext";
 function App() {
   return (
     <UserContextProvider>
-    <ModalProvider>
-      <BrowserRouter>
-        {/* <Header /> */}
-        <Layout>
-          <Main>
-            <Routes>
-              <Route path="/*" element={<Test />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/list" element={<List />} />
-              <Route path="/board" element={<Board />} />
-              <Route path="/Notice" element={<Notice />} />
-              <Route path="/mypage" element={<MyPage />} />
-              <Route path="/map" element={<Map />} />
-              <Route path="/boardwrite" element={<BoardWrite />} />
-              <Route path="/boardView" element={<BoardView />} />
-              <Route path="/BoardEdit" element={<BoardEdit />} />
-              <Route path="/BoardDelete" element={<BoardDelete />} />
-            </Routes>
-          </Main>
-        </Layout>
-        {/* <Footer /> */}
-      </BrowserRouter>
-    </ModalProvider>
+      <ModalProvider>
+        <BrowserRouter>
+          {/* <Header /> */}
+          <Layout>
+            <Main>
+              <Routes>
+                <Route path="/*" element={<Test />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/list" element={<List />} />
+                <Route path="/board" element={<Board />} />
+                <Route path="/Notice" element={<Notice />} />
+                <Route path="/mypage" element={<MyPage />} />
+                <Route path="/map" element={<Map />} />
+                <Route path="/boardwrite" element={<BoardWrite />} />
+                <Route path="/boardView" element={<BoardView />} />
+                <Route path="/BoardEdit/:id" element={<BoardEdit />} />
+                <Route path="/BoardDelete" element={<BoardDelete />} />
+              </Routes>
+            </Main>
+          </Layout>
+          {/* <Footer /> */}
+        </BrowserRouter>
+      </ModalProvider>
     </UserContextProvider>
   );
 }

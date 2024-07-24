@@ -7,10 +7,9 @@ import { json, Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 const Login = () => {
-
   const { setUserInfo } = useContext(UserContext);
 
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
   const [showMemberBox, setShowMemberBox] = useState(false);
   const [memberText, setMemberText] = useState("회원가입");
@@ -123,7 +122,7 @@ const Login = () => {
 
   const lastStepBtn = () => {
     setLastStepCheck(true);
-    setUserName(false);
+    setUserNameSet(false);
     setMemberText("추가 정보");
     setMemberSubText("마지막으로 추가정보를 입력해주세요..");
   };
@@ -158,7 +157,6 @@ const Login = () => {
       userPassword: userPassword,
       userName: userName,
       userPhone: userPhone,
-    
     };
 
     try {
@@ -173,7 +171,7 @@ const Login = () => {
       if (response.ok) {
         if (response.status === 200) {
           alert("회원가입 성공!");
-          navigate ("/");
+          navigate("/home");
         } else {
           alert(jsonResponse.message);
         }
@@ -240,16 +238,14 @@ const Login = () => {
             openModal(modalMainText, modalSubText);
           } else {
             const tokenUserInfo = {
-              userName : jsonResponse.cookieInfo.userName , 
-              userEmail : jsonResponse.cookieInfo.userEmail , 
-              id : jsonResponse.cookieInfo.id , 
-              token : jsonResponse.token
-            }
+              userName: jsonResponse.cookieInfo.userName,
+              userEmail: jsonResponse.cookieInfo.userEmail,
+              id: jsonResponse.cookieInfo.id,
+              token: jsonResponse.token,
+            };
 
             setUserInfo(tokenUserInfo);
-            navigate ("/");
-
-            console.log("@@@@@");
+            navigate("/home");
           }
         } else {
           throw new Error("로그인 실패 : " + jsonResponse.message);

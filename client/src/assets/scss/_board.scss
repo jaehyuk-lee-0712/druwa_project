@@ -258,11 +258,11 @@
 
   a {
     font-weight: 500;
-    margin-right: 10px;
   }
 }
 
 .back-link {
+  margin-right: 10px;
   display: inline-block;
   font-size: 16px;
   color: #ffffff;
@@ -271,6 +271,7 @@
   padding: 10px 30px;
   background-color: #007bff;
   transition: background-color 0.3s, color 0.3s;
+  border: none;
 }
 
 .back-link:hover {

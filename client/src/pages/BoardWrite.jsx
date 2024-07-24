@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { UserContext } from "../context/UserContext";
 
 const modules = {
   toolbar: [
@@ -31,9 +32,11 @@ const formats = [
   "link",
   "image",
 ];
+
 const BoardWrite = () => {
   const [boardTitle, setBoardTitle] = useState("");
   const [boardConts, setBoardConts] = useState("");
+  const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
 
   const boardWrite = async (e) => {
@@ -41,14 +44,14 @@ const BoardWrite = () => {
     const data = {
       boardTitle,
       boardConts,
-      boardAuthor: { youName: "YourName" },
+      boardAuthor: userInfo.id,
     };
-
+    console.log(data.boardAuthor);
     try {
-      const response = await fetch("http://localhost:9000/BoardWrite", {
+      const response = await fetch("http://localhost:9000/boardwrite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        credentials: "include", // 쿠키와 함께 요청
         body: JSON.stringify(data),
       });
 
@@ -58,7 +61,7 @@ const BoardWrite = () => {
       } else {
         const errorData = await response.json();
         console.error("Error response from server:", errorData);
-        alert("실패");
+        alert(`실패: ${errorData.message}`);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -74,7 +77,7 @@ const BoardWrite = () => {
           <fieldset>
             <legend className="blind">게시글 작성하기</legend>
             <div>
-              <label htmlFor="boardTitle">글쓰기</label>
+              <label htmlFor="boardTitle">제목</label>
               <input
                 type="text"
                 id="boardTitle"

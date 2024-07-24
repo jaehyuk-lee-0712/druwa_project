@@ -15,9 +15,9 @@ const Board = require("./models/Dtboard");
 const Users = require("./models/Users");
 
 // mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster
-
+// mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa
 mongose.connect(
-  "mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster"
+  "mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
 );
 
 // app setting
@@ -271,30 +271,49 @@ app.post("/admin/register", async (req, res) => {
 app.get("/Board", async (req, res) => {
   console.log("Received GET request at /Board");
   try {
-    const boards = await Board.find(); // 모든 게시물을 조회
+    const boards = await Board.find().populate("boardAuthor", "userName");
     res.json(boards);
   } catch (error) {
     console.error("Error fetching boards:", error);
     res.status(500).send("Error fetching board");
   }
 });
+
 // 글쓰기
-app.post("/BoardWrite", async (req, res) => {
-  console.log("Received POST request at /Board");
-  try {
-    const newBoard = new Board(req.body);
-    await newBoard.save();
-    res.status(201).send(newBoard);
-  } catch (error) {
-    console.error("Error while creating new board entry:", error);
-    res.status(400).send(error);
+app.post("/boardwrite", async (req, res) => {
+  const { boardTitle, boardConts } = req.body;
+  const token = req.cookies.token;
+  if (!token) {
+    return res
+      .status(401)
+      .json({ message: "로그인을 해야 작성이 가능합니다." });
   }
+  // 토큰 확인
+  jwt.verify(token, secret, async (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "유효한 토큰이 아닙니다." });
+    }
+    try {
+      const boardInfo = await Board.create({
+        boardTitle,
+        boardConts,
+        boardAuthor: decoded.cookieInfo.id,
+        boardView: 0,
+      });
+      res.status(200).json(boardInfo);
+    } catch (err) {
+      res.status(400).json({ mssage: err.message });
+    }
+  });
 });
 // 글보기
-app.get("/BoardWrite/:id", async (req, res) => {
+app.get("/boardwrite/:id", async (req, res) => {
   console.log(`Received GET request at /BoardWrite/${req.params.id}`);
   try {
-    const board = await Board.findById(req.params.id);
+    const board = await Board.findById(req.params.id).populate(
+      "boardAuthor",
+      "userName"
+    );
     if (!board) {
       return res.status(404).send("Board not found");
     }
@@ -305,7 +324,7 @@ app.get("/BoardWrite/:id", async (req, res) => {
   }
 });
 
-// 게시물 수정 (ID가 있는 경우)
+// 게시물 수정
 app.put("/BoardWrite/:id", async (req, res) => {
   console.log(`Received PUT request at /BoardWrite/${req.params.id}`);
   try {
@@ -323,20 +342,20 @@ app.put("/BoardWrite/:id", async (req, res) => {
     res.status(400).send("Error updating board");
   }
 });
-
-// 게시물 생성 (ID가 없는 경우)
-app.post("/BoardWrite", async (req, res) => {
-  console.log("Received POST request at /BoardWrite");
+// 게시물 삭제
+app.delete("/boardwrite/:id", async (req, res) => {
+  console.log(`Received DELETE request at /boardwrite/${req.params.id}`);
   try {
-    const newBoard = new Board(req.body);
-    await newBoard.save();
-    res.json(newBoard);
+    const deletedBoard = await Board.findByIdAndDelete(req.params.id);
+    if (!deletedBoard) {
+      return res.status(404).send("Board not found");
+    }
+    res.status(200).send("Board successfully deleted");
   } catch (error) {
-    console.error("Error creating new board:", error);
-    res.status(400).send("Error creating new board");
+    console.error(`Error deleting board with id ${req.params.id}:`, error);
+    res.status(500).send("Error deleting board");
   }
 });
-
 // git 데이터 DB 등록 API
 app.post("/admin/register", (req, res) => {
   const newStores = req.body;
@@ -346,103 +365,137 @@ app.post("/admin/register", (req, res) => {
   res.status(200).json({ message: "Stores registered successfully" });
 });
 
-
 // User 관련 추가 - 20240723
-app.post("/register" , async (req , res) => {
+app.post("/register", async (req, res) => {
   try {
     const insertInfo = req.body;
 
     console.log(insertInfo);
 
-    if(!insertInfo) {
-      return res.status(400).json({message : "올바르지 않은 정보입니다."});
+    if (!insertInfo) {
+      return res.status(400).json({ message: "올바르지 않은 정보입니다." });
     }
 
     // 중복 이메일 체크 (임시로 회원가입할 떄 검사 -> 프론트 단에서 검사하는 것으로 변경)
-    const dupEmailCheck = await Users.findOne({userEmail : insertInfo.userEmail});
-    
-    if(dupEmailCheck) {
-      return  res.status(401).json({message : "이미 존재하는 이메일입니다."});
+    const dupEmailCheck = await Users.findOne({
+      userEmail: insertInfo.userEmail,
+    });
+
+    if (dupEmailCheck) {
+      return res.status(401).json({ message: "이미 존재하는 이메일입니다." });
     }
 
-    const hashPass = await bcrypt.hash(insertInfo.userPassword , salt);
+    const hashPass = await bcrypt.hash(insertInfo.userPassword, salt);
 
     const newUserInfo = new Users({
-      userEmail : insertInfo.userEmail ,
-      userPassword : hashPass ,
-      userName : insertInfo.userName , 
-      userPhone : insertInfo.userPhone
-    })
+      userEmail: insertInfo.userEmail,
+      userPassword: hashPass,
+      userName: insertInfo.userName,
+      userPhone: insertInfo.userPhone,
+    });
 
     const returnInfo = newUserInfo.save();
 
     res.set(200).json(returnInfo);
-
-
-  }catch(error) {
-    return  res.status(500).json({message : "회원가입 중 에러 발생" + error.message});
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "회원가입 중 에러 발생" + error.message });
   }
-
-})
+});
 
 // 로그인
 
-app.post("/login" , async (req , res) => {
-  try{
-
+app.post("/login", async (req, res) => {
+  try {
     const loginInfo = req.body;
 
     console.log(loginInfo);
 
-    if(!loginInfo) {
-      return res.status(400).json({message : "로그인에 실패하였습니다 입력하신 정보를 확인해주세요!"});
+    if (!loginInfo) {
+      return res.status(400).json({
+        message: "로그인에 실패하였습니다 입력하신 정보를 확인해주세요!",
+      });
     }
 
-    const userInfo = await Users.findOne({userEmail : loginInfo.userEmail});
+    const userInfo = await Users.findOne({ userEmail: loginInfo.userEmail });
 
-    if(!userInfo) {
-      return res.status(401).json({message : "로그인에 싪패하였습니다. 입력하신 정보를 확인해주세요."});
+    if (!userInfo) {
+      return res.status(401).json({
+        message: "로그인에 싪패하였습니다. 입력하신 정보를 확인해주세요.",
+      });
     }
 
-    const comparePass = bcrypt.compareSync(loginInfo.userPassword , userInfo.userPassword);
-    if(!comparePass) {
-      return res.status(401).json({message : "로그인에 싪패하였습니다. 입력하신 정보를 확인해주세요."});
+    const comparePass = bcrypt.compareSync(
+      loginInfo.userPassword,
+      userInfo.userPassword
+    );
+    if (!comparePass) {
+      return res.status(401).json({
+        message: "로그인에 싪패하였습니다. 입력하신 정보를 확인해주세요.",
+      });
     }
 
     const cookieInfo = {
-      userName : userInfo.userName , 
-      userEmail : userInfo.userEmail , 
-      id: userInfo._id , 
-    } 
-  
+      userName: userInfo.userName,
+      userEmail: userInfo.userEmail,
+      id: userInfo._id,
+    };
+
     jwt.sign(
       {
-        cookieInfo
-      } , 
-      secret ,
-      (error , token) => {
-        if(error) {
-          return res.status(500).json({message : "서버 에러 발생 관리자 문의 바람." + error.message});
+        cookieInfo,
+      },
+      secret,
+      (error, token) => {
+        if (error) {
+          return res.status(500).json({
+            message: "서버 에러 발생 관리자 문의 바람." + error.message,
+          });
         }
 
-        res.cookie("token" , token , {
-          httpOnly : true , 
-          secure : true ,
-          sameSite : "none"
-        })
-        .status(200)
-        .json({
-          cookieInfo , 
-          token
-        })
+        res
+          .cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+          })
+          .status(200)
+          .json({
+            cookieInfo,
+            token,
+          });
       }
-    )
-
-  }catch(error) {
-    return res.status(500).json({message : "로그인 실패 :"  + error.message});
+    );
+  } catch (error) {
+    return res.status(500).json({ message: "로그인 실패 :" + error.message });
   }
-})
+});
 
+// 로그인 확인
+app.get("/profile", (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res
+      .status(401)
+      .json({ message: "토큰이 없습니다. 로그인 해주세요." });
+  }
+
+  jwt.verify(token, secret, (err, info) => {
+    if (err) {
+      return res
+        .status(401)
+        .json({ message: "토큰 검증 실패, 관리자에게 문의하세요!" });
+    }
+    res.json(info);
+  });
+});
+
+// 로그아웃
+app.post("/logout", (req, res) => {
+  res.cookie("token", "").json({ messege: "로그아웃 성공" });
+});
 
 // port setting.
 app.listen(9000, () => {

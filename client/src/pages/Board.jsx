@@ -1,4 +1,3 @@
-// Board.js
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -48,19 +47,20 @@ const Board = () => {
               <div className="board__list__cont">
                 <div className="list__cont__type">{key + 1}</div>
                 <Link
-                  to="/boardview"
-                  state={{ board: val }}
+                  to={`/boardview/${val._id}`} // 게시물 ID를 URL에 포함
                   className="list__cont__title"
                 >
                   {val.boardTitle}
                 </Link>
                 <div className="list__cont__author">
-                  {val.boardAuthor.youName}
+                  {val.boardAuthor
+                    ? val.boardAuthor.userName
+                    : "Unknown Author"}
                 </div>
                 <div className="list__cont__date">
                   {new Date(val.createdAt).toLocaleDateString()}
                 </div>
-                <div className="list__cont__views">{val.boardViews}</div>
+                <div className="list__cont__views">{val.boardView}</div>
               </div>
             </li>
           ))}

@@ -1,14 +1,26 @@
-// BoardView.js
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const BoardView = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { board } = location.state || {};
 
   if (!board) {
     return <div>게시물 데이터를 찾을 수 없습니다.</div>;
   }
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:9000/boardwrite/${board._id}`);
+      alert("게시물이 삭제되었습니다.");
+      navigate("/board"); // 삭제 후 게시판 목록으로 이동
+    } catch (error) {
+      console.error("게시물 삭제 오류:", error);
+      alert("게시물을 삭제하는 데 문제가 발생했습니다.");
+    }
+  };
 
   return (
     <div className="board-view container">
@@ -17,7 +29,7 @@ const BoardView = () => {
         <div className="board-meta">
           <div>
             <span className="board-author">
-              작성자: {board.boardAuthor.youName}
+              작성자: {board.boardAuthor.userName}
             </span>
             <span className="board-views">조회수: {board.boardViews}</span>
           </div>
@@ -32,17 +44,18 @@ const BoardView = () => {
         <div dangerouslySetInnerHTML={{ __html: board.boardConts }} />
       </div>
       <div className="board-footer">
-        <a href="/boardedit" className="back-link">
+        <Link to={`/boardedit/${board._id}`} className="back-link">
           수정
-        </a>
-        <a href="/boarddelete" className="back-link">
+        </Link>
+        <button onClick={handleDelete} className="back-link">
           삭제
-        </a>
-        <a href="/board" className="back-link">
+        </button>
+        <Link to="/board" className="back-link">
           목록
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
+
 export default BoardView;
