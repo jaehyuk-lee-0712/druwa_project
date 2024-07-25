@@ -1,0 +1,647 @@
+.storeinfo {
+    position: relative;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    padding: 36px 0 40px;
+    letter-spacing: 0;
+
+    .store__title {
+        margin: 0 30px 35px;
+        padding: 0 0 15px;
+        font-size: 24px;
+        line-height: 26px;
+        border-bottom: 2px solid var(--black);
+        letter-spacing: -.4px;
+        font-weight: bold;
+    }
+
+    .store_handleTab {
+        margin: 35px 30px 0;
+        height: 51px;
+        position: relative;
+
+        li {
+            float: left;
+            width: 50%;
+
+            a {
+                display: block;
+                height: 50px;
+                text-align: center;
+                font-size: 16px;
+                color: #777;
+                background: #f5f5f5;
+                padding: 17px 0 0;
+                font-weight: 700;
+            }
+        }
+
+        li.on {
+            a {
+                border: 2px solid var(--blue1000);
+                height: 51px;
+                border-bottom: 0;
+                color: var(--blue1000);
+                padding: 15px 0 0;
+                background: var(--white);
+                position: relative;
+                z-index: 2;
+            }
+        }
+    }
+
+    .store_handleTab:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        border-top: 2px solid var(--blue1000);
+        clear: both;
+        z-index: 1;
+    }
+
+    .information__scrollbar {
+        max-height: 605px !important;
+        touch-action: pinch-zoom;
+
+
+
+        .info__scrollbox {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            max-width: 100%;
+            max-height: 605px;
+            outline: none;
+            direction: ltr;
+            overflow-y: scroll;
+
+            .info__container {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-right: 0;
+
+
+                .information {
+                    display: block;
+                    padding: 0 30px;
+
+                    .store__area {
+                        padding: 33px 35px 0;
+
+                        .store__areatop {
+                            position: relative;
+                            padding-bottom: 20px;
+
+                            .title {
+                                position: relative;
+                                padding-left: 17px;
+                                display: inline-block;
+                                font-size: 16px;
+                                letter-spacing: 0;
+                                margin-bottom: 10px;
+                                color: #333;
+
+                                .star {
+                                    width: 20px;
+                                    height: 20px;
+                                    background: url("https://static.oliveyoung.co.kr/pc-static-root/image/store/ico_storeP_off.png") 50% 50%/20px no-repeat;
+                                    text-indent: -99999px;
+                                    display: inline-block;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: -6px;
+                                    margin-right: 0;
+                                    margin-top: -10px;
+                                }
+
+                                .star.on {
+                                    background: url("https://static.oliveyoung.co.kr/pc-static-root/image/store/ico_storeP_on.png") 50% 50%/20px no-repeat;
+                                }
+                            }
+
+                            .nearway {
+                                color: #888;
+                                font-size: 12px;
+                                margin-left: 15px;
+                                font-weight: 400;
+                                letter-spacing: 0;
+                            }
+
+                            .addr {
+                                color: #555;
+                                font-size: 15px;
+                                text-decoration: none;
+                                letter-spacing: 0;
+                                line-height: 1.5;
+                            }
+
+                            .area {
+                                position: relative;
+
+                                .call {
+                                    margin-top: 10px;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                    padding: 0 10px 0 18px;
+                                    background: url("https://static.oliveyoung.co.kr/pc-static-root/image/store/ico_storeP_02.png") 0 50%/12px no-repeat;
+                                    letter-spacing: 0;
+                                }
+
+                                .time {
+                                    font-size: 13px;
+                                    position: absolute;
+                                    right: 0;
+                                    top: 10px;
+                                    display: inline-block;
+                                    background: #fff;
+                                    padding: 0 0 0 20px;
+                                    letter-spacing: 0;
+                                    color: #777;
+                                }
+
+                                .time::after {
+                                    content: "";
+                                    width: 15px;
+                                    height: 15px;
+                                    border-radius: 50%;
+                                    background: #777;
+                                    position: absolute;
+                                    left: 0;
+                                    top: 50%;
+                                    margin-top: -7px;
+                                    display: block;
+                                }
+
+                                .time.on:after {
+                                    background: var(--blue1000)
+                                }
+
+                                .favorite {
+                                    color: #888;
+                                    text-align: left;
+                                    font-size: 13px;
+                                    line-height: 17px;
+                                    margin-top: 10px;
+                                    letter-spacing: 0;
+                                }
+                            }
+
+                            .api__maparea {
+                                background: #fff;
+                                height: 200px;
+                                margin-top: 20px;
+                                overflow: hidden;
+                                position: relative;
+
+                                .maparea {
+                                    overflow: hidden;
+                                    background: url(https://t1.daumcdn.net/mapjsapi/images/bg_tile.png);
+                                    width: 430px;
+                                    height: 200px;
+                                    position: absolute;
+                                }
+                            }
+                        }
+
+                        .store__infobox {
+                            margin-bottom: 20px;
+                            font-size: 14px;
+
+                            h4 {
+                                font-size: 14px;
+                                line-height: 18px;
+                                color: #444;
+                                font-weight: 700;
+                                margin-bottom: 5px;
+                                letter-spacing: 0;
+                            }
+
+                            .store__time {
+                                padding: 0 5px;
+
+                                ul {
+                                    li {
+                                        span {
+                                            display: inline-block;
+                                            font-weight: 400;
+                                            font-size: 14px;
+                                            color: #666;
+                                            position: relative;
+                                            letter-spacing: -.02em;
+                                            padding-right: 8px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .urnotice {
+                                margin: 0;
+                                padding: 7px 10px;
+                                background-color: #f3f3f3;
+                                border-radius: 5px;
+                                margin-top: 10px;
+
+                                p {
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                    color: #555;
+                                    font-weight: 500;
+                                    letter-spacing: 0;
+                                    word-break: keep-all;
+                                }
+                            }
+                        }
+
+                        .store__infobox {
+                            .service {
+                                position: relative;
+                                display: inline-block;
+                                margin-top: -3px;
+                                padding-left: 2px;
+
+                                li {
+                                    position: relative;
+                                    float: left;
+                                    padding: 0;
+                                    margin-left: 8px;
+                                    width: 196px;
+
+                                    .sv__info {
+                                        width: inherit;
+                                        padding-left: 35px;
+                                        display: table-cell;
+                                        vertical-align: middle;
+                                        border-bottom: 1px solid #e6e6e6;
+                                        background: url(../img/icon-car.png) 2px center / 24px auto no-repeat;
+                                        height: 69px;
+
+                                        span {
+                                            font-size: 14px;
+                                            color: #666;
+                                            line-height: 1.5;
+                                            font-weight: 600;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .store__infobox {
+                            .detail {
+                                display: inline-block;
+                                font-weight: 400;
+                                font-size: 14px;
+                                color: #666;
+                                position: relative;
+                                letter-spacing: -.02em;
+                                padding: 8px;
+                            }
+                        }
+                    }
+                }
+
+                .comment {
+                    display: block;
+                    padding: 0 30px;
+
+                    .review__area {
+                        padding: 33px 35px 0;
+
+                        .title {
+                            font-size: 16px;
+                            font-weight: 700;
+                            letter-spacing: -.2px;
+                            line-height: normal;
+
+                            strong {
+                                line-height: 28px;
+                                font-weight: 700;
+                                letter-spacing: -.2px;
+                                color: var(--blue1000);
+                                padding-left: 6px;
+                            }
+                        }
+                    }
+
+                    .review__star {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 20px;
+                        margin: 24px 0;
+
+                        .grade {
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                            flex-grow: 1;
+                            margin-right: 24px;
+
+                            .score {
+                                text-align: center;
+
+                                span {
+                                    font-size: 36px;
+                                    font-weight: 600;
+                                    letter-spacing: -1px;
+                                    line-height: 44px;
+                                    color: #111;
+                                }
+                            }
+
+                            .star {
+                                position: relative;
+
+                                .empty {
+                                    display: flex;
+
+                                    svg {
+                                        color: rgba(247, 247, 247, 1);
+                                    }
+                                }
+
+                                .full {
+                                    display: flex;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 95%;
+                                    overflow: hidden;
+
+                                    svg {
+                                        color: rgba(255, 190, 20, 1);
+                                    }
+                                }
+                            }
+                        }
+
+                        .line {
+                            background-color: rgba(232, 232, 232, 1);
+                            width: 1px;
+                        }
+
+                        .graph {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-grow: 1;
+                            margin-left: 24px;
+
+                            .graph__cont {
+                                display: flex;
+                                column-gap: 8px;
+                                height: 95px;
+
+                                .graph__item {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: flex-end;
+                                    flex-direction: column;
+                                    width: 20px;
+
+                                    .grade__cnt.on {
+                                        background-color: rgba(255, 190, 20, 1);
+                                        color: var(--white);
+                                        line-height: 16px;
+                                        font-size: 10px;
+                                        font-weight: 400;
+                                        letter-spacing: 0;
+                                        padding-left: 4px;
+                                        padding-right: 4px;
+                                        border-radius: 4px;
+                                        height: 16px;
+                                        display: inline-block;
+                                    }
+
+                                    .graph__bar {
+                                        width: 4px;
+                                        height: 50px;
+                                        display: flex;
+                                        align-items: flex-end;
+                                        border-radius: 99999px;
+                                        background-color: #f7f7f7;
+                                        margin-top: 4px;
+
+                                        .bar__full {
+                                            background-color: #999;
+                                            border-radius: 99999px;
+                                            width: 4px;
+                                        }
+
+                                        .bar__full.on {
+                                            background-color: rgba(255, 190, 20, 1);
+                                        }
+
+
+                                    }
+
+                                    .graph__score {
+                                        font-size: 12px;
+                                        letter-spacing: 0;
+                                        line-height: 18px;
+                                        margin-top: 8px;
+                                        color: #999;
+                                    }
+
+                                    .graph__score.on {
+                                        color: rgba(255, 190, 20, 1);
+                                    }
+                                }
+
+                                .graph__item:nth-child(1) .graph__bar .bar__full {
+                                    height: 80%;
+                                }
+
+                                .graph__item:nth-child(2) .graph__bar .bar__full {
+                                    height: 11%;
+                                }
+
+                                .graph__item:nth-child(3) .graph__bar .bar__full {
+                                    height: 5%;
+                                }
+
+                                .graph__item:nth-child(4) .graph__bar .bar__full {
+                                    height: 3%;
+                                }
+
+                                .graph__item:nth-child(5) .graph__bar .bar__full {
+                                    height: 1%;
+                                }
+                            }
+                        }
+                    }
+
+                    .review__list {
+                        padding-left: 20px;
+                        padding-right: 20px;
+
+                        .review {
+                            border-bottom: 1px solid rgba(232, 232, 232, 1);
+                            padding-bottom: 24px;
+                            padding-top: 24px;
+
+                            .review__profile {
+                                display: flex;
+                                flex-direction: column;
+
+                                .review__userId {
+                                    color: #111;
+                                    font-size: 14px;
+                                    font-weight: 700;
+                                    letter-spacing: 0;
+                                    line-height: 21px;
+                                }
+
+                                .review__add {
+                                    display: flex;
+
+                                    .star {
+                                        position: relative;
+
+                                        .empty {
+                                            display: flex;
+
+                                            svg {
+                                                color: rgba(247, 247, 247, 1);
+                                            }
+                                        }
+
+                                        .full {
+                                            display: flex;
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 95%;
+                                            overflow: hidden;
+
+                                            svg {
+                                                color: rgba(255, 190, 20, 1);
+                                            }
+                                        }
+                                    }
+
+                                    .date {
+                                        font-size: 12px;
+                                        font-weight: 400;
+                                        letter-spacing: 0;
+                                        line-height: 18px;
+                                        margin-left: 8px;
+                                        color: #aaa;
+                                    }
+                                }
+                            }
+
+                            .review__content {
+                                display: flex;
+                                align-items: flex-start;
+                                margin-top: 24px;
+                                column-gap: 8px;
+                                font-size: 14px;
+                                font-weight: 400;
+                                letter-spacing: 0;
+                                line-height: 21px;
+                                color: #111;
+                                -webkit-box-orient: vertical;
+                                display: -webkit-box;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+
+                    .all__review {
+                        padding: 0 24px 24px 24px;
+
+                        button {
+                            background-color: var(--blue1000);
+                            color: #fff;
+                            font-size: 15px;
+                            font-weight: 700;
+                            letter-spacing: 0;
+                            line-height: 23px;
+                            padding-left: 16px;
+                            padding-right: 16px;
+                            border-radius: 8px;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 100%;
+                            height: 44px;
+
+                            span {
+                                font-size: 15px;
+                                font-weight: 700;
+                                letter-spacing: 0;
+                                line-height: 23px;
+                            }
+
+                            svg {
+                                width: 20px;
+                                height: 20px;
+                                margin-left: 2px;
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                .store__closeBtn {
+                    text-align: center;
+                    color: var(--white);
+                    line-height: 30px;
+                    width: 88px;
+                    height: 30px;
+                    display: block;
+                    background: #777;
+                    margin: 25px auto;
+                    padding: 0 20px;
+                    font-size: 12px;
+                    border-radius: 2px;
+                    font-weight: 700;
+                    letter-spacing: 0;
+                }
+            }
+        }
+
+        ::-webkit-scrollbar-vertical {
+            width: 100%;
+            height: 404px;
+            max-height: 595px;
+            background-color: #fff;
+
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px;
+            height: 100%;
+            border-radius: 16px;
+            background-color: #fff;
+            transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            width: 3px;
+            border-radius: 1.5px;
+            background-color: rgba(0, 0, 0, .2);
+            cursor: pointer;
+            transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+        }
+
+    }
+
+    .store__close {
+        position: absolute;
+        text-indent: -9999px;
+        right: 30px;
+        width: 25px;
+        height: 25px;
+        background: url("https://static.oliveyoung.co.kr/pc-static-root/image/curation/ico_close_25x25.png") 0 0/25px auto no-repeat;
+        top: 36px;
+        background-size: 21px auto;
+        cursor: pointer;
+    }
+}

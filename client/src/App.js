@@ -18,6 +18,7 @@ import BoardWrite from "./pages/BoardWrite";
 import BoardView from "./pages/BoardView";
 import BoardEdit from "./pages/BoardEdit";
 import BoardDelete from "./pages/BoardDelete";
+import StoreInfo from "./components/StoreInfo";
 import { UserContextProvider } from "./context/UserContext";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/boardView" element={<BoardView />} />
                 <Route path="/BoardEdit/:id" element={<BoardEdit />} />
                 <Route path="/BoardDelete" element={<BoardDelete />} />
+                <Route path="/store" element={<StoreInfo />} />
               </Routes>
             </Main>
           </Layout>
