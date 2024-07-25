@@ -24,7 +24,7 @@ const Home = () => {
               <div className="btn">
                 매장 보기
                 <svg
-                  class="section_hero_svg__gqVad"
+                  className="section_hero_svg__gqVad"
                   width="64"
                   height="64"
                   viewBox="0 0 64 64"
@@ -40,7 +40,7 @@ const Home = () => {
               <div className="btn">
                 지도 보기
                 <svg
-                  class="section_hero_svg__gqVad"
+                  className="section_hero_svg__gqVad"
                   width="64"
                   height="64"
                   viewBox="0 0 64 64"
@@ -63,40 +63,40 @@ const Home = () => {
             <Link to="/">
               리뷰 작성
               <svg
-                class="arrow-next"
+                className="arrow-next"
                 width="10"
                 height="10"
                 viewBox="0 0 10 10"
                 aria-hidden="true"
               >
-                <path class="arrow-line" d="M0 5h7"></path>
-                <path class="arrow-path" d="M1 1l4 4-4 4"></path>
+                <path className="arrow-line" d="M0 5h7"></path>
+                <path className="arrow-path" d="M1 1l4 4-4 4"></path>
               </svg>
             </Link>
             <Link to="/">
               리뷰 보기
               <svg
-                class="arrow-next"
+                className="arrow-next"
                 width="10"
                 height="10"
                 viewBox="0 0 10 10"
                 aria-hidden="true"
               >
-                <path class="arrow-line" d="M0 5h7"></path>
-                <path class="arrow-path" d="M1 1l4 4-4 4"></path>
+                <path className="arrow-line" d="M0 5h7"></path>
+                <path className="arrow-path" d="M1 1l4 4-4 4"></path>
               </svg>
             </Link>
             <Link to="/">
               나만의 매장 등록
               <svg
-                class="arrow-next"
+                className="arrow-next"
                 width="10"
                 height="10"
                 viewBox="0 0 10 10"
                 aria-hidden="true"
               >
-                <path class="arrow-line" d="M0 5h7"></path>
-                <path class="arrow-path" d="M1 1l4 4-4 4"></path>
+                <path className="arrow-line" d="M0 5h7"></path>
+                <path className="arrow-path" d="M1 1l4 4-4 4"></path>
               </svg>
             </Link>
           </div>
@@ -115,10 +115,10 @@ const Home = () => {
             <div className="loc__btn">
               <Link to="/">구매 매물</Link>
               <svg
-                class="section_hero_icon-image__90mvv"
+                className="section_hero_icon-image__90mvv"
                 stroke="currentColor"
                 fill="currentColor"
-                stroke-width="0"
+                strokeWidth="0"
                 viewBox="0 0 24 24"
                 height="18"
                 width="18"
@@ -131,10 +131,10 @@ const Home = () => {
             <div className="loc__btn">
               <Link to="/">렌트 매물</Link>
               <svg
-                class="section_hero_icon-image__90mvv"
+                className="section_hero_icon-image__90mvv"
                 stroke="currentColor"
                 fill="currentColor"
-                stroke-width="0"
+                strokeWidth="0"
                 viewBox="0 0 24 24"
                 height="18"
                 width="18"

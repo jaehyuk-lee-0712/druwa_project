@@ -162,7 +162,7 @@ const AdminMemberSection = () => {
                                     type="search"
                                     disabled=""
                                     autoComplete="off"
-                                    class="status__search__input"
+                                    className="status__search__input"
                                     readonly=""
                                     unselectable="on"
                                     value=""

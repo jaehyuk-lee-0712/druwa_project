@@ -92,7 +92,7 @@ const AdminHomeSection = () => {
                   <button className="header__btn">
                     <span className="btn__icon__wrap">
                       <svg
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         viewBox="64 64 896 896"
                         focusable="false"
                         data-icon="close"

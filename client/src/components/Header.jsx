@@ -64,7 +64,7 @@ const Header = () => {
           <div className="utils__list">
             {userInfo ? (
               <span className="profile-logout" onClick={logout}>
-                <span>로그아웃</span>
+                <Link to="/home">로그아웃</Link>
               </span>
             ) : (
               <Link to="/login">로그인</Link>

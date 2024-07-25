@@ -41,6 +41,7 @@ const Login = () => {
   let modalMainText = "";
   let modalSubText = "";
 
+  // 인증 코드 생성
   const generateVerificationCode = () => {
     const verification__code = Math.floor(
       100000 + Math.random() * 900000
@@ -49,6 +50,7 @@ const Login = () => {
     return verification__code;
   };
 
+  // 인증 코드 검증
   const handleVerificationCodeChange = (event, index) => {
     const newVerificationCodes = [...verificationCodes];
     newVerificationCodes[index] = event.target.value;
@@ -61,6 +63,7 @@ const Login = () => {
     }
   };
 
+  // 버튼 총괄
   const handleSubBtnClick = (event, btnType) => {
     event.preventDefault();
     setShowMemberBox(!showMemberBox);
@@ -80,6 +83,7 @@ const Login = () => {
     }
   };
 
+  // 인증 이메일 전송
   const sedVerficationEmail = () => {
     const verificationCode = generateVerificationCode();
 
@@ -191,7 +195,7 @@ const Login = () => {
       };
 
       const response = await fetch(
-        "http://localhost:8080/api/emailDuplicateCheck",
+        "http://localhost:9000/api/emailDuplicateCheck",
         {
           method: "POST",
           headers: {

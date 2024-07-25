@@ -16,8 +16,8 @@ const Users = require("./models/Users");
 
 // mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster
 // mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa
-mongose.connect(
-  "mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
+// mongodb+srv://fdcwr:wlsdk9916v@druwa.uylmaul.mongodb.net/?retryWrites=true&w=majority&appName=druwa
+mongose.connect("mongodb+srv://fdcwr:wlsdk9916v@druwa.uylmaul.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
 );
 
 // app setting
@@ -97,7 +97,7 @@ const callDruwaDataFile = async () => {
 
           console.log(dtLat, dtLon);
 
-          const newStroe = await DTstroeBasic.create({
+          const newStore = await DTstroeBasic.create({
             dtName,
             dtAddress,
             dtLat,
@@ -106,7 +106,7 @@ const callDruwaDataFile = async () => {
             deleteYn,
           });
 
-          console.log(newStroe);
+          console.log(newStore);
         }
       } else {
         throw new Error("Stroe Data Fetching Error");
@@ -157,7 +157,7 @@ async function getAddressCoordinates(address) {
   }
 }
 
-// 리스트 호출 API
+// admin 리스트 호출 API
 app.post("/admin/list", async (req, res) => {
   try {
     const checkedStates = req.body;
@@ -194,7 +194,8 @@ app.post("/admin/list", async (req, res) => {
     res.status(500).send("Error fetching data");
   }
 });
-// 전체리스트 호출 API
+
+// checkbox 전체리스트 호출 API
 app.post("/list", async (req, res) => {
   console.log("Request received:", req.body);
   try {
@@ -237,7 +238,7 @@ app.post("/list", async (req, res) => {
   }
 });
 
-// 매장을 등록하는 API
+// admin 매장을 등록하는 API
 app.post("/admin/register", async (req, res) => {
   const newStores = req.body;
 
@@ -306,6 +307,7 @@ app.post("/boardwrite", async (req, res) => {
     }
   });
 });
+
 // 글보기
 app.get("/boardwrite/:id", async (req, res) => {
   console.log(`Received GET request at /BoardWrite/${req.params.id}`);
@@ -342,6 +344,7 @@ app.put("/BoardWrite/:id", async (req, res) => {
     res.status(400).send("Error updating board");
   }
 });
+
 // 게시물 삭제
 app.delete("/boardwrite/:id", async (req, res) => {
   console.log(`Received DELETE request at /boardwrite/${req.params.id}`);
@@ -356,6 +359,7 @@ app.delete("/boardwrite/:id", async (req, res) => {
     res.status(500).send("Error deleting board");
   }
 });
+
 // git 데이터 DB 등록 API
 app.post("/admin/register", (req, res) => {
   const newStores = req.body;
@@ -394,9 +398,9 @@ app.post("/register", async (req, res) => {
       userPhone: insertInfo.userPhone,
     });
 
-    const returnInfo = newUserInfo.save();
+    const returnInfo = await newUserInfo.save();
 
-    res.set(200).json(returnInfo);
+    res.status(200).json(returnInfo);
   } catch (error) {
     return res
       .status(500)

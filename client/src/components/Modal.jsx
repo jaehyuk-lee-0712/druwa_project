@@ -17,7 +17,7 @@ const Modal = ({ mainText, subText }) => {
       <svg
         viewBox="0 0 60 60"
         focusable="false"
-        class="chakra-icon chakra-icon css-vlk5b1"
+        className="chakra-icon chakra-icon css-vlk5b1"
       >
         <circle
           cx="30"
@@ -25,7 +25,7 @@ const Modal = ({ mainText, subText }) => {
           r="7"
           fill="white"
           stroke="black"
-          stroke-width="2"
+          strokeWidth="2"
         ></circle>
         <mask id="path-2-inside-1_3049_89691" fill="white">
           <path d="M16 60C16 53.3726 21.3726 48 28 48H32C38.6274 48 44 53.3726 44 60H16Z"></path>
@@ -46,7 +46,7 @@ const Modal = ({ mainText, subText }) => {
           height="18"
           fill="#2C74FF"
           stroke="black"
-          stroke-width="2"
+          strokeWidth="2"
         ></rect>
         <rect
           x="28"
@@ -55,7 +55,7 @@ const Modal = ({ mainText, subText }) => {
           height="4"
           fill="#2C74FF"
           stroke="black"
-          stroke-width="2"
+          strokeWidth="2"
         ></rect>
       </svg>
       <p className="modal__text">{mainText}</p>
