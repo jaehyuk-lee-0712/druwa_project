@@ -18,7 +18,7 @@ const Users = require("./models/Users");
 // mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa
 // mongodb+srv://fdcwr:wlsdk9916v@druwa.uylmaul.mongodb.net/?retryWrites=true&w=majority&appName=druwa
 mongose.connect(
-  "mongodb+srv://fdcwr:wlsdk9916v@druwa.uylmaul.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
+  "mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
 );
 
 // app setting
@@ -336,8 +336,8 @@ app.post("/boardview/:id", async (req, res) => {
 });
 
 // 게시물 수정
-app.put("/BoardWrite/:id", async (req, res) => {
-  console.log(`Received PUT request at /BoardWrite/${req.params.id}`);
+app.put("/boardwrite/:id", async (req, res) => {
+  console.log(`Received PUT request at /boardwrite/${req.params.id}`);
   try {
     const updatedBoard = await Board.findByIdAndUpdate(
       req.params.id,
@@ -351,6 +351,24 @@ app.put("/BoardWrite/:id", async (req, res) => {
   } catch (error) {
     console.error(`Error updating board with id ${req.params.id}:`, error);
     res.status(400).send("Error updating board");
+  }
+});
+
+// 게시물 가져오기
+app.get("/boardwrite/:id", async (req, res) => {
+  console.log(`Received GET request at /boardwrite/${req.params.id}`);
+  try {
+    const board = await Board.findById(req.params.id).populate(
+      "boardAuthor",
+      "userName"
+    );
+    if (!board) {
+      return res.status(404).send("Board not found");
+    }
+    res.json(board);
+  } catch (error) {
+    console.error(`Error fetching board with id ${req.params.id}:`, error);
+    res.status(500).send("Error fetching board");
   }
 });
 // 게시물 삭제

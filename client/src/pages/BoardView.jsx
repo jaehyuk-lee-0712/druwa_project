@@ -61,7 +61,7 @@ const BoardView = () => {
   };
 
   const isAuthor = currentUser && currentUser.userId === board.boardAuthor._id;
-
+  console.log(board);
   return (
     <div className="board-view container">
       <div className="board-header">
