@@ -17,7 +17,8 @@ const Users = require("./models/Users");
 // mongodb+srv://dlwogur0712:vmfleja1215@maincluster.lwlrke2.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster
 // mongodb+srv://druwa:qwe123@druwa.r3uicug.mongodb.net/?retryWrites=true&w=majority&appName=druwa
 // mongodb+srv://fdcwr:wlsdk9916v@druwa.uylmaul.mongodb.net/?retryWrites=true&w=majority&appName=druwa
-mongose.connect("mongodb+srv://fdcwr:wlsdk9916v@druwa.uylmaul.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
+mongose.connect(
+  "mongodb+srv://fdcwr:wlsdk9916v@druwa.uylmaul.mongodb.net/?retryWrites=true&w=majority&appName=druwa"
 );
 
 // app setting
@@ -307,11 +308,11 @@ app.post("/boardwrite", async (req, res) => {
     }
   });
 });
-
-// 글보기
-app.get("/boardwrite/:id", async (req, res) => {
-  console.log(`Received GET request at /BoardWrite/${req.params.id}`);
+// 게시물 조회수 증가
+app.post("/boardview/:id", async (req, res) => {
+  console.log(`Received POST request at /boardview/${req.params.id}`);
   try {
+    // 게시물 찾기
     const board = await Board.findById(req.params.id).populate(
       "boardAuthor",
       "userName"
@@ -319,10 +320,18 @@ app.get("/boardwrite/:id", async (req, res) => {
     if (!board) {
       return res.status(404).send("Board not found");
     }
+
+    // 조회수 증가
+    board.boardViews += 1;
+    await board.save();
+
     res.json(board);
   } catch (error) {
-    console.error(`Error fetching board with id ${req.params.id}:`, error);
-    res.status(500).send("Error fetching board");
+    console.error(
+      `Error updating board views with id ${req.params.id}:`,
+      error
+    );
+    res.status(500).send("Error updating board views");
   }
 });
 
@@ -344,7 +353,6 @@ app.put("/BoardWrite/:id", async (req, res) => {
     res.status(400).send("Error updating board");
   }
 });
-
 // 게시물 삭제
 app.delete("/boardwrite/:id", async (req, res) => {
   console.log(`Received DELETE request at /boardwrite/${req.params.id}`);
@@ -358,6 +366,22 @@ app.delete("/boardwrite/:id", async (req, res) => {
     console.error(`Error deleting board with id ${req.params.id}:`, error);
     res.status(500).send("Error deleting board");
   }
+});
+// 사용자 확인
+app.get("/currentUser", (req, res) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ message: "로그인이 필요합니다." });
+  }
+  jwt.verify(token, secret, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "유효한 토큰이 아닙니다." });
+    }
+    res.json({
+      userId: decoded.cookieInfo.id,
+      userName: decoded.cookieInfo.userName,
+    });
+  });
 });
 
 // git 데이터 DB 등록 API

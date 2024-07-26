@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Board = () => {
   const [boards, setBoards] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // 게시판 목록 가져오기
     fetch("http://localhost:9000/Board", {
       credentials: "include",
     })
@@ -19,7 +23,25 @@ const Board = () => {
         setBoards(data);
       })
       .catch((err) => console.error("Error:", err));
+
+    // 현재 사용자 확인
+    axios
+      .get("http://localhost:9000/currentUser", { withCredentials: true })
+      .then((response) => {
+        setCurrentUser(response.data);
+      })
+      .catch((error) => {
+        console.error("현재 사용자 가져오기 오류:", error);
+      });
   }, []);
+
+  const handleWriteClick = () => {
+    if (!currentUser) {
+      alert("로그인 후 글쓰기가 가능합니다.");
+      return;
+    }
+    navigate("/boardwrite"); // 로그인 상태면 글쓰기 페이지로 이동
+  };
 
   return (
     <section className="board__top container">
@@ -28,7 +50,9 @@ const Board = () => {
       </div>
       <div className="board__cate">
         <div className="board__menu">
-          <Link to="/boardwrite">글쓰기</Link>
+          <button onClick={handleWriteClick} className="write-button">
+            글쓰기
+          </button>
         </div>
         <div className="board__search">
           <div className="search__icon"></div>
@@ -47,8 +71,9 @@ const Board = () => {
               <div className="board__list__cont">
                 <div className="list__cont__type">{key + 1}</div>
                 <Link
-                  to={`/boardview/${val._id}`} // 게시물 ID를 URL에 포함
+                  to={`/boardView/${val._id}`}
                   className="list__cont__title"
+                  state={{ board: val }} // Link에 state로 board 데이터를 전달
                 >
                   {val.boardTitle}
                 </Link>
@@ -60,7 +85,7 @@ const Board = () => {
                 <div className="list__cont__date">
                   {new Date(val.createdAt).toLocaleDateString()}
                 </div>
-                <div className="list__cont__views">{val.boardView}</div>
+                <div className="list__cont__views">{val.boardViews}</div>
               </div>
             </li>
           ))}

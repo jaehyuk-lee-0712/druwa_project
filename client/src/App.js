@@ -40,7 +40,7 @@ function App() {
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/map" element={<Map />} />
                 <Route path="/boardwrite" element={<BoardWrite />} />
-                <Route path="/boardView" element={<BoardView />} />
+                <Route path="/boardView/:id" element={<BoardView />} />
                 <Route path="/BoardEdit/:id" element={<BoardEdit />} />
                 <Route path="/BoardDelete" element={<BoardDelete />} />
                 <Route path="/store" element={<StoreInfo />} />
@@ -59,7 +59,9 @@ function Layout({ children }) {
 
   // /login 경로에서 Header와 Footer 컴포넌트 제외
   const isLoginRoute =
-    location.pathname === "/login" || location.pathname === "/map" || location.pathname === "/";
+    location.pathname === "/login" ||
+    location.pathname === "/map" ||
+    location.pathname === "/";
 
   return (
     <>
