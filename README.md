@@ -11,30 +11,34 @@ Reatc.js를 사용하여 페이지 별 컴포넌트와 Context를 통한 로그�
 계산하였고 네이버 Map API를 사용하여 각 매장의 위도 경도를 저장하였습니다.   
 결과적으로 사용자들은 별도의 행위 없이 접속 후 바로 드라이브 스루 매장을 찾을 수 있습니다.
 
+## 팀원
+- 이재혁 (팀장)
+- 박진아
+- 서대원
 
+## 과정
+1. 전국 드라이브 스루 매장을 보유한 프렌차이즈 매장 검토 후 각종 웹 사이트에서 데이터 수집
+2. 각 매장 별 위도 경도 데이터 도출 후 DB 저장
+3. 사용자 접속 위치 기준 30Km 이내 매장을 지도에 표시
 
-## client
-````
-cd /client/
-npx create-react-app . 
-npm i react-router-dom
-npm i sass
-npm i react-quill
-npm install @emailjs/browser --save
-npm i react-modal
-````
+-디자인 컨셉은 사용자들에게 시원한 느낌과 신뢰를 줄 수 있는 푸른색을 메인 컬러로 사용하였습니다.
+-데이터 수집은 각 매장의 홈페이지, 네이버 지도에서 수집하였습니다.   
 
-## server
-````
-cd /server/
-npm init -y 
-npm i express (서버연결)
-npm i mongoose (db연결)
-npm i cors (cors에러)
-npm i nodemon
-npm i bcryptjs
-npm i jsonwebtoken
-npm i cookie-parser
-npm i axios
-npm i cheerio
-````
+## 주요 기능
+- 사용자 근처 매장 위치 확인
+- 매장 상세 정보 및 리뷰 확인 가능
+- 방문 매장 리뷰 등록, 관리
+- 홈페이지 이메일 등록 로그인 가능
+- 등록되어있지 않은 매장 사용자가 직접 등록 가능\
+
+## 사이트 프리뷰
+
+## 기술 스택
+- FrontEnd : React / SCSS
+- BackEnd : Node.js
+- 배포 Vercel, 자체 서버
+
+## 트러블 슈팅 
+
+  
+
